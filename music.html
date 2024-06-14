@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music - QLAUDIO</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .slide-up {
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Hover Effects */
+        .hover-highlight:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Active Link Highlight */
+        .active-link {
+            text-decoration: underline;
+        }
+
+        /* Minimalist Media */
+        .media-cover {
+            height: 70vh;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* Parallax Effect */
+        .parallax {
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        /* Pricing Card Shadow */
+        .pricing-card {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Popular Plan Highlight */
+        .popular-plan {
+            border: 2px solid #4CAF50;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 20px;
+            justify-items: center;
+            align-items: center;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .team-member h3 {
+            font-size: 1rem;
+            margin-top: 8px;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Music Section */
+        .music-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .music-item {
+            text-align: center;
+        }
+
+        .music-item audio {
+            width: 100%;
+            margin-top: 10px;
+        }
+    </style>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("9ckQHWPKQUV2yRMFM"); // Use your EmailJS public key here
+        })();
+    </script>
+</head>
+
+<body class="bg-white text-gray-800">
+
+    <!-- Navigation Bar -->
+    <nav id="navbar" class="fixed w-full z-10 p-4 bg-white shadow-sm top-0">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="font-bold text-2xl text-black">QLAUDIO</a>
+            <ul class="flex space-x-8 text-base uppercase tracking-widest text-black">
+                <li><a href="sound_design.html" class="hover-highlight">Sound Design</a></li>
+                <li><a href="music.html" class="hover-highlight">Music</a></li>
+                <li><a href="plugins.html" class="hover-highlight">Plugins</a></li>
+                <li><a href="services.html" class="hover-highlight">Services</a></li>
+                <li><a href="faq.html" class="hover-highlight">FAQ</a></li>
+                <li><a href="contact.html" class="hover-highlight">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Introduction Section -->
+    <section id="introduction" class="container mx-auto my-20 p-8 text-center reveal">
+        <h2 class="text-4xl font-semibold mb-8 uppercase tracking-wider">무한한 가능성의 세계에 오신 것을 환영합니다
+</h2>
+        <p class="max-w-3xl mx-auto leading-relaxed slide-up">이곳에서는 목적지까지 가는 여정이 목적지에 도착하는 순간만큼이나 설레며, 모든 순간이 존재의 캔버스에 자신의 흔적을 남길 기회가 됩니다. 유일한 한계는 여러분의 상상력입니다.</p>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="container mx-auto my-20 p-8 text-center reveal">
+        <h2 class="text-4xl font-semibold mb-8 uppercase tracking-wider">서비스 소개</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div class="service-item">
+                <img src="./images/mfx.webp" alt="음악 제작 (Original Sound Track)" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-2xl font-semibold mb-4">음악 제작 (Original Sound Track)</h3>
+                <p>독창적이고 감동적인 오리지널 사운드 트랙을 제작합니다.</p>
+            </div>
+            <div class="service-item">
+                <img src="./images/commercial.webp" alt="음악 제작 (Commercial)" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-2xl font-semibold mb-4">음악 제작 (Commercial)</h3>
+                <p>광고 및 상업적 용도의 음악을 전문적으로 제작합니다.</p>
+            </div>
+            <div class="service-item">
+                <img src="./images/commercial_logo.webp" alt="음악 판매 (Shared License)" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-2xl font-semibold mb-4">음악 판매 (Shared License)</h3>
+                <p>공유 라이센스 형태로 음악을 판매합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="container mx-auto my-20 p-8 text-center reveal">
+        <h2 class="text-4xl font-semibold mb-8 uppercase tracking-wider">가격 안내</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div class="pricing-item pricing-card bg-white rounded-lg shadow-lg p-6">
+                <img src="./images/sfx_logo.webp" alt="Background Music" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-2xl font-semibold mb-4">Background Music</h3>
+                <ul class="text-left text-gray-700">
+                    <li>1분 내외의 반복되는 배경음악</li>
+                    <li>제작 난이도 및 곡 길이별 가격 상이</li>
+                    <li>300,000원 ~ 500,000원</li>
+                    <li>게임 내의 간단한 배경 음악 적합</li>
+                </ul>
+            </div>
+            <div class="pricing-item pricing-card bg-white rounded-lg shadow-lg p-6">
+                <img src="./images/mfx_logo.webp" alt="Original Sound Track" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-2xl font-semibold mb-4">Original Sound Track</h3>
+                <ul class="text-left text-gray-700">
+                    <li>1분 이상의 구성의 전개가 있는 음악</li>
+                    <li>제작 난이도 및 곡 길이별 가격 상이</li>
+                    <li>500,000원 ~ 1,500,000원</li>
+                    <li>게임, 드라마, 영화 등 배경 음악 적합</li>
+                </ul>
+            </div>
+            <div class="pricing-item pricing-card bg-white rounded-lg shadow-lg p-6">
+                <img src="./images/commercial_logo.webp" alt="Commercial Music" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-2xl font-semibold mb-4">Commercial Music</h3>
+                <ul class="text-left text-gray-700">
+                    <li>15초~30초 내지의 광고성 영상을 위한 음악</li>
+                    <li>제작 난이도 및 곡 길이별 가격 상이</li>
+                    <li>500,000원 ~ 1,000,000원</li>
+                </ul>
+            </div>
+            <div class="pricing-item pricing-card bg-white rounded-lg shadow-lg p-6">
+                <img src="./images/movie.webp" alt="Shared License Music" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-2xl font-semibold mb-4">Shared License Music</h3>
+                <ul class="text-left text-gray-700">
+                    <li>공유 라이선스를 통해 할인된 가격으로 음악 구매</li>
+                    <li>곡 리스트에서 원하는 음악을 선택한 후 구매</li>
+                    <li>제작 난이도 및 곡 길이별 가격 상이</li>
+                    <li>주문 제작 보다 40% 저렴한 가격</li>
+                </ul>
+            </div>
+            <div class="pricing-item pricing-card bg-white rounded-lg shadow-lg p-6">
+                <img src="./images/sound_repair.webp" alt="Mixing & Mastering" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-2xl font-semibold mb-4">Mixing & Mastering</h3>
+                <ul class="text-left text-gray-700">
+                    <li>믹싱 & 마스터링 - 30만원</li>
+                    <li>음원 분리 (보컬 + MR) - 5만원</li>
+                    <li>음성 자막 생성 (STT) - 5만원</li>
+                </ul>
+            </div>
+            <div class="pricing-item pricing-card bg-white rounded-lg shadow-lg p-6">
+                <img src="./images/audio_solution.webp" alt="AI Cover" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-2xl font-semibold mb-4">AI Cover</h3>
+                <ul class="text-left text-gray-700">
+                    <li>가수 혹은 나의 목소리로 AI Cover 제작</li>
+                    <li>유명 가수 목소리: 10만원</li>
+                    <li>데이터가 적은 가수 목소리: 15만원</li>
+                    <li>커스텀 목소리 학습: 20만원</li>
+                    <li>믹싱 & 마스터링 비용 포함</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="works" class="container mx-auto my-20 p-8 text-center reveal">
+        <h2 class="text-4xl font-semibold mb-8 uppercase tracking-wider">Works</h2>
+        <ul class="divide-y divide-gray-200">
+            <li class="py-4 flex items-center justify-between">
+                <div class="text-left">
+                    <h3 class="text-2xl font-semibold">Sample Track 1</h3>
+                </div>
+                <audio controls class="w-1/2">
+                    <source src="./audios/1.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </li>
+            <li class="py-4 flex items-center justify-between">
+                <div class="text-left">
+                    <h3 class="text-2xl font-semibold">Sample Track 2</h3>
+                </div>
+                <audio controls class="w-1/2">
+                    <source src="./audios/2.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </li>
+            <li class="py-4 flex items-center justify-between">
+                <div class="text-left">
+                    <h3 class="text-2xl font-semibold">Sample Track 3</h3>
+                </div>
+                <audio controls class="w-1/2">
+                    <source src="./audios/3.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </li>
+            <li class="py-4 flex items-center justify-between">
+                <div class="text-left">
+                    <h3 class="text-2xl font-semibold">Sample Track 4</h3>
+                </div>
+                <audio controls class="w-1/2">
+                    <source src="./audios/4.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </li>
+            <li class="py-4 flex items-center justify-between">
+                <div class="text-left">
+                    <h3 class="text-2xl font-semibold">Sample Track 5</h3>
+                </div>
+                <audio controls class="w-1/2">
+                    <source src="./audios/5.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </li>
+            <li class="py-4 flex items-center justify-between">
+                <div class="text-left">
+                    <h3 class="text-2xl font-semibold">Sample Track 6</h3>
+                </div>
+                <audio controls class="w-1/2">
+                    <source src="./audios/6.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </li>
+            <li class="py-4 flex items-center justify-between">
+                <div class="text-left">
+                    <h3 class="text-2xl font-semibold">Sample Track 7</h3>
+                </div>
+                <audio controls class="w-1/2">
+                    <source src="./audios/7.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </li>
+            <li class="py-4 flex items-center justify-between">
+                <div class="text-left">
+                    <h3 class="text-2xl font-semibold">Sample Track 8</h3>
+                </div>
+                <audio controls class="w-1/2">
+                    <source src="./audios/8.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </li>
+            <li class="py-4 flex items-center justify-between">
+                <div class="text-left">
+                    <h3 class="text-2xl font-semibold">Sample Track 9</h3>
+                </div>
+                <audio controls class="w-1/2">
+                    <source src="./audios/9.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </li>
+            <li class="py-4 flex items-center justify-between">
+                <div class="text-left">
+                    <h3 class="text-2xl font-semibold">Sample Track 10</h3>
+                </div>
+                <audio controls class="w-1/2">
+                    <source src="./audios/10.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </li>
+        </ul>
+    </section>
+
+        <!-- Portfolio Section -->
+    <section id="portfolio" class="container mx-auto my-20 p-8 text-center reveal">
+        <h2 class="text-4xl font-semibold mb-8 uppercase tracking-wider">Portfolio</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="./images/2.png" alt="Portfolio Image 2">
+            </div>
+            <div class="portfolio-item">
+                <img src="./images/4.webp" alt="Portfolio Image 3">
+            </div>
+            <div class="portfolio-item">
+                <img src="./images/5.jpeg" alt="Portfolio Image 4">
+            </div>
+            <div class="portfolio-item">
+                <img src="./images/6.jpeg" alt="Portfolio Image 5">
+            </div>
+            <div class="portfolio-item">
+                <img src="./images/7.jpeg" alt="Portfolio Image 6">
+            </div>
+            <div class="portfolio-item">
+                <img src="./images/8.jpeg" alt="Portfolio Image 7">
+            </div>
+            <div class="portfolio-item">
+                <img src="./images/9.jpeg" alt="Portfolio Image 8">
+            </div>
+            <div class="portfolio-item">
+                <img src="./images/10.webp" alt="Portfolio Image 9">
+            </div>
+            <div class="portfolio-item">
+                <img src="./images/11.jpeg" alt="Portfolio Image 10">
+            </div>
+            <div class="portfolio-item">
+                <img src="./images/12.png" alt="Portfolio Image 11">
+            </div>
+            <div class="portfolio-item">
+                <img src="./images/13.png" alt="Portfolio Image 12">
+            </div>
+            <div class="portfolio-item">
+                <img src="./images/14.png" alt="Portfolio Image 13">
+            </div>
+            <div class="portfolio-item">
+                <img src="./images/1.jpeg" alt="Portfolio Image 1">
+            </div>
+            <div class="portfolio-item">
+                <img src="./images/15.png" alt="Portfolio Image 14">
+            </div>
+            <div class="portfolio-item">
+                <img src="./images/16.png" alt="Portfolio Image 15">
+            </div>
+            <div class="portfolio-item">
+                <img src="./images/17.jpeg" alt="Portfolio Image 16">
+            </div>
+            <div class="portfolio-item">
+                <img src="./images/18.webp" alt="Portfolio Image 17">
+            </div>
+            <div class="portfolio-item">
+                <img src="./images/19.webp" alt="Portfolio Image 18">
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommendations Section -->
+    <section id="recommendations" class="container mx-auto my-20 p-8 text-center reveal">
+        <h2 class="text-4xl font-semibold mb-8 uppercase tracking-wider">Recommendations</h2>
+        <div class="space-y-4">
+            <div class="recommendation-item">
+                <p class="quote">"정말 빠르고 완벽한 결과물에 감탄했습니다!"</p>
+                <p class="author">- 모게임 개발사 담당자</p>
+            </div>
+            <div class="recommendation-item">
+                <p class="quote">"입체 음향 관련해서 기술 자문을 구했는데 정말 속시원하게 해결되었습니다!"</p>
+                <p class="author">- 159 Sound Studio</p>
+            </div>
+            <div class="recommendation-item">
+                <p class="quote">"촉박한 마감 일정에도 빠르게 일처리 해주셔서 잘 마무리할 수 있었습니다. 감사합니다!"</p>
+                <p class="author">- 충남정보문화산업진흥원</p>
+            </div>
+            <div class="recommendation-item">
+                <p class="quote">"사운드 외주는 처음인데도 모든 과정을 편안하게 진행해주셔서 잘 마무리할 수 있었습니다!"</p>
+                <p class="author">- 충남글로벌게임센터 입주기업</p>
+            </div>
+            <div class="recommendation-item">
+                <p class="quote">"사운드 뿐만 아니라 기술적인 부분에서도 많은 도움을 주셔서 감사합니다!"</p>
+                <p class="author">- 메타버스 서비스 기업</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container mx-auto my-20 p-8 text-center reveal">
+        <h2 class="text-4xl font-semibold mb-8 uppercase tracking-wider">Contact Us</h2>
+        <p>무한한 가능성의 세계에 오신 것을 환영합니다. 이곳에서는 목적지까지 가는 여정이 목적지에 도착하는 순간만큼이나 설레며, 모든 순간이 존재의 캔버스에 자신의 흔적을 남길 기회가 됩니다. 유일한 한계는 여러분의 상상력입니다.</p>
+        <p><br>편안한 마음으로 문의를 남겨주시면 최대한 빠른 시일내에 답변드리도록 하겠습니다.</p>
+
+        <div class="mt-8 max-w-xl mx-auto">
+            <form id="contact-form" class="space-y-4">
+                <div>
+                    <label for="name" class="block text-left font-semibold">이름</label>
+                    <input type="text" id="name" name="user_name" required class="w-full p-2 border rounded">
+                </div>
+                <div>
+                    <label for="email" class="block text-left font-semibold">이메일주소</label>
+                    <input type="email" id="email" name="user_email" required class="w-full p-2 border rounded">
+                </div>
+                <div>
+                    <label for="message" class="block text-left font-semibold">문의 내용</label>
+                    <textarea id="message" name="message" required class="w-full p-2 border rounded" rows="5"></textarea>
+                </div>
+                <button type="submit" class="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600">Send</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white p-4 text-center shadow-lg">
+        <p>&copy; 2024 QLAUDIO. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll reveal effect
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const revealPoint = 100;
+                if (elementTop < windowHeight - revealPoint) {
+                    reveals[i].classList.add('fade-in');
+                } else {
+                    reveals[i].classList.remove('fade-in');
+                }
+            }
+        }
+
+        // Highlight active navigation link
+        function highlightActiveLink() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav ul li a');
+            let current;
+            for (let i = 0; i < sections.length; i++) {
+                const sectionTop = sections[i].offsetTop;
+                const sectionHeight = sections[i].clientHeight;
+                if (window.pageYOffset >= sectionTop - 50) {
+                    current = sections[i].getAttribute('id');
+                }
+            }
+            navLinks.forEach((link) => {
+                link.classList.remove('active-link');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active-link');
+                }
+            });
+        }
+
+        // Add event listeners
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('scroll', highlightActiveLink);
+
+        // EmailJS form submission
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Combine name, email, and message into one message
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            const combinedMessage = `Name: ${name}\nEmail: ${email}\nMessage: ${message}`;
+
+            // Create a new FormData object and append the combined message
+            const formData = new FormData();
+            formData.append('user_name', name);
+            formData.append('user_email', email);
+            formData.append('message', combinedMessage);
+
+            emailjs.send('service_ex9470o', 'template_03yvv9m', {
+                user_name: name,
+                user_email: email,
+                message: combinedMessage
+            }).then(() => {
+                alert('Message sent successfully!');
+            }, (error) => {
+                alert('Failed to send message. Please try again later.');
+            });
+        });
+    </script>
+</body>
+
+</html>

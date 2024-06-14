@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QLAUDIO - Refined Sound Design</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            background-image: url('/image.webp');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+        }
+
+        .startup-page {
+            text-align: center;
+            padding: 40px 60px;
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            /* Semi-transparent background */
+        }
+
+        .startup-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #fff;
+            letter-spacing: -1px;
+        }
+
+        .startup-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #ccc;
+        }
+
+        .startup-btn {
+            padding: 12px 24px;
+            font-size: 1.2rem;
+            background: rgba(51, 51, 51, 0.7);
+            /* Transparent background */
+            color: #fff;
+            border: 1px solid transparent; /* Ensure no border change on hover */
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.4s ease, box-shadow 0.4s ease, text-shadow 0.4s ease; /* Removed transform transition */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .flex {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .startup-btn::after {
+            --move1: inset(50% 50% 50% 50%);
+            --move2: inset(31% 0 40% 0);
+            --move3: inset(39% 0 15% 0);
+            --move4: inset(45% 0 40% 0);
+            --move5: inset(45% 0 6% 0);
+            --move6: inset(14% 0 61% 0);
+            clip-path: var(--move1);
+            content: 'ꝖŁȺɄĐĪꝊ';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: block;
+        }
+
+        .startup-btn:hover::after {
+            animation: glitch_4011 1s;
+            animation-timing-function: steps(2, end);
+            text-shadow: -3px -3px 0px #1df2f0, 3px 3px 0px #E94BE8;
+        }
+
+        .startup-btn:hover {
+            background-color: transparent;
+            border-color: rgb(0, 255, 213);
+            box-shadow: 0px 0px 10px rgb(0, 255, 213);
+            text-shadow: -1px -1px 0px #1df2f0, 1px 1px 0px #E94BE8;
+        }
+
+        @keyframes glitch_4011 {
+            0% {
+                clip-path: var(--move1);
+                transform: translate(0px, -10px);
+            }
+
+            10% {
+                clip-path: var(--move2);
+                transform: translate(-10px, 10px);
+            }
+
+            20% {
+                clip-path: var(--move3);
+                transform: translate(10px, 0px);
+            }
+
+            30% {
+                clip-path: var(--move4);
+                transform: translate(-10px, 10px);
+            }
+
+            40% {
+                clip-path: var(--move5);
+                transform: translate(10px, -10px);
+            }
+
+            50% {
+                clip-path: var(--move6);
+                transform: translate(-10px, 10px);
+            }
+
+            60% {
+                clip-path: var(--move1);
+                transform: translate(10px, -10px);
+            }
+
+            70% {
+                clip-path: var(--move3);
+                transform: translate(-10px, 10px);
+            }
+
+            80% {
+                clip-path: var(--move2);
+                transform: translate(10px, -10px);
+            }
+
+            90% {
+                clip-path: var(--move4);
+                transform: translate(-10px, 10px);
+            }
+
+            100% {
+                clip-path: var(--move1);
+                transform: translate(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Startup Page -->
+    <div class="startup-page">
+        <h1 class="startup-title">Welcome to QLAUDIO</h1>
+        <p class="startup-description">Choose a service to browse:</p>
+        <div class="flex">
+            <button class="startup-btn animate__animated animate__fadeInLeft" onclick="location.href='sound_design.html'">Sound Design</button>
+            <button class="startup-btn animate__animated animate__fadeInRight" onclick="location.href='sound_technology.html'">R&D Center</button>
+        </div>
+    </div>
+
+    <!-- Include animate.css for animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</body>
+
+</html>

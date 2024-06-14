@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QLAUDIO - R&D Center</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 1.0s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .slide-up {
+            animation: slideUp 1.0s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Hover Effects */
+        .hover-highlight:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Active Link Highlight */
+        .active-link {
+            text-decoration: underline;
+        }
+
+        /* Minimalist Media */
+        .media-cover {
+            height: 70vh;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* Parallax Effect */
+        .parallax {
+            background-attachment: fixed;
+            background-size: cover;
+            background-image: url('image.webp');
+        }
+
+        /* Pricing Card Shadow */
+        .pricing-card {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Popular Plan Highlight */
+        .popular-plan {
+            border: 2px solid #4CAF50;
+        }
+    </style>
+    <script>
+        // Smooth scroll reveal effect
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const revealPoint = 100;
+                if (elementTop < windowHeight - revealPoint) {
+                    reveals[i].classList.add('fade-in');
+                } else {
+                    reveals[i].classList.remove('fade-in');
+                }
+            }
+        }
+
+        // Highlight active navigation link
+        function highlightActiveLink() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav ul li a');
+            let current;
+            for (let i = 0; i < sections.length; i++) {
+                const sectionTop = sections[i].offsetTop;
+                const sectionHeight = sections[i].clientHeight;
+                if (window.pageYOffset >= sectionTop - 50) {
+                    current = sections[i].getAttribute('id');
+                }
+            }
+            navLinks.forEach((link) => {
+                link.classList.remove('active-link');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active-link');
+                }
+            });
+        }
+
+        // Add event listeners
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('scroll', highlightActiveLink);
+    </script>
+</head>
+<body class="bg-white text-gray-800">
+
+    <!-- Navigation Bar -->
+    <nav id="navbar" class="fixed w-full z-10 p-4 bg-white shadow-sm">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#home" class="font-bold text-2xl text-black">QLAUDIO</a>
+            <ul class="flex space-x-8 text-base uppercase tracking-widest text-black">
+                <li><a href="#overview" class="hover-highlight">Company</a></li>
+                <li><a href="#services" class="hover-highlight">Services</a></li>
+                <li><a href="#portfolio" class="hover-highlight">Portfolio</a></li>
+                <li><a href="#team" class="hover-highlight">Team</a></li>
+                <li><a href="#testimonials" class="hover-highlight">Testimonials</a></li>
+                <li><a href="#pricing" class="hover-highlight">Pricing</a></li>
+                <li><a href="#faq" class="hover-highlight">FAQs</a></li>
+                <li><a href="#contact" class="hover-highlight">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Landing Section with Parallax Effect -->
+    <section id="home" class="h-screen relative flex flex-col justify-center items-center text-center spacing-y-12 parallax">
+        <div class="absolute inset-0 flex flex-col justify-center items-center spacing-y-8 overlay">
+            <h1 class="text-7xl font-bold uppercase text-white tracking-widest fade-in">Refined Sound Design</h1>
+            <a href="#portfolio" class="inline-block mt-4 px-8 py-4 bg-white text-black font-semibold tracking-wider uppercase rounded hover-highlight slide-up">Explore Portfolio</a>
+        </div>
+    </section>
+
+    <!-- Company Overview -->
+    <section id="overview" class="container mx-auto my-20 p-8 text-center reveal">
+        <h2 class="text-4xl font-semibold mb-8 uppercase tracking-wider">About Us</h2>
+        <p class="max-w-3xl mx-auto leading-relaxed slide-up">QLAUDIO pioneers sound design and audio technology R&D. We craft immersive audio landscapes for games, movies, and TV shows, pushing creativity and technology to their limits.</p>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="container mx-auto my-20 p-8 text-center reveal">
+        <h2 class="text-4xl font-semibold mb-8 uppercase tracking-wider">Our Services</h2>
+        <ul class="max-w-3xl mx-auto space-y-12 leading-relaxed text-lg slide-up">
+            <li><strong>Sound Design:</strong> Realistic, immersive audio for your projects.</li>
+            <li><strong>Audio Technology R&D:</strong> Custom solutions for cutting-edge audio.</li>
+            <li><strong>Foley:</strong> High-quality sound effects tailored to your media.</li>
+            <li><strong>Music Composition:</strong> Original compositions that elevate storytelling.</li>
+        </ul>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio" class="container mx-auto my-20 p-8 text-center reveal">
+        <h2 class="text-4xl font-semibold mb-8 uppercase tracking-wider">Portfolio</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <!-- Example Projects -->
+            <div class="relative rounded-lg shadow-lg overflow-hidden slide-up">
+                <img src="https://source.unsplash.com/random/400x300?game" class="media-cover w-full">
+                <div class="absolute inset-x-0 bottom-0 flex flex-col items-center text-white bg-black bg-opacity-75 py-6">
+                    <span class="font-semibold text-xl">Game Audio Project</span>
+                    <a href="#" class="mt-2 px-6 py-2 bg-white text-black rounded font-semibold uppercase hover-highlight">More Details</a>
+                </div>
+            </div>
+            <div class="relative rounded-lg shadow-lg overflow-hidden slide-up">
+                <img src="https://source.unsplash.com/random/400x300?movie" class="media-cover w-full">
+                <div class="absolute inset-x-0 bottom-0 flex flex-col items-center text-white bg-black bg-opacity-75 py-6">
+                    <span class="font-semibold text-xl">Movie Audio Project</span>
+                    <a href="#" class="mt-2 px-6 py-2 bg-white text-black rounded font-semibold uppercase hover-highlight">More Details</a>
+                </div>
+            </div>
+            <div class="relative rounded-lg shadow-lg overflow-hidden slide-up">
+                <img src="https://source.unsplash.com/random/400x300?tv-show" class="media-cover w-full">
+                <div class="absolute inset-x-0 bottom-0 flex flex-col items-center text-white bg-black bg-opacity-75 py-6">
+                    <span class="font-semibold text-xl">TV Show Audio Project</span>
+                    <a href="#" class="mt-2 px-6 py-2 bg-white text-black rounded font-semibold uppercase hover-highlight">More Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet Our Team -->
+    <section id="team" class="container mx-auto my-20 p-8 text-center reveal">
+        <h2 class="text-4xl font-semibold mb-8 uppercase tracking-wider">Meet Our Team</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            <div class="bg-white shadow-lg p-8 rounded-lg slide-up">
+                <h3 class="text-2xl font-semibold mb-2">Alice Johnson</h3>
+                <p class="text-lg">Lead Sound Designer</p>
+            </div>
+            <div class="bg-white shadow-lg p-8 rounded-lg slide-up">
+                <h3 class="text-2xl font-semibold mb-2">Bob Williams</h3>
+                <p class="text-lg">Audio Technology Engineer</p>
+            </div>
+            <div class="bg-white shadow-lg p-8 rounded-lg slide-up">
+                <h3 class="text-2xl font-semibold mb-2">Catherine Smith</h3>
+                <p class="text-lg">Music Composer</p>
+            </div>
+            <div class="bg-white shadow-lg p-8 rounded-lg slide-up">
+                <h3 class="text-2xl font-semibold mb-2">David Brown</h3>
+                <p class="text-lg">Foley Artist</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="container mx-auto my-20 p-8 text-center reveal">
+        <h2 class="text-4xl font-semibold mb-8 uppercase tracking-wider">Pricing</h2>
+        <div class="flex flex-wrap justify-center gap-12">
+            <!-- Pricing Card -->
+            <div class="bg-white pricing-card p-8 rounded-lg text-left max-w-xs slide-up">
+                <h3 class="text-2xl font-semibold mb-4">Basic Plan</h3>
+                <ul class="leading-relaxed">
+                    <li>- Sound Design Consultation</li>
+                    <li>- Foley Basics</li>
+                    <li>- Audio Editing</li>
+                </ul>
+                <p class="text-3xl font-bold mt-6">$199</p>
+                <a href="#" class="block mt-4 px-6 py-3 bg-black text-white rounded font-semibold uppercase text-center hover-highlight">Get Started</a>
+            </div>
+            <div class="bg-white pricing-card p-8 rounded-lg text-left max-w-xs slide-up popular-plan">
+                <h3 class="text-2xl font-semibold mb-4">Pro Plan</h3>
+                <ul class="leading-relaxed">
+                    <li>- Sound Design & Foley</li>
+                    <li>- Advanced Audio Editing</li>
+                    <li>- Custom Music Composition</li>
+                </ul>
+                <p class="text-3xl font-bold mt-6">$499</p>
+                <a href="#" class="block mt-4 px-6 py-3 bg-black text-white rounded font-semibold uppercase text-center hover-highlight">Get Started</a>
+            </div>
+            <div class="bg-white pricing-card p-8 rounded-lg text-left max-w-xs slide-up">
+                <h3 class="text-2xl font-semibold mb-4">Enterprise Plan</h3>
+                <ul class="leading-relaxed">
+                    <li>- All Pro Plan Features</li>
+                    <li>- Custom Audio Technology Solutions</li>
+                    <li>- Dedicated Support</li>
+                </ul>
+                <p class="text-3xl font-bold mt-6">$999</p>
+                <a href="#" class="block mt-4 px-6 py-3 bg-black text-white rounded font-semibold uppercase text-center hover-highlight">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section id="contact" class="container mx-auto my-20 p-8 text-center reveal">
+        <h2 class="text-4xl font-semibold mb-8 uppercase tracking-wider">Contact Us</h2>
+        <p>If you'd like to discuss a project or partnership, you can reach us at:</p>
+        <ul class="max-w-3xl mx-auto mt-6 leading-relaxed text-lg">
+            <li><strong>Email:</strong> contact@qlaudio.com</li>
+            <li><strong>Phone:</strong> +1-555-123-4567</li>
+            <li><strong>Address:</strong> 1234 Sound Blvd, Audio City, AC 56789</li>
+        </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white p-4 text-center shadow-lg">
+        <p>&copy; 2024 QLAUDIO. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
