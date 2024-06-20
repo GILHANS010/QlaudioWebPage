@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - QLAUDIO</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("9ckQHWPKQUV2yRMFM"); // Use your EmailJS public key here
+        })();
+    </script>
+    <script src="script.js" defer></script>
+</head>
+
+<body class="bg-white text-gray-800">
+
+    <!-- Navigation Bar -->
+    <nav id="navbar" class="fixed w-full z-10 p-4 bg-white shadow-sm top-0">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="font-bold text-2xl text-black">QLAUDIO</a>
+            <ul class="flex space-x-8 text-base uppercase tracking-widest text-black">
+                <li><a href="sound_design.html" class="hover-highlight">Sound Design</a></li>
+                <li><a href="music.html" class="hover-highlight">Music</a></li>
+                <li><a href="plugins.html" class="hover-highlight">Plugins</a></li>
+                <li><a href="services.html" class="hover-highlight">Services</a></li>
+                <li><a href="faq.html" class="hover-highlight">FAQ</a></li>
+                <li><a href="contact.html" class="hover-highlight">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Introduction Section -->
+    <section id="introduction" class="container mx-auto my-20 p-8 text-center reveal">
+        <h2 class="text-4xl font-semibold mb-8 uppercase tracking-wider">음악 제작의 새로운 패러다임, QLAUDIO 서비스</h2>
+        <p class="max-w-3xl mx-auto leading-relaxed slide-up">QLAUDIO에서 제공하는 웹 서비스는 최신 기술을 바탕으로, 무한한 가능성을 제공합니다. 여러분의 음악과 사운드를 한층 더 완벽하게 만들어 줄 강력한 도구를 만나보세요.</p>
+    </section>
+
+    <section id="services" class="container mx-auto my-20 p-8 text-center reveal">
+        <h2 class="text-4xl font-semibold mb-8 uppercase tracking-wider">Web Applications</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <h3 class="text-2xl font-bold mb-4">Connective</h3>
+                <img src="./images/services/connective.webp" alt="Qlaudio Connective" class="product-image">
+                <p class="mt-4">Web Node Module, a Web version of MaxMSP.</p>
+                <a href="learn-more.html" class="learn-more">Learn More</a>
+            </div>
+            <div class="product-card">
+                <h3 class="text-2xl font-bold mb-4">Prism</h3>
+                <img src="./images/services/genesis.webp" alt="Qlaudio Genesis" class="product-image">
+                <p class="mt-4">An AI based music source separation web application</p>
+                <a href="learn-more.html" class="learn-more">Learn More</a>
+            </div>
+            <div class="product-card">
+                <h3 class="text-2xl font-bold mb-4">Genesis</h3>
+                <img src="./images/services/genesis.webp" alt="Qlaudio Genesis" class="product-image">
+                <p class="mt-4">A text to audio effect AI model as web application.</p>
+                <a href="learn-more.html" class="learn-more">Learn More</a>
+            </div>
+            <div class="product-card">
+                <h3 class="text-2xl font-bold mb-4">K-Score</h3>
+                <img src="./images/services/k_score.webp" alt="Qlaudio K-Score" class="product-image">
+                <p class="mt-4">A web-based Korean traditional sheet music (정간보) editor.</p>
+                <a href="learn-more.html" class="learn-more">Learn More</a>
+            </div>
+            <div class="product-card">
+                <h3 class="text-2xl font-bold mb-4">QLAUDAW</h3>
+                <img src="./images/services/qlaudaw.webp" alt="QLAUDAW" class="product-image">
+                <p class="mt-4">A web-based DAW, similar to Logic Pro X, with community functions.</p>
+                <a href="learn-more.html" class="learn-more">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white p-4 text-center shadow-lg">
+        <p>&copy; 2024 QLAUDIO. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>
