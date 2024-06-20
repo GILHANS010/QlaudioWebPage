@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - QLAUDIO</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("9ckQHWPKQUV2yRMFM"); // Use your EmailJS public key here
+        })();
+    </script>
+    <script src="script.js" defer></script>
+</head>
+
+<body class="bg-white text-gray-800">
+
+    <!-- Navigation Bar -->
+    <nav id="navbar" class="fixed w-full z-10 p-4 bg-white shadow-sm top-0">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="font-bold text-2xl text-black">QLAUDIO</a>
+            <ul class="flex space-x-8 text-base uppercase tracking-widest text-black">
+                <li><a href="sound_design.html" class="hover-highlight">Sound Design</a></li>
+                <li><a href="music.html" class="hover-highlight">Music</a></li>
+                <li><a href="plugins.html" class="hover-highlight">Plugins</a></li>
+                <li><a href="services.html" class="hover-highlight">Services</a></li>
+                <li><a href="faq.html" class="hover-highlight">FAQ</a></li>
+                <li><a href="contact.html" class="hover-highlight">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Introduction Section -->
+    <section id="introduction" class="container mx-auto my-20 p-8 text-center reveal">
+        <h2 class="text-4xl font-semibold mb-8 uppercase tracking-wider">Frequently Asked Questions</h2>
+        <p class="max-w-3xl mx-auto leading-relaxed slide-up">Find answers to the most commonly asked questions about QLAUDIO's products and services. If you have any other questions, feel free to contact us.</p>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="container mx-auto my-20 p-8 reveal">
+        <div class="space-y-8">
+            <div class="faq-item">
+                <h3 class="text-2xl font-bold mb-4">What is QLAUDIO?</h3>
+                <p class="leading-relaxed">QLAUDIO is a company specializing in audio plugin development, web-based DAWs, and various music production tools. We provide cutting-edge technology to enhance your music and sound projects.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="text-2xl font-bold mb-4">How can I purchase QLAUDIO products?</h3>
+                <p class="leading-relaxed">You can purchase our products directly from our website. Simply browse our plugins and services, add them to your cart, and proceed to checkout.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="text-2xl font-bold mb-4">Do you offer free trials?</h3>
+                <p class="leading-relaxed">Yes, we offer free trials for most of our software and plugins. Check the product pages for trial versions and download links.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="text-2xl font-bold mb-4">What is QLAUDIO Connective?</h3>
+                <p class="leading-relaxed">QLAUDIO Connective is a web-based node module, similar to MaxMSP, designed for advanced sound and music production directly in your browser.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="text-2xl font-bold mb-4">How do I get support for QLAUDIO products?</h3>
+                <p class="leading-relaxed">You can get support by visiting our contact page and sending us a message. Our support team is available to assist you with any issues or questions you may have.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="text-2xl font-bold mb-4">Are there any subscription-based services?</h3>
+                <p class="leading-relaxed">Yes, we offer subscription-based services such as Qlaudio Premium Connective and Qlaudio Premium Genesis, which provide advanced features and additional modules.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="text-2xl font-bold mb-4">What is QLAU-DAW?</h3>
+                <p class="leading-relaxed">QLAU-DAW is our web-based digital audio workstation, similar to Logic Pro X, but with integrated community functions for collaboration and sharing.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white p-4 text-center shadow-lg">
+        <p>&copy; 2024 QLAUDIO. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>
