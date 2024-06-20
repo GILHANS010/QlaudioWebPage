@@ -6,116 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plugins - QLAUDIO</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Animations */
-        .fade-in {
-            animation: fadeIn 0.5s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        .slide-up {
-            animation: slideUp 0.5s ease-out;
-        }
-
-        @keyframes slideUp {
-            from {
-                transform: translateY(30px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        /* Hover Effects */
-        .hover-highlight:hover {
-            background-color: #f0f0f0;
-        }
-
-        /* Active Link Highlight */
-        .active-link {
-            text-decoration: underline;
-        }
-
-        /* Minimalist Media */
-        .media-cover {
-            height: 70vh;
-            object-fit: cover;
-            object-position: center;
-        }
-
-        /* Parallax Effect */
-        .parallax {
-            background-attachment: fixed;
-            background-size: cover;
-        }
-
-        /* Pricing Card Shadow */
-        .pricing-card {
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Popular Plan Highlight */
-        .popular-plan {
-            border: 2px solid #4CAF50;
-        }
-
-        /* Portfolio Grid */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .portfolio-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 0.5rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Product Section */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .product-item {
-            text-align: center;
-        }
-
-        .product-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 0.5rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
         (function() {
             emailjs.init("9ckQHWPKQUV2yRMFM"); // Use your EmailJS public key here
         })();
     </script>
+    <script src="script.js" defer></script>
 </head>
 
 <body class="bg-white text-gray-800">
@@ -128,7 +29,7 @@
                 <li><a href="sound_design.html" class="hover-highlight">Sound Design</a></li>
                 <li><a href="music.html" class="hover-highlight">Music</a></li>
                 <li><a href="plugins.html" class="hover-highlight">Plugins</a></li>
-                <li><a href="services.html" class="hover-highlight">Services</a></li>
+                <li><a href="research.html" class="hover-highlight">Research</a></li>
                 <li><a href="faq.html" class="hover-highlight">FAQ</a></li>
                 <li><a href="contact.html" class="hover-highlight">Contact</a></li>
             </ul>
@@ -137,8 +38,8 @@
 
     <!-- Introduction Section -->
     <section id="introduction" class="container mx-auto my-20 p-8 text-center reveal">
-        <h2 class="text-4xl font-semibold mb-8 uppercase tracking-wider">무한한 가능성의 세계에 오신 것을 환영합니다</h2>
-        <p class="max-w-3xl mx-auto leading-relaxed slide-up">이곳에서는 목적지까지 가는 여정이 목적지에 도착하는 순간만큼이나 설레며, 모든 순간이 존재의 캔버스에 자신의 흔적을 남길 기회가 됩니다. 유일한 한계는 여러분의 상상력입니다.</p>
+        <h2 class="text-4xl font-semibold mb-8 uppercase tracking-wider">음악 제작의 새로운 패러다임, QLAUDIO 플러그인</h2>
+        <p class="max-w-3xl mx-auto leading-relaxed slide-up">QLAUDIO에서 제공하는 오디오 플러그인은 최신 기술을 바탕으로, 무한한 가능성을 제공합니다. 여러분의 음악과 사운드를 한층 더 완벽하게 만들어 줄 강력한 도구를 만나보세요.</p>
     </section>
 
     <!-- Categories Section -->
@@ -170,8 +71,13 @@
                 <p><span class="line-through">200,000원</span> -> 120,000원</p>
             </div>
             <div class="product-item">
+                <img src="./images/concept_arts/1.webp" alt="Korean Traditional Gayageum Series" class="w-full h-48 object-cover rounded-lg mb-4">
+                <h3 class="text-2xl font-semibold mb-4">Korean Traditional Gayageum Series</h3>
+                <p><span class="line-through">120,000원</span> -> 80,000원</p>
+            </div>
+            <div class="product-item">
                 <img src="./images/concept_arts/2.webp" alt="Korean Traditional Strings Series" class="w-full h-48 object-cover rounded-lg mb-4">
-                <h3 class="text-2xl font-semibold mb-4">Korean Traditional Strings Series (Gayageum 포함)</h3>
+                <h3 class="text-2xl font-semibold mb-4">Korean Traditional Strings Series</h3>
                 <p><span class="line-through">300,000원</span> -> 240,000원</p>
             </div>
             <div class="product-item">
@@ -276,8 +182,10 @@
     <!-- Contact Section -->
     <section id="contact" class="container mx-auto my-20 p-8 text-center reveal">
         <h2 class="text-4xl font-semibold mb-8 uppercase tracking-wider">Contact Us</h2>
-        <p>무한한 가능성의 세계에 오신 것을 환영합니다. 이곳에서는 목적지까지 가는 여정이 목적지에 도착하는 순간만큼이나 설레며, 모든 순간이 존재의 캔버스에 자신의 흔적을 남길 기회가 됩니다. 유일한 한계는 여러분의 상상력입니다.</p>
-        <p><br>편안한 마음으로 문의를 남겨주시면 최대한 빠른 시일내에 답변드리도록 하겠습니다.</p>
+        <p>시간을 내어 방문해주셔서 감사합니다.</p>
+        <p>견적 문의, 협업 문의, 기술 자문 혹은 정말 사소한 질문이라도</p>
+        <p>편안한 마음으로 문의를 남겨주시면 최대한 빠른 시일내에 답변드리도록 하겠습니다.</p>
+
 
         <div class="mt-8 max-w-xl mx-auto">
             <form id="contact-form" class="space-y-4">
@@ -302,74 +210,6 @@
     <footer class="bg-white p-4 text-center shadow-lg">
         <p>&copy; 2024 QLAUDIO. All Rights Reserved.</p>
     </footer>
-
-    <script>
-        // Smooth scroll reveal effect
-        function revealOnScroll() {
-            const reveals = document.querySelectorAll('.reveal');
-            for (let i = 0; i < reveals.length; i++) {
-                const windowHeight = window.innerHeight;
-                const elementTop = reveals[i].getBoundingClientRect().top;
-                const revealPoint = 100;
-                if (elementTop < windowHeight - revealPoint) {
-                    reveals[i].classList.add('fade-in');
-                } else {
-                    reveals[i].classList.remove('fade-in');
-                }
-            }
-        }
-
-        // Highlight active navigation link
-        function highlightActiveLink() {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('nav ul li a');
-            let current;
-            for (let i = 0; i < sections.length; i++) {
-                const sectionTop = sections[i].offsetTop;
-                const sectionHeight = sections[i].clientHeight;
-                if (window.pageYOffset >= sectionTop - 50) {
-                    current = sections[i].getAttribute('id');
-                }
-            }
-            navLinks.forEach((link) => {
-                link.classList.remove('active-link');
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('active-link');
-                }
-            });
-        }
-
-        // Add event listeners
-        window.addEventListener('scroll', revealOnScroll);
-        window.addEventListener('scroll', highlightActiveLink);
-
-        // EmailJS form submission
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            // Combine name, email, and message into one message
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-            const combinedMessage = `Name: ${name}\nEmail: ${email}\nMessage: ${message}`;
-
-            // Create a new FormData object and append the combined message
-            const formData = new FormData();
-            formData.append('user_name', name);
-            formData.append('user_email', email);
-            formData.append('message', combinedMessage);
-
-            emailjs.send('service_ex9470o', 'template_03yvv9m', {
-                user_name: name,
-                user_email: email,
-                message: combinedMessage
-            }).then(() => {
-                alert('Message sent successfully!');
-            }, (error) => {
-                alert('Failed to send message. Please try again later.');
-            });
-        });
-    </script>
 </body>
 
 </html>
