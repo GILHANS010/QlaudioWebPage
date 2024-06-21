@@ -376,3 +376,37 @@ body {
 .keyword-item:last-child {
     border-bottom: none;
 }
+
+/* Footer Styles */
+.footer {
+    background-color: #f9f9f9;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.footer-links a {
+    color: #4a4a4a;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #000;
+}
+
+.social-media a {
+    display: inline-block;
+    margin: 0 10px;
+    transition: transform 0.3s;
+}
+
+.social-media a:hover {
+    transform: scale(1.1);
+}
+
+.contact-info p {
+    margin: 5px 0;
+    color: #4a4a4a;
+}
