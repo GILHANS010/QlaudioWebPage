@@ -1,5 +1,10 @@
-// Smooth scroll reveal effect
+// Flag to track if the first scroll event has occurred
+let firstScroll = false;
+
+// Smooth scroll reveal effect with optimization
 function revealOnScroll() {
+    if (!firstScroll) return; // Skip if first scroll hasn't occurred
+
     const reveals = document.querySelectorAll('.reveal');
     for (let i = 0; i < reveals.length; i++) {
         const windowHeight = window.innerHeight;
@@ -25,7 +30,7 @@ function revealOnScroll() {
     }
 }
 
-// Highlight active navigation link
+// Highlight active navigation link with optimization
 function highlightActiveLink() {
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('nav ul li a');
@@ -45,9 +50,20 @@ function highlightActiveLink() {
     });
 }
 
-// Add event listeners
-window.addEventListener('scroll', revealOnScroll);
-window.addEventListener('scroll', highlightActiveLink);
+// Function to handle the first scroll event
+function onFirstScroll() {
+    if (!firstScroll) {
+        firstScroll = true;
+        window.removeEventListener('scroll', onFirstScroll);
+    }
+}
+
+// Add event listeners with requestAnimationFrame for optimization
+window.addEventListener('scroll', onFirstScroll);
+window.addEventListener('scroll', () => {
+    window.requestAnimationFrame(revealOnScroll);
+    window.requestAnimationFrame(highlightActiveLink);
+});
 
 // EmailJS form submission
 document.getElementById('contact-form').addEventListener('submit', function(event) {
