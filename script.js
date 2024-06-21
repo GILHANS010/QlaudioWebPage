@@ -75,3 +75,34 @@ document.getElementById('contact-form').addEventListener('submit', function(even
         alert('Failed to send message. Please try again later.');
     });
 });
+
+// Drag-to-swap functionality for team section
+const teamGrid = document.querySelector('.team-grid');
+let isDown = false;
+let startX;
+let scrollLeft;
+
+teamGrid.addEventListener('mousedown', (e) => {
+    isDown = true;
+    teamGrid.classList.add('active');
+    startX = e.pageX - teamGrid.offsetLeft;
+    scrollLeft = teamGrid.scrollLeft;
+});
+
+teamGrid.addEventListener('mouseleave', () => {
+    isDown = false;
+    teamGrid.classList.remove('active');
+});
+
+teamGrid.addEventListener('mouseup', () => {
+    isDown = false;
+    teamGrid.classList.remove('active');
+});
+
+teamGrid.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - teamGrid.offsetLeft;
+    const walk = (x - startX) * 2; // scroll-fast
+    teamGrid.scrollLeft = scrollLeft - walk;
+});
