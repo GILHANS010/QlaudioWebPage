@@ -174,6 +174,49 @@ body {
     margin-top: 8px;
 }
 
+
+/* Projects Grid */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Three items per row */
+    gap: 20px;
+}
+
+.projects-item {
+    position: relative;
+}
+
+.projects-item img {
+    width: 100%;
+    height: 300px; /* Increased height for larger images */
+    object-fit: cover;
+    border-radius: 0.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.projects-item .absolute {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    border-radius: 0.5rem;
+}
+
+.projects-item:hover .absolute {
+    opacity: 1;
+}
+
+
+
 /* Portfolio Grid */
 .portfolio-grid {
     display: grid;
