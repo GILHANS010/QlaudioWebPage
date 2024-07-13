@@ -168,22 +168,24 @@ body {
     display: flex;
     /* overflow-x: hidden; */
     overflow-x: auto;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
     gap: 20px;
     padding-bottom: 20px; /* Padding for dragging */
-    cursor: grab;
 }
 
-.team-grid:active {
-    cursor: grabbing;
+.team-grid::-webkit-scrollbar {
+    height: 100%;
+    width: 100%;
 }
 
 .team-member {
-    width: 300px;
+    width: 200px;
+    height: 200px;
     flex: none;
     text-align: center;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
+    /* border: 1px solid #e0e0e0; */
+    border-radius: 14px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
     background-color: white;
     transition: transform 0.3s, box-shadow 0.3s;
