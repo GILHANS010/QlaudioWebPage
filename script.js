@@ -1,6 +1,20 @@
 (function () {
     emailjs.init("9ckQHWPKQUV2yRMFM");
 })();
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadSection('home');
+});
+
+function loadSection(section) {
+    fetch(`sections/${section}.html`)
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('main-content').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading section:', error));
+}
+
 // Flag to track if the first scroll event has occurred
 let firstScroll = false;
 
@@ -86,9 +100,6 @@ function loadSection(section) {
         .then(data => {
             document.getElementById('main-content').innerHTML = data;
             console.log(`Loaded section: ${section}`);
-            if (section === 'home') {
-                initializeDragAndArrows(); // Initialize drag and arrow functionality after loading the home section
-            }
         })
         .catch(error => console.error('Error loading section:', error));
 }
