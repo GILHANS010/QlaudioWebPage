@@ -166,31 +166,25 @@ body {
 /* Team Section */
 .team-grid {
     display: flex;
-    /* overflow-x: hidden; */
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
+    overflow-x: hidden;
     gap: 20px;
     padding-bottom: 20px; /* Padding for dragging */
+    cursor: grab;
 }
 
-.team-grid::-webkit-scrollbar {
-    height: 100%;
-    width: 100%;
+.team-grid:active {
+    cursor: grabbing;
 }
 
 .team-member {
-    width: 200px;
-    height: 200px;
+    min-width: 300px;
     flex: none;
     text-align: center;
-    /* border: 1px solid #e0e0e0; */
-    border-radius: 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
     background-color: white;
     transition: transform 0.3s, box-shadow 0.3s;
-    scroll-snap-align: start;
-    margin: 0 10px;
 }
 
 .team-member:hover {
@@ -431,4 +425,3 @@ body {
     margin: 5px 0;
     color: #4a4a4a;
 }
-
