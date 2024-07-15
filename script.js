@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    (function () {
+        emailjs.init("9ckQHWPKQUV2yRMFM");
+    })();
     // Flag to track if the first scroll event has occurred
     let firstScroll = false;
 
