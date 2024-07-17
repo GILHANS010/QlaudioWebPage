@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한국 전통 악기 가상악기 샘플러 라이브러리</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+
+        :root {
+            --primary-color: #0071e3;
+            --secondary-color: #86868b;
+            --background-color: #ffffff;
+            --section-bg-color: #f5f5f7;
+            --text-color: #1d1d1f;
+            --gradient-primary: linear-gradient(135deg, #0071e3, #00c7ff);
+            --gradient-secondary: linear-gradient(135deg, #f2f2f7, #e5e5ea);
+        }
+
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 150px 0;
+            background-image: var(--gradient-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('hero-bg.jpg') no-repeat center center;
+            background-size: cover;
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 24px;
+            font-weight: 400;
+            color: var(--secondary-color);
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-image: var(--gradient-primary);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-button:hover {
+            background-image: linear-gradient(135deg, #005bbf, #00a3ff);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .section {
+            margin: 120px 0;
+        }
+
+        .section h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 60px;
+            text-align: center;
+            position: relative;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-image: var(--gradient-primary);
+            margin: 20px auto 0;
+        }
+
+        .text-block p {
+            font-size: 18px;
+            color: var(--text-color);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .text-block img {
+            display: block;
+            margin: 0 auto;
+            border-radius: 12px;
+            max-width: 100%;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .series-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .series-item {
+            background-image: var(--gradient-secondary);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .series-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .series-item img {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        .series-item h3 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .highlight-box {
+            background-image: var(--gradient-secondary);
+            border-radius: 24px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .highlight-box h3 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        ul {
+            padding-left: 20px;
+            list-style-type: none;
+        }
+
+        ul li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        ul li::before {
+            content: '•';
+            color: var(--primary-color);
+            font-size: 24px;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        .footer {
+            background-image: linear-gradient(to bottom, #f2f2f7, #e5e5ea);
+            color: var(--secondary-color);
+            padding: 60px 0;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .footer p {
+            margin: 10px 0;
+        }
+
+        /* 수정된 기능 섹션 스타일 */
+        .feature-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .feature-left, .feature-right {
+            width: 45%;
+        }
+
+        .feature-image {
+            width: 45%;
+        }
+
+        .feature-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .feature-item {
+            margin-bottom: 30px;
+        }
+
+        .feature-item h4 {
+            font-size: 20px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .feature-item p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero p {
+                font-size: 20px;
+            }
+
+            .section h2 {
+                font-size: 36px;
+            }
+
+            .feature-grid,
+            .series-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-container {
+                flex-direction: column;
+            }
+
+            .feature-left, .feature-right, .feature-image {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="container">
+            <h1>Korean Traditional Musical Instrument Series</h1>
+            <p>최대 규모 및 최고 품질 한국전통음악 국악기 가상악기</p>
+            <a href="#" class="cta-button">지금 구매하기</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- <section class="section intro">
+            <h2>혁신적인 국악기 가상 악기 라이브러리</h2>
+            <div class="text-block">
+                <p>한국 전통 음악의 소리를 디지털로 재현한 가상악기 샘플러 라이브러리입니다. 48kHz, 24bit의 스튜디오급 고품질 샘플링과 다양한 음향 효과로 당신의 음악에 깊이를 더합니다.</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h4>최고 품질</h4>
+                    <p>48kHz, 24bit 스튜디오급 녹음</p>
+                </div>
+                <div class="feature-item">
+                    <h4>다양한 악기</h4>
+                    <p>현악기, 관악기, 타악기 포함</p>
+                </div>
+                <div class="feature-item">
+                    <h4>음향 효과</h4>
+                    <p>다양한 MIDI 컨트롤 기능</p>
+                </div>
+                <div class="feature-item">
+                    <h4>직관적인 인터페이스</h4>
+                    <p>사용자 친화적 디자인</p>
+                </div>
+            </div>
+        </section> -->
+
+        <div class="section">
+            <div class="text-block">
+                <h2>소개</h2>
+                <p>한국 전통 음악의 소리를 디지털로 재현한 가상악기 샘플러 라이브러리입니다. 48kHz, 24bit의 스튜디오급 고품질 샘플링과 다양한 음향 효과로 당신의 음악에 깊이를 더합니다. 이 샘플러 라이브러리는 전문 녹음 스튜디오에서 섬세하게 녹음되어 한국 전통 악기의 고유한 음색과 표현력을 완벽하게 재현합니다. 사용자들이 손쉽게 고퀄리티의 국악 사운드를 연주할 수 있도록 합니다.</p>
+                <p>Decent Sampler 플랫폼을 기반으로 한 이 라이브러리는 사용이 간편하며, 다양한 기능을 통해 사용자에게 최고의 경험을 제공합니다. 한국 전통 악기의 아름다움과 깊이를 느껴보세요.</p>
+                <img src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721201437/Combined_gzjaf1.jpg" alt="Introduction Image">
+            </div>
+        </div>
+        <div class="section">
+            <h2>시리즈</h2>
+            <div class="series">
+                <div class="series-item">
+                    <img src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083479/instruments/msnw3zjl6ts9tbqmdtdl.webp" alt="현악기 시리즈">
+                    <h3>현악기 시리즈</h3>
+                    <p>고유의 따뜻한 음색과 풍부한 표현력을 자랑하는 한국 전통 현악기. 가야금, 해금 등 다양한 현악기를 포함하고 있으며, 각 악기는 실제 연주자의 섬세한 연주를 통해 샘플링되었습니다. 사용자들은 이 시리즈를 통해 정통 한국 음악의 섬세한 표현을 느낄 수 있습니다.</p>
+                </div>
+                <div class="series-item">
+                    <img src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083479/instruments/la2ayw7c9ejaukwryv4v.webp" alt="관악기 시리즈">
+                    <h3>관악기 시리즈</h3>
+                    <p>맑고 깨끗한 소리로 자연의 소리를 담은 한국 전통 관악기. 대금, 피리 등 다양한 관악기가 포함되어 있으며, 각 악기는 정교한 샘플링을 통해 실제 연주의 느낌을 재현합니다. 이 시리즈는 맑고 청아한 음색을 필요로 하는 다양한 음악에 이상적입니다.</p>
+                </div>
+                <div class="series-item">
+                    <img src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083479/instruments/tbvtaz9omu8mhfosmyyn.webp" alt="타악기 시리즈">
+                    <h3>타악기 시리즈</h3>
+                    <p>힘차고 리드미컬한 연주가 가능한 한국 전통 타악기. 에픽 퍼커션, 장구, 북 등 다양한 타악기가 포함되어 있으며, 각 악기는 강력한 리듬과 에너지를 제공하여 음악에 활력을 불어넣습니다. 이 시리즈는 리드미컬한 구성이 필요한 다양한 음악 장르에 적합합니다.</p>
+                </div>
+                <div class="series-item">
+                    <img src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083479/instruments/siq6nz7czhkf3r4pobrp.webp" alt="플래티넘 번들">
+                    <h3>플래티넘 번들</h3>
+                    <p>모든 악기를 하나로 묶은 완벽한 패키지. 모든 국악기들은 최대한 평균율에 맞게 Fine-Tuned되어 서양 음악과의 음정차이가 최대한 적도록 만들었습니다. 현악기, 관악기, 타악기를 모두 포함하여 사용자가 필요로 하는 모든 사운드를 제공하며, 번들 가격으로 경제적입니다. 이 번들은 한국 전통 음악을 위한 모든 도구를 한 번에 제공합니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="text-block">
+                <h2>왜 Korean Tradtional Series인가?</h2>
+                <div class="highlight-box">
+                    <h3>최고의 음질과 표현력</h3>
+                    <p>업계 최고 수준인 48kHz 24bit의 고해상도 샘플링으로, 실제 악기의 섬세한 음색과 풍부한 표현력을 완벽하게 재현합니다. 국내 최고의 음향 스튜디오에서 최첨단 장비를 사용하여 녹음되어, 스튜디오급 음질을 여러분의 작업실에서 경험할 수 있습니다. 모든 국악기들은 최대한 평균율에 맞게 Fine-Tuned되어 서양 음악과의 음정차이가 최대한 적도록 만들었습니다.</p>
+                </div>
+                <div class="highlight-box">
+                    <h3>전문가의 손길</h3>
+                    <p>국내 최고의 국악 연주자들과 음향 엔지니어들이 참여하여, 각 악기의 고유한 특성과 연주 기법을 완벽하게 구현했습니다. 수년간의 연구와 개발 끝에 탄생한 이 라이브러리는 한국 전통 음악의 정수를 담고 있습니다.</p>
+                </div>
+                <div class="highlight-box">
+                    <h3>무한한 창의성</h3>
+                    <p>다양한 아티큘레이션과 연주 기법, 그리고 고급 MIDI 컨트롤 기능을 통해 사용자의 창의적인 표현이 가능합니다. 전통 음악부터 현대 음악, 영화 음악까지 다양한 장르에서 활용할 수 있는 무한한 가능성을 제공합니다.</p>
+                </div>
+                <div class="highlight-box">
+                    <h3>사용자 친화적 인터페이스</h3>
+                    <p>직관적이고 세련된 사용자 인터페이스로, 복잡한 설정 없이도 쉽게 원하는 소리를 만들어낼 수 있습니다. 초보자부터 전문가까지 모두가 즐겁게 사용할 수 있도록 설계되었습니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="text-block">
+                <h2>Percussion Series에 포함된 악기</h2>
+                <p>힘차고 리드미컬한 연주가 가능한 한국 전통 타악기. 장구, 북 등 다양한 타악기가 포함되어 있으며, 각 악기는 강력한 리듬과 에너지를 제공하여 음악에 활력을 불어넣습니다. 이 시리즈는 리드미컬한 구성이 필요한 다양한 음악 장르에 적합합니다.</p>
+                <p>특히, 타악기에는 <strong>Cinematic Epic Perucssion</strong>이라는 라이브러리 패치가 포함되어 있으며, 총 17개의 대규모 타악기 라이브러리를 담고 있어 영화음악 제작에 최적화되어 있습니다.</p>
+                <h3>포함된 악기:</h3>
+                <ul>
+                    <li><strong>Banghyang (방향):</strong> Mallet과에 속하는 청명한 소리를 내는 한국 전통음악의 체명 악기로써 서양 음악의 글로켄슈필과 유사한 맑고 투명한 음색을 가진다.</li>
+                    <li><strong>Pyeongyeong (편경):</strong> 고대 중국에서 유래한 돌로 만든 타악기로, 맑고 청아한 소리를 내며 서양의 리토폰과 유사한 음색을 지닌다.</li>
+                    <li><strong>Pyeonjong (편종):</strong> 청동으로 만든 종 모양의 타악기로, 깊고 풍부한 울림을 가지며 서양의 차임벨과 비슷한 음색을 낸다.</li>
+                    <li><strong>Cinematic:</strong> 17개의 Cinematic Percussion Kit을 포함하여 영화음악 및 다양한 장르의 음악 제작에 활용 가능한 대규모 타악기 세트.</li>
+                    <li><strong>Samulnori (사물놀이):</strong> 꽹과리, 북, 장구, 징을 포함한 사물놀이 세트 Kit로, 한국 전통 음악의 역동성과 리듬을 완벽하게 구현한다.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="section">
+            <div class="text-block">
+                <h2>String Series에 포함된 악기</h2>
+                <p>고유의 따뜻한 음색과 풍부한 표현력을 자랑하는 한국 전통 현악기. 가야금, 해금 등 다양한 현악기를 포함하고 있으며, 각 악기는 실제 연주자의 섬세한 연주를 통해 샘플링되었습니다. 사용자들은 이 시리즈를 통해 정통 한국 음악의 섬세한 표현을 느낄 수 있습니다.</p>
+                <h3>포함된 악기:</h3>
+                <ul>
+                    <li><strong>Ajaeng (Jungak) (정악 아쟁):</strong> 깊고 중후한 음색을 가진 한국의 전통 현악기로, 서양 음악의 첼로와 유사한 음역대와 풍부한 음색을 지닌다.</li>
+                    <li><strong>Ajaeng (Sanjo) (산조 아쟁):</strong> 정악 아쟁보다 작고 민첩한 연주가 가능한 아쟁으로, 첼로의 높은 음역대와 비슷한 표현력 있는 음색을 가진다.</li>
+                    <li><strong>Gayageum (25strings) (25현 가야금):</strong> 전통 가야금을 현대적으로 개량한 악기로, 서양의 하프와 유사한 풍부하고 우아한 음색을 지니며 더 넓은 음역대를 가진다.</li>
+                    <li><strong>Gayageum (Jungak) (정악가야금):</strong> 궁중음악에 주로 사용되는 전통 가야금으로, 하프와 비슷한 맑고 우아한 음색을 가지며 정제된 연주가 특징이다.</li>
+                    <li><strong>Gayageum (Sanjo) (산조가야금):</strong> 민속음악에 주로 사용되는 가야금으로, 하프보다 더 강렬하고 표현력 있는 음색으로 다양한 주법이 가능하다.</li>
+                    <li><strong>Geomungo (거문고):</strong> 육중하고 깊은 울림을 가진 한국의 대표적인 현악기로, 서양 음악의 더블 베이스와 유사한 낮고 풍부한 음색을 지닌다.</li>
+                    <li><strong>Haegeum (해금):</strong> 활을 사용하는 한국의 전통 현악기로, 서양의 바이올린과 유사한 음역대를 가지며 섬세하고 유연한 표현이 가능하다.</li>
+                    <li><strong>Yanggeum (양금):</strong> 채로 쳐서 연주하는 현악기로, 서양의 첼레스타와 비슷한 맑고 영롱한 음색을 가지며 독특한 울림을 낸다.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="section">
+            <div class="text-block">
+                <h2>Woodwind Series에 포함된 악기</h2>
+                <p>맑고 깨끗한 소리로 자연의 소리를 담은 한국 전통 관악기. 대금, 피리 등 다양한 관악기가 포함되어 있으며, 각 악기는 정교한 샘플링을 통해 실제 연주의 느낌을 재현합니다. 이 시리즈는 맑고 청아한 음색을 필요로 하는 다양한 음악에 이상적입니다.</p>
+                <h3>포함된 악기:</h3>
+                    <ul>
+                        <li><strong>Danso (단소):</strong> 작고 간단한 구조의 한국 전통 관악기로, 서양의 리코더와 유사한 맑고 부드러운 음색을 가지며 멜로디 연주에 적합하다.</li>
+                        <li><strong>Daegeum (Jungak) (정악대금):</strong> 한국의 대표적인 관악기 중 하나로, 깊고 풍부한 음색을 가지며 서양의 플루트보다 낮고 중후한 소리를 낸다.</li>
+                        <li><strong>Daegeum (Sanjo) (산조대금):</strong> 정악대금보다 작고 민첩한 연주가 가능한 대금으로, 더 높고 날카로운 음색을 가지며 다양한 장르의 음악에 활용된다.</li>
+                        <li><strong>Hoon (훈):</strong> 둥근 모양의 관악기로, 부드럽고 온화한 음색을 가지며 서양의 오보에와 유사한 음색을 낸다.</li>
+                        <li><strong>Piri (Dang) (당피리):</strong> 중국에서 유래한 관악기로, 강하고 뚜렷한 음색을 가지며 서양의 오보에와 유사하지만 더 강렬한 소리를 낸다.</li>
+                        <li><strong>Piri (Hyang) (향피리):</strong> 한국의 전통 피리로, 부드럽고 온화한 음색을 가지며 서양의 클라리넷과 유사한 음색을 지닌다.</li>
+                        <li><strong>Piri (Se) (세피리):</strong> 가장 작은 크기의 피리로, 높고 맑은 음색을 가지며 서양의 소프라노 색소폰과 유사한 음역대를 가진다.</li>
+                        <li><strong>Saenghwang (생황):</strong> 여러 개의 관을 가진 복합 관악기로, 서양의 하모니카와 유사한 부드럽고 풍부한 화음을 낼 수 있는 독특한 악기이다.</li>
+                        <li><strong>Sogeum (소금):</strong> 대금보다 작은 크기의 관악기로, 서양의 플루트와 유사한 맑고 청아한 음색을 가지며 높은 음역대의 연주가 가능하다.</li>
+                        <li><strong>Taepyeongso (태평소):</strong> 강하고 날카로운 음색을 가진 관악기로, 서양의 오보에와 트럼펫을 섞은 듯한 독특하고 힘찬 소리를 낸다.</li>
+                        <li><strong>Tungso (퉁소):</strong> 세로로 부는 관악기로, 부드럽고 온화한 음색을 가지며 서양의 리코더와 유사하지만 더 깊고 풍부한 소리를 낸다.</li>
+                    </ul>
+            </div>
+        </div>
+        <div class="section">
+            <div class="text-block">
+                <h2>Why Decent Sampler?</h2>
+                <p>Decent Sampler를 선택한 이유는 다음과 같습니다:</p>
+                <ul>
+                    <li><strong>높은 접근성:</strong> Decent Sampler는 무료로 제공되어, 사용자와 개발자 모두에게 접근성이 높습니다.</li>
+                    <li><strong>최적화 된 소프트웨어:</strong> Decent Sampler는 RAM 사용량이 적어, 시스템 자원을 효율적으로 사용합니다.</li>
+                    <li><strong>확장성:</strong> 다양한 기능과 음색을 추가할 수 있어, 사용자 맞춤형 악기 설정이 가능합니다.</li>
+                </ul>
+                <p>이러한 이유로 우리는 Decent Sampler를 선택하여 사용자들에게 최고의 경험을 제공하고자 합니다. Decent Sampler의 장점을 통해 한국 전통 악기의 아름다움을 더욱 많은 사람들이 쉽게 접할 수 있게 되기를 바랍니다.</p>
+                <img src="https://www.decentsamples.com/wp-content/uploads/2020/06/Screen-Shot-2022-08-06-at-7.11.22-AM.png" alt="Decent Sampler Image">
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="text-block">
+                <h2>주요 기능</h2>
+                <p>이 가상악기 라이브러리는 다양한 고급 기능을 제공하여 사용자들이 원하는 소리를 쉽게 조작하고 창의적인 음악을 만들 수 있도록 도와줍니다.</p>
+                <h3>기능 세부 설명</h3>
+                <div class="feature-container">
+                    <div class="feature-left">
+                        <div class="feature-item">
+                            <h4>Tone:</h4>
+                            <p>악기의 밝기를 조절하여 날카로운 소리부터 부드러운 소리까지 구현</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Density:</h4>
+                            <p>음의 밀도를 조절하여 풍성한 앙상블 사운드 구현</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Bottom:</h4>
+                            <p>저음역대의 무게감을 조절하여 웅장한 사운드 연출</p>
+                        </div>
+                    </div>
+                    <div class="feature-image">
+                        <img src="./functions_left.jpg" alt="주요 기능 이미지 1">
+                    </div>
+                </div>
+                <div class="feature-container">
+                    <div class="feature-image">
+                        <img src="./functions_right.jpg" alt="주요 기능 이미지 2">
+                    </div>
+                    <div class="feature-right">
+                        <div class="feature-item">
+                            <h4>Reverb:</h4>
+                            <p>자체 내장 컨볼루션 리버브를 통한 공간감 구현</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Delay:</h4>
+                            <p>딜레이를 통해 리듬감 생성</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Dimension:</h4>
+                            <p>스테레오 이미지의 넓이를 조절하여 공간감 부여</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="section">
+            <div class="text-block">
+                <h2>혁신적인 소프트웨어</h2>
+                <p>한국 전통 악기 중에서도 가장 큰 규모의 가상 악기 라이브러리로, 선구자적인 소프트웨어입니다. 이 라이브러리는 단순한 악기 샘플러를 넘어, 한국 전통 음악의 아름다움을 디지털로 경험할 수 있는 창의적인 도구입니다. 음악 제작자들은 이 라이브러리를 통해 고유한 한국 전통 사운드를 손쉽게 구현하고, 음악에 새로운 차원을 더할 수 있습니다.</p>
+                <p>우리는 이 라이브러리를 통해 한국 전통 음악의 가치를 널리 알리고, 더 많은 사람들이 그 아름다움을 경험할 수 있기를 바랍니다. 지속적인 업데이트와 사용자 피드백을 통해 더욱 완벽한 소프트웨어로 발전해 나갈 것입니다. 우리의 목표는 단순히 소리를 재현하는 것을 넘어, 사용자가 음악을 통해 새로운 이야기를 만들어갈 수 있도록 돕는 것입니다.</p>
+                <img src="https://via.placeholder.com/800x400" alt="Innovation Image">
+            </div>
+        </div>
+        <div class="section">
+            <div class="text-block">
+                <h2>기술 사양</h2>
+                <ul>
+                    <li>포맷: Decent Sampler (무료 플러그인)</li>
+                    <li>호환성: VST, AU, AAX 플러그인 지원</li>
+                    <li>필요 사양: 최소 8GB RAM, SSD 스토리지 권장</li>
+                    <li>지원 OS: Windows 10 이상, macOS 10.13 이상</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2023 Korean Traditional Musical Instrument Series. All rights reserved.</p>
+        <p>본 제품은 충남정보문화산업진흥원의 투자로 제작되었습니다.</p>
+        <p>일부 샘플은 국립국악원의 공공누리 저작물을 활용하였습니다. (공공누리 제1유형)</p>
+    </div>
+</body>
+</html>
