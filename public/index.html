@@ -8,6 +8,20 @@
     <title>QLAUDIO - Innovative Sound Design Studio</title>
     <meta name="description" content="QLAUDIO는 최첨단 기술과 창의력을 바탕으로 게임, 영화, 드라마 등의 사운드 디자인, 음악 제작, 오디오 플러그인 개발을 전문으로 합니다.">
     <meta name="keywords" content="QLAUDIO, 사운드 디자인, 음악 제작, 오디오 플러그인, 게임 사운드, AI 기술, 창의적인 사운드">
+    
+    <!-- Open Graph meta tags -->
+    <meta property="og:title" content="QLAUDIO - Innovative Sound Design Studio">
+    <meta property="og:description" content="최첨단 기술과 창의력을 바탕으로 한 QLAUDIO의 사운드 디자인, 음악 제작, 오디오 플러그인.">
+    <meta property="og:image" content="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721201437/Combined_gzjaf1.jpg">
+    <meta property="og:url" content="https://www.qlaudio.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter card meta tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="QLAUDIO - Innovative Sound Design Studio">
+    <meta name="twitter:description" content="최첨단 기술과 창의력을 바탕으로 한 QLAUDIO의 사운드 디자인, 음악 제작, 오디오 플러그인.">
+    <meta name="twitter:image" content="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721201437/Combined_gzjaf1.jpg">
+    
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,43 +29,41 @@
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
-
 <body class="bg-white text-gray-800">
     <!-- Navigation Bar -->
-    <nav id="navbar" class="fixed w-full z-10 p-4 bg-white shadow-sm top-0">
+    <nav id="navbar" class="fixed w-full z-10 p-4 bg-white shadow-sm top-0" role="navigation" aria-label="Main navigation">
         <div class="container mx-auto flex justify-between items-center">
             <a href="#" class="font-bold text-2xl text-black" onclick="loadSection('home')">QLAUDIO</a>
             <ul class="flex space-x-8 text-base uppercase tracking-widest text-black">
-                <li><a href="#" onclick="loadSection('sound_design')">Sound Design</a></li>
-                <li><a href="#" onclick="loadSection('music')">Music</a></li>
-                <li><a href="#" onclick="loadSection('plugins')">Plugins</a></li>
-                <li><a href="#" onclick="loadSection('apps')">Apps</a></li>
-                <li><a href="#" onclick="loadSection('faq')">FAQ</a></li>
-                <li><a href="#" onclick="loadSection('contact')">Contact</a></li>
-                <li><a href="#" onclick="loadSection('dashboard')">Dashboard</a></li>
-                <li><a href="#" id="auth-toggle">Login/Register</a></li>
+                <li><a href="#" onclick="loadSection('sound_design')" aria-label="Sound Design section">Sound Design</a></li>
+                <li><a href="#" onclick="loadSection('music')" aria-label="Music section">Music</a></li>
+                <li><a href="#" onclick="loadSection('plugins')" aria-label="Plugins section">Plugins</a></li>
+                <li><a href="#" onclick="loadSection('apps')" aria-label="Apps section">Apps</a></li>
+                <li><a href="#" onclick="loadSection('contact')" aria-label="Contact section">Contact</a></li>
+                <li><a href="#" onclick="loadSection('dashboard')" aria-label="Dashboard section">Dashboard</a></li>
+                <li><a href="#" id="auth-toggle" aria-label="Login or Register">Login/Register</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Auth Modal -->
-    <div id="auth-modal" class="modal hidden">
+    <div id="auth-modal" class="modal hidden" role="dialog" aria-labelledby="auth-modal-title" aria-describedby="auth-modal-description">
         <div class="modal-content">
-            <span class="close">&times;</span>
+            <span class="close" aria-label="Close">&times;</span>
             <div id="login-form">
-                <h2 class="text-2xl font-bold mb-4">Login</h2>
-                <form>
-                    <input type="email" id="login-email" required placeholder="Email" class="w-full p-2 mb-4 border rounded">
-                    <input type="password" id="login-password" required placeholder="Password" class="w-full p-2 mb-4 border rounded">
+                <h2 id="auth-modal-title" class="text-2xl font-bold mb-4">Login</h2>
+                <form aria-describedby="auth-modal-description">
+                    <input type="email" id="login-email" required placeholder="Email" class="w-full p-2 mb-4 border rounded" aria-label="Email">
+                    <input type="password" id="login-password" required placeholder="Password" class="w-full p-2 mb-4 border rounded" aria-label="Password">
                     <button type="submit" class="w-full p-2 bg-blue-500 text-white rounded">Login</button>
                 </form>
             </div>
             <div id="register-form" class="hidden">
                 <h2 class="text-2xl font-bold mb-4">Register</h2>
                 <form>
-                    <input type="text" id="register-username" required placeholder="Username" class="w-full p-2 mb-4 border rounded">
-                    <input type="email" id="register-email" required placeholder="Email" class="w-full p-2 mb-4 border rounded">
-                    <input type="password" id="register-password" required placeholder="Password" class="w-full p-2 mb-4 border rounded">
+                    <input type="text" id="register-username" required placeholder="Username" class="w-full p-2 mb-4 border rounded" aria-label="Username">
+                    <input type="email" id="register-email" required placeholder="Email" class="w-full p-2 mb-4 border rounded" aria-label="Email">
+                    <input type="password" id="register-password" required placeholder="Password" class="w-full p-2 mb-4 border rounded" aria-label="Password">
                     <button type="submit" class="w-full p-2 bg-green-500 text-white rounded">Register</button>
                 </form>
             </div>
@@ -62,45 +74,20 @@
     </div>
 
     <!-- Main Content -->
-    <main id="main-content" class="container mx-auto my-20 p-8">
+    <main id="main-content" class="container mx-auto my-20 p-8" role="main">
         <!-- Dynamic content will be loaded here -->
     </main>
 
-    <!-- <section id="contact" class="container mx-auto my-20 p-8 text-center reveal">
-        <h2 class="text-4xl font-semibold mb-8 uppercase tracking-wider">Contact Us</h2>
-        <p>시간을 내어 방문해주셔서 감사합니다.</p>
-        <p>견적 문의, 협업 문의, 기술 자문 혹은 정말 사소한 질문이라도</p>
-        <p>편안한 마음으로 문의를 남겨주시면 최대한 빠른 시일내에 답변드리도록 하겠습니다.</p>
-
-        <div class="mt-8 max-w-xl mx-auto">
-            <form id="contact-form" class="space-y-4">
-                <div>
-                    <label for="name" class="block text-left font-semibold">이름</label>
-                    <input type="text" id="name" name="user_name" required class="w-full p-2 border rounded">
-                </div>
-                <div>
-                    <label for="email" class="block text-left font-semibold">이메일주소</label>
-                    <input type="email" id="email" name="user_email" required class="w-full p-2 border rounded">
-                </div>
-                <div>
-                    <label for="message" class="block text-left font-semibold">문의 내용</label>
-                    <textarea id="message" name="message" required class="w-full p-2 border rounded" rows="5"></textarea>
-                </div>
-                <button type="submit" class="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600">Send</button>
-            </form>
-        </div>
-    </section> -->
-
     <!-- Footer -->
-    <footer class="bg-white p-4 text-center shadow-lg">
+    <footer class="bg-white p-4 text-center shadow-lg" role="contentinfo">
         <div class="footer-links mt-4 flex justify-center space-x-8">
-            <a href="#" onclick="loadSection('privacy')">Privacy Policy</a>
-            <a href="#" onclick="loadSection('terms')">Terms of Service</a>
-            <a href="#" onclick="loadSection('faq')">About Us</a>
-            <a href="#" onclick="loadSection('contact')">Contact</a>
+            <a href="#" onclick="loadSection('privacy')" aria-label="Privacy Policy">Privacy Policy</a>
+            <a href="#" onclick="loadSection('terms')" aria-label="Terms of Service">Terms of Service</a>
+            <a href="#" onclick="loadSection('faq')" aria-label="Frequently Asked Questions">FAQ</a>
+            <a href="#" onclick="loadSection('contact')" aria-label="Contact">Contact</a>
         </div>
         <div class="social-media mt-4 flex justify-center space-x-4">
-            <a href="https://instagram.com/qlaudio_audio" target="_blank">
+            <a href="https://instagram.com/qlaudio_audio" target="_blank" aria-label="Follow us on Instagram">
                 <img src="https://res.cloudinary.com/dqgy0tdnx/image/upload/c_thumb,w_200,g_face/v1721083464/wdazydabyksriuj1hbcx.webp" alt="Instagram" class="h-10 w-10">
             </a>
         </div>
@@ -109,7 +96,16 @@
         </div>
         <p>&copy; 2024 QLAUDIO. All Rights Reserved.</p>
     </footer>
+
+
+    <!-- 제품 상세 팝업 -->
+    <div id="product-detail-popup" class="product-detail-popup">
+        <div class="product-detail-content">
+            <span class="close-btn" onclick="closeProductDetail()">&times;</span>
+            <div id="product-detail-container"></div>
+        </div>
+    </div>
+
+    
     <script src="script.js"></script>
 </body>
-
-</html>

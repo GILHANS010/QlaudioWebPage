@@ -2,11 +2,66 @@
     emailjs.init("9ckQHWPKQUV2yRMFM");
 })();
 
-document.addEventListener('DOMContentLoaded', () => {
-    loadSection('home');
-    setupAuthModal();
-    setupForms();
+
+function loadProductDetail(product) {
+    fetch(`sections/instruments/${product}.html`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error fetching product detail: ${response.statusText}`);
+            }
+            return response.text();
+        })
+        .then(data => {
+            const productDetailContainer = document.getElementById('product-detail-container');
+            productDetailContainer.innerHTML = data;
+            
+            // 팝업 표시
+            const popup = document.getElementById('product-detail-popup');
+            popup.style.display = 'block';
+            popup.classList.add('fade-in');
+            
+            // 스크롤 방지
+            document.body.style.overflow = 'hidden';
+
+            // 팝업이 열릴 때 항상 맨 위로 스크롤
+            productDetailContainer.scrollTop = 0;
+
+            // 스크롤 버튼 설정
+            setupScrollToTopButton();
+        })
+        .catch(error => console.error('Error loading product detail:', error));
+}
+
+
+function closeProductDetail() {
+    const popup = document.getElementById('product-detail-popup');
+    popup.style.display = 'none';
+    popup.classList.remove('fade-in');
+    
+    // 스크롤 허용
+    document.body.style.overflow = 'auto';
+
+    // 스크롤 버튼 숨기기
+    document.getElementById('scroll-to-top').style.display = 'none';
+}
+
+
+
+// 우클릭 이벤트 처리
+document.addEventListener('contextmenu', function(e) {
+    if (e.target.closest('#product-detail-popup')) {
+        e.preventDefault();
+        closeProductDetail();
+    }
 });
+
+// ESC 키 이벤트 처리
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeProductDetail();
+    }
+});
+
 
 function loadSection(section) {
     fetch(`sections/${section}.html`)
@@ -17,7 +72,9 @@ function loadSection(section) {
             return response.text();
         })
         .then(data => {
-            document.getElementById('main-content').innerHTML = data;
+            const mainContent = document.getElementById('main-content');
+            mainContent.innerHTML = data;
+            mainContent.className = ''; // 기본 클래스로 리셋
             console.log(`Loaded section: ${section}`);
             
             if (section === 'dashboard') {
@@ -305,4 +362,8 @@ function logout() {
     loadSection('home');
 }
 
-loadSection('home');
+document.addEventListener('DOMContentLoaded', () => {
+    loadSection('home');
+    setupAuthModal();
+    setupForms();
+});
