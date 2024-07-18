@@ -1,4 +1,3 @@
-// script.js
 (function () {
     emailjs.init("9ckQHWPKQUV2yRMFM");
 })();
@@ -71,7 +70,6 @@ function loadDashboard() {
     document.getElementById('password-form').addEventListener('submit', changePassword);
 }
 
-
 function toggleEditProfileForm() {
     const form = document.getElementById('edit-profile-form');
     form.classList.toggle('hidden');
@@ -129,7 +127,12 @@ function changePassword(e) {
         },
         body: JSON.stringify({ currentPassword, newPassword })
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('비밀번호 변경 실패');
+        }
+        return response.json();
+    })
     .then(data => {
         alert('비밀번호가 성공적으로 변경되었습니다.');
         document.getElementById('password-form').reset();
@@ -137,7 +140,7 @@ function changePassword(e) {
     })
     .catch(error => {
         console.error('Error changing password:', error);
-        alert('현재 비밀번호가 틀렸습니다.');
+        alert('비밀번호 변경 실패');
     });
 }
 
@@ -258,7 +261,8 @@ function setupForms() {
                 console.log('Received token after login:', data.token);
                 localStorage.setItem('token', data.token);
                 alert('로그인 성공!');
-                loadSection('dashboard');
+                document.getElementById('auth-modal').style.display = 'none'; // Hide auth modal
+                loadSection('dashboard'); // Load dashboard section
             } else {
                 throw new Error(data.error || '로그인 실패');
             }
@@ -283,7 +287,8 @@ function setupForms() {
             if (data.token) {
                 localStorage.setItem('token', data.token);
                 alert('회원가입 성공!');
-                loadSection('dashboard');
+                document.getElementById('auth-modal').style.display = 'none'; // Hide auth modal
+                loadSection('dashboard'); // Load dashboard section
             } else {
                 throw new Error(data.error || '회원가입 실패');
             }

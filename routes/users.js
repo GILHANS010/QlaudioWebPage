@@ -1,3 +1,4 @@
+// routes/users.js
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -111,6 +112,28 @@ router.post('/reset-password/:token', async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: '서버 오류' });
+  }
+});
+
+// 비밀번호 변경
+router.post('/change-password', auth, async (req, res) => {
+  try {
+    const { currentPassword, newPassword } = req.body;
+    const user = await User.findById(req.user.id);
+
+    const isMatch = await bcrypt.compare(currentPassword, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ error: '현재 비밀번호가 일치하지 않습니다.' });
+    }
+
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(newPassword, salt);
+    await user.save();
+
+    res.json({ message: '비밀번호가 성공적으로 변경되었습니다.' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ error: '서버 오류가 발생했습니다.' });
   }
 });
 

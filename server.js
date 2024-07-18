@@ -23,6 +23,9 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/users');
 
+app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
+
 // 홈 라우트
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
@@ -34,9 +37,6 @@ app.post('/api/contact', (req, res) => {
   console.log('Received contact form submission:', { name, email, message });
   res.json({ success: true, message: '메시지가 성공적으로 전송되었습니다.' });
 });
-
-app.use('/api/auth', authRoutes);
-app.use('/api/users', userRoutes);
 
 // 글로벌 에러 핸들러
 app.use((err, req, res, next) => {
