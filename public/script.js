@@ -1,5 +1,4 @@
 // script.js
-
 (function () {
     emailjs.init("9ckQHWPKQUV2yRMFM");
 })();
@@ -41,39 +40,105 @@ function loadDashboard() {
 
     fetch('/api/users/profile', {
         headers: {
-            'x-auth-token': token
+            'x-auth-token': token,
+            'Content-Type': 'application/json'
         }
     })
-    .then(response => response.json())
-    .then(user => {
-        document.getElementById('username').textContent = user.username;
-        document.getElementById('user-email').textContent = user.email;
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('토큰이 유효하지 않습니다.');
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.msg) {
+            throw new Error(data.msg);
+        }
+        document.getElementById('username').textContent = data.username;
+        document.getElementById('user-email').textContent = data.email;
+        document.getElementById('edit-username').value = data.username;
+        document.getElementById('edit-email').value = data.email;
     })
     .catch(error => {
         console.error('Error loading user profile:', error);
-        alert('프로필을 불러오는데 실패했습니다.');
+        alert('프로필을 불러오는데 실패했습니다: ' + error.message);
     });
 
-    // 이벤트 리스너 설정
-    document.getElementById('edit-profile').addEventListener('click', editProfile);
-    document.getElementById('change-password').addEventListener('click', changePassword);
+    document.getElementById('edit-profile-btn').addEventListener('click', toggleEditProfileForm);
+    document.getElementById('change-password-btn').addEventListener('click', toggleChangePasswordForm);
     document.getElementById('logout').addEventListener('click', logout);
+    document.getElementById('profile-form').addEventListener('submit', updateProfile);
+    document.getElementById('password-form').addEventListener('submit', changePassword);
 }
 
-function editProfile() {
-    // 프로필 수정 로직 구현
-    alert('프로필 수정 기능은 아직 구현되지 않았습니다.');
+
+function toggleEditProfileForm() {
+    const form = document.getElementById('edit-profile-form');
+    form.classList.toggle('hidden');
 }
 
-function changePassword() {
-    // 비밀번호 변경 로직 구현
-    alert('비밀번호 변경 기능은 아직 구현되지 않았습니다.');
+function toggleChangePasswordForm() {
+    const form = document.getElementById('change-password-form');
+    form.classList.toggle('hidden');
 }
 
-function logout() {
-    localStorage.removeItem('token');
-    alert('로그아웃 되었습니다.');
-    loadSection('home');
+function updateProfile(e) {
+    e.preventDefault();
+    const token = localStorage.getItem('token');
+    const username = document.getElementById('edit-username').value;
+    const email = document.getElementById('edit-email').value;
+
+    fetch('/api/users/profile', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-auth-token': token
+        },
+        body: JSON.stringify({ username, email })
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert('프로필이 성공적으로 업데이트되었습니다.');
+        document.getElementById('username').textContent = data.username;
+        document.getElementById('user-email').textContent = data.email;
+        toggleEditProfileForm();
+    })
+    .catch(error => {
+        console.error('Error updating profile:', error);
+        alert('프로필 업데이트에 실패했습니다.');
+    });
+}
+
+function changePassword(e) {
+    e.preventDefault();
+    const token = localStorage.getItem('token');
+    const currentPassword = document.getElementById('current-password').value;
+    const newPassword = document.getElementById('new-password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+
+    if (newPassword !== confirmPassword) {
+        alert('새 비밀번호가 일치하지 않습니다.');
+        return;
+    }
+
+    fetch('/api/users/change-password', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-auth-token': token
+        },
+        body: JSON.stringify({ currentPassword, newPassword })
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert('비밀번호가 성공적으로 변경되었습니다.');
+        document.getElementById('password-form').reset();
+        toggleChangePasswordForm();
+    })
+    .catch(error => {
+        console.error('Error changing password:', error);
+        alert('현재 비밀번호가 틀렸습니다.');
+    });
 }
 
 function setupContactForm() {
@@ -190,9 +255,12 @@ function setupForms() {
             });
             const data = await response.json();
             if (data.token) {
+                console.log('Received token after login:', data.token);
                 localStorage.setItem('token', data.token);
                 alert('로그인 성공!');
                 loadSection('dashboard');
+            } else {
+                throw new Error(data.error || '로그인 실패');
             }
         } catch (error) {
             console.error('로그인 오류:', error);
@@ -216,12 +284,20 @@ function setupForms() {
                 localStorage.setItem('token', data.token);
                 alert('회원가입 성공!');
                 loadSection('dashboard');
+            } else {
+                throw new Error(data.error || '회원가입 실패');
             }
         } catch (error) {
             console.error('회원가입 오류:', error);
             alert('회원가입 실패. 다시 시도해주세요.');
         }
     });
+}
+
+function logout() {
+    localStorage.removeItem('token');
+    alert('로그아웃 되었습니다.');
+    loadSection('home');
 }
 
 loadSection('home');
