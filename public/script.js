@@ -25,9 +25,6 @@ function loadProductDetail(product) {
 
             // 팝업이 열릴 때 항상 맨 위로 스크롤
             productDetailContainer.scrollTop = 0;
-
-            // 스크롤 버튼 설정
-            setupScrollToTopButton();
         })
         .catch(error => console.error('Error loading product detail:', error));
 }
