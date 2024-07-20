@@ -359,8 +359,142 @@ function logout() {
     loadSection('home');
 }
 
+
+// 장바구니에 제품 추가
+function addToCart(productId) {
+    const token = localStorage.getItem('token');
+    fetch('/api/cart/add', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-auth-token': token
+        },
+        body: JSON.stringify({ productId, quantity: 1 })
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert('제품이 장바구니에 추가되었습니다.');
+        // 장바구니 아이콘 업데이트 등 추가 작업
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+// 장바구니 로드
+function loadCart() {
+    const token = localStorage.getItem('token');
+    fetch('/api/cart', {
+        headers: {
+            'x-auth-token': token
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        const cartItemsContainer = document.getElementById('cart-items');
+        cartItemsContainer.innerHTML = '';
+        let total = 0;
+        data.items.forEach(item => {
+            const itemElement = document.createElement('div');
+            itemElement.innerHTML = `
+                <h3>${item.product.name}</h3>
+                <p>수량: ${item.quantity}</p>
+                <p>가격: ${item.product.price * item.quantity}원</p>
+                <button onclick="removeFromCart('${item.product._id}')">삭제</button>
+            `;
+            cartItemsContainer.appendChild(itemElement);
+            total += item.product.price * item.quantity;
+        });
+        document.getElementById('cart-total').textContent = total;
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+// 장바구니에서 제품 제거
+function removeFromCart(productId) {
+    const token = localStorage.getItem('token');
+    fetch('/api/cart/remove', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-auth-token': token
+        },
+        body: JSON.stringify({ productId })
+    })
+    .then(response => response.json())
+    .then(() => {
+        loadCart(); // 장바구니 다시 로드
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+// 구매한 제품 로드 (대시보드용)
+function loadPurchasedProducts() {
+    const token = localStorage.getItem('token');
+    fetch('/api/orders', {
+        headers: {
+            'x-auth-token': token
+        }
+    })
+    .then(response => response.json())
+    .then(orders => {
+        const purchasedProductsList = document.getElementById('purchased-products-list');
+        purchasedProductsList.innerHTML = '';
+        orders.forEach(order => {
+            order.items.forEach(item => {
+                const productElement = document.createElement('div');
+                productElement.innerHTML = `
+                    <h3>${item.product.name}</h3>
+                    <p>구매일: ${new Date(order.createdAt).toLocaleDateString()}</p>
+                    <p>가격: ${item.price}원</p>
+                `;
+                purchasedProductsList.appendChild(productElement);
+            });
+        });
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+// 결제 처리
+function processCheckout() {
+    const token = localStorage.getItem('token');
+    fetch('/api/orders', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-auth-token': token
+        }
+    })
+    .then(response => response.json())
+    .then(order => {
+        alert('주문이 성공적으로 처리되었습니다.');
+        loadCart(); // 장바구니 비우기
+        loadPurchasedProducts(); // 구매한 제품 목록 업데이트
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+// 이벤트 리스너 설정
+document.addEventListener('DOMContentLoaded', () => {
+    const addToCartBtn = document.getElementById('add-to-cart-btn');
+    if (addToCartBtn) {
+        addToCartBtn.addEventListener('click', () => addToCart(/* product ID */));
+    }
+
+    const checkoutBtn = document.getElementById('checkout-btn');
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', processCheckout);
+    }
+
+    // 페이지에 따라 적절한 함수 호출
+    if (window.location.pathname.includes('cart')) {
+        loadCart();
+    } else if (window.location.pathname.includes('dashboard')) {
+        loadPurchasedProducts();
+    }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     loadSection('home');
     setupAuthModal();
     setupForms();
 });
+
