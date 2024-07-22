@@ -31,6 +31,7 @@ function loadProductDetail(product) {
         .catch(error => console.error('Error loading product detail:', error));
 }
 
+
 function closeProductDetail() {
     const popup = document.getElementById('product-detail-popup');
     popup.style.display = 'none';
@@ -39,6 +40,60 @@ function closeProductDetail() {
     // Allow scrolling
     document.body.style.overflow = 'auto';
 }
+
+function loadPostDetail(post) {
+    fetch(`sections/posts/${post}.html`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error fetching post detail: ${response.statusText}`);
+            }
+            return response.text();
+        })
+        .then(data => {
+            const postDetailContainer = document.getElementById('post-detail-container');
+            if (!postDetailContainer) {
+                throw new Error('Post detail container not found');
+            }
+            postDetailContainer.innerHTML = data;
+
+            // Show popup
+            const popup = document.getElementById('post-detail-popup');
+            popup.style.display = 'block';
+            popup.classList.add('fade-in');
+
+            // Prevent scrolling
+            document.body.style.overflow = 'hidden';
+
+            // Scroll to top when popup opens
+            postDetailContainer.scrollTop = 0;
+        })
+        .catch(error => console.error('Error loading post detail:', error));
+}
+
+function closePostDetail() {
+    const popup = document.getElementById('post-detail-popup');
+    popup.style.display = 'none';
+    popup.classList.remove('fade-in');
+
+    // Allow scrolling
+    document.body.style.overflow = 'auto';
+}
+
+// Handle right-click events
+document.addEventListener('contextmenu', function(e) {
+    if (e.target.closest('#post-detail-popup')) {
+        e.preventDefault();
+        closePostDetail();
+    }
+});
+
+// Handle ESC key events
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closePostDetail();
+    }
+});
+
 
 // Handle right-click events
 document.addEventListener('contextmenu', function(e) {
