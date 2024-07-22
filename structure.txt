@@ -16,7 +16,7 @@
     - Templates & Presets
         - Templates
         - Presets
-    - Sample Packs
+    - Packs
         - Game Samples
             - Hack&Slash
             - RPG

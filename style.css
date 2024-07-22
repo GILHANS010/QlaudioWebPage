@@ -11,6 +11,11 @@ body {
     font-style: normal;
 }
 
+/* Hide scrollbar */
+body::-webkit-scrollbar {
+    display: none;
+}
+
 /* Animations */
 .fade-in {
     animation: fadeIn 0.8s ease-in-out;
