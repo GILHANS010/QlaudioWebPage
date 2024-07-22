@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -51,18 +50,16 @@
                         <li><a href="#" class="block px-4 py-2 hover:bg-gray-200" onclick="loadSection(event, 'plugins')">Audio Plugins</a></li>
                     </ul>
                 </li>
-
                 <li class="relative group">
-                    <a href="#" onclick="loadSection(event, 'packs')" aria-label="Plugins section">Packs</a>
+                    <a href="#" onclick="loadSection(event, 'packs')" aria-label="Packs section">Packs</a>
                     <ul class="absolute hidden group-hover:block bg-white shadow-lg py-2">
-                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-200" onclick="loadSection(event, 'packs')">Sound Packs</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-200" onclick="loadSection(event, 'sound_packs')">Sound Packs</a></li>
                         <li><a href="#" class="block px-4 py-2 hover:bg-gray-200" onclick="loadSection(event, 'presets')">Presets</a></li>
                         <li><a href="#" class="block px-4 py-2 hover:bg-gray-200" onclick="loadSection(event, 'templates')">Templates</a></li>
                     </ul>
                 </li>
-
                 <li><a href="#" onclick="loadSection(event, 'apps')" aria-label="Apps section">Apps</a></li>
-
+                <li><a href="#" onclick="loadSection(event, 'apps')" aria-label="Blogs section">Blogs</a></li>
                 <li><a href="#" onclick="loadSection(event, 'contact')" aria-label="Contact section">Contact</a></li>
             </ul>
         </div>
@@ -77,10 +74,10 @@
     <!-- Footer -->
     <footer class="bg-white p-4 text-center shadow-lg" role="contentinfo">
         <div class="footer-links mt-4 flex justify-center space-x-8">
-            <a href="#" onclick="loadSection('privacy')" aria-label="Privacy Policy">Privacy Policy</a>
-            <a href="#" onclick="loadSection('terms')" aria-label="Terms of Service">Terms of Service</a>
-            <a href="#" onclick="loadSection('faq')" aria-label="Frequently Asked Questions">FAQ</a>
-            <a href="#" onclick="loadSection('contact')" aria-label="Contact">Contact</a>
+            <a href="#" onclick="loadSection(event, 'privacy')" aria-label="Privacy Policy">Privacy Policy</a>
+            <a href="#" onclick="loadSection(event, 'terms')" aria-label="Terms of Service">Terms of Service</a>
+            <a href="#" onclick="loadSection(event, 'faq')" aria-label="Frequently Asked Questions">FAQ</a>
+            <a href="#" onclick="loadSection(event, 'contact')" aria-label="Contact">Contact</a>
         </div>
         <div class="social-media mt-4 flex justify-center space-x-4">
             <a href="https://instagram.com/qlaudio_audio" target="_blank" aria-label="Follow us on Instagram">
@@ -100,7 +97,7 @@
             <div id="product-detail-container"></div>
         </div>
     </div>
-        
+
     <script src="script.js"></script>
 </body>
 </html>

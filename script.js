@@ -12,6 +12,9 @@ function loadProductDetail(product) {
         })
         .then(data => {
             const productDetailContainer = document.getElementById('product-detail-container');
+            if (!productDetailContainer) {
+                throw new Error('Product detail container not found');
+            }
             productDetailContainer.innerHTML = data;
 
             // Show popup
