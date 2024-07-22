@@ -29,20 +29,34 @@
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
+
+
 <body class="bg-white text-gray-800">
     <!-- Navigation Bar -->
     <nav id="navbar" class="fixed w-full z-10 p-4 bg-white shadow-sm top-0" role="navigation" aria-label="Main navigation">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="#" class="font-bold text-2xl text-black" onclick="loadSection('home')">QLAUDIO</a>
+            <a href="#" class="font-bold text-2xl text-black" onclick="loadSection(event, 'home')">QLAUDIO</a>
             <ul class="flex space-x-8 text-base uppercase tracking-widest text-black">
-                <li><a href="#" onclick="loadSection('sound_design')" aria-label="Sound Design section">Sound Design</a></li>
-                <li><a href="#" onclick="loadSection('music')" aria-label="Music section">Music</a></li>
-                <li><a href="#" onclick="loadSection('plugins')" aria-label="Plugins section">Plugins</a></li>
-                <li><a href="#" onclick="loadSection('apps')" aria-label="Apps section">Apps</a></li>
-                <li><a href="#" onclick="loadSection('contact')" aria-label="Contact section">Contact</a></li>
+                <li class="relative group">
+                    <a href="#" onclick="loadSection(event, 'sound_design')" aria-label="Production section">Production</a>
+                    <ul class="absolute hidden group-hover:block bg-white shadow-lg py-2">
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-200" onclick="loadSection(event, 'sound_design')">Sound Design</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-200" onclick="loadSection(event, 'music')">Music</a></li>
+                    </ul>
+                </li>
+                <li class="relative group">
+                    <a href="#" onclick="loadSection(event, 'plugins')" aria-label="Plugins section">Plugins</a>
+                    <ul class="absolute hidden group-hover:block bg-white shadow-lg py-2">
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-200" onclick="loadSection(event, 'plugins')">Software Instruments</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-200" onclick="loadSection(event, 'plugins')">Audio Plugins</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" onclick="loadSection(event, 'apps')" aria-label="Apps section">Apps</a></li>
+                <li><a href="#" onclick="loadSection(event, 'contact')" aria-label="Contact section">Contact</a></li>
             </ul>
         </div>
     </nav>
+
 
     <!-- Main Content -->
     <main id="main-content" class="container mx-auto my-20 p-8" role="main">
@@ -68,14 +82,14 @@
         <p>&copy; 2024 QLAUDIO. All Rights Reserved.</p>
     </footer>
 
-
-    <!-- 제품 상세 팝업 -->
+    <!-- Product Detail Popup -->
     <div id="product-detail-popup" class="product-detail-popup">
         <div class="product-detail-content">
             <span class="close-btn" onclick="closeProductDetail()">&times;</span>
             <div id="product-detail-container"></div>
         </div>
     </div>
-
+        
     <script src="script.js"></script>
 </body>
+</html>

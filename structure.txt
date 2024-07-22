@@ -1,0 +1,37 @@
+홈페이지 구조
+
+메인 페이지
+- Hero 사진
+- 회사 소개
+- Navigation
+- 카테고리
+    - Production
+        - Sound Design
+        - Music Production
+        - "From outsourced production to active participation in projects through collaboration, we offer comprehensive services in sound design and music production."
+    - PlugIns
+        - Software Instruments
+        - Audio Plugins
+        - 
+    - Templates & Presets
+        - Templates
+        - Presets
+    - Sample Packs
+        - Game Samples
+            - Hack&Slash
+            - RPG
+            - Mobile Games
+        - Music Sample Packs
+            - Rock Band (Guitar, Bass, Drums...)
+        - Theme Samples
+            - Christams
+    - Softwares
+- 클라우디오를 설명하는 키워드
+- 협력사
+
+Footer
+- 개인정보 보호, 이용약관, FAQ, 연락하기
+
+
+
+About QLAUDIO

@@ -13,12 +13,12 @@ function loadProductDetail(product) {
         .then(data => {
             const productDetailContainer = document.getElementById('product-detail-container');
             productDetailContainer.innerHTML = data;
-            
+
             // Show popup
             const popup = document.getElementById('product-detail-popup');
             popup.style.display = 'block';
             popup.classList.add('fade-in');
-            
+
             // Prevent scrolling
             document.body.style.overflow = 'hidden';
 
@@ -32,12 +32,9 @@ function closeProductDetail() {
     const popup = document.getElementById('product-detail-popup');
     popup.style.display = 'none';
     popup.classList.remove('fade-in');
-    
+
     // Allow scrolling
     document.body.style.overflow = 'auto';
-
-    // Hide scroll button
-    document.getElementById('scroll-to-top').style.display = 'none';
 }
 
 // Handle right-click events
@@ -55,7 +52,8 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-function loadSection(section) {
+function loadSection(event, section) {
+    event.preventDefault();  // Prevent the default anchor behavior
     fetch(`sections/${section}.html`)
         .then(response => {
             if (!response.ok) {
@@ -69,7 +67,10 @@ function loadSection(section) {
             mainContent.className = ''; // Reset to default class
             console.log(`Loaded section: ${section}`);
             
+            // Initialize specific elements or functions if they exist in the loaded section
             setupContactForm();
+            initializeOtherFeatures();
+            revealOnScroll();
         })
         .catch(error => console.error('Error loading section:', error));
 }
@@ -99,6 +100,11 @@ function setupContactForm() {
             }
         });
     }
+}
+
+function initializeOtherFeatures() {
+    // Placeholder for initializing any other features needed in the loaded section
+    console.log('Initializing other features...');
 }
 
 let firstScroll = false;
@@ -144,5 +150,5 @@ window.addEventListener('scroll', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    loadSection('home');
+    loadSection({preventDefault: () => {}}, 'home');
 });
