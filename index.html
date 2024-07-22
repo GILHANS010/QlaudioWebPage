@@ -1,0 +1,81 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QLAUDIO - Innovative Sound Design Studio</title>
+    <meta name="description" content="QLAUDIO는 최첨단 기술과 창의력을 바탕으로 게임, 영화, 드라마 등의 사운드 디자인, 음악 제작, 오디오 플러그인 개발을 전문으로 합니다.">
+    <meta name="keywords" content="QLAUDIO, 사운드 디자인, 음악 제작, 오디오 플러그인, 게임 사운드, AI 기술, 창의적인 사운드">
+    
+    <!-- Open Graph meta tags -->
+    <meta property="og:title" content="QLAUDIO - Innovative Sound Design Studio">
+    <meta property="og:description" content="최첨단 기술과 창의력을 바탕으로 한 QLAUDIO의 사운드 디자인, 음악 제작, 오디오 플러그인.">
+    <meta property="og:image" content="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721201437/Combined_gzjaf1.jpg">
+    <meta property="og:url" content="https://www.qlaudio.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter card meta tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="QLAUDIO - Innovative Sound Design Studio">
+    <meta name="twitter:description" content="최첨단 기술과 창의력을 바탕으로 한 QLAUDIO의 사운드 디자인, 음악 제작, 오디오 플러그인.">
+    <meta name="twitter:image" content="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721201437/Combined_gzjaf1.jpg">
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Navigation Bar -->
+    <nav id="navbar" class="fixed w-full z-10 p-4 bg-white shadow-sm top-0" role="navigation" aria-label="Main navigation">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="font-bold text-2xl text-black" onclick="loadSection('home')">QLAUDIO</a>
+            <ul class="flex space-x-8 text-base uppercase tracking-widest text-black">
+                <li><a href="#" onclick="loadSection('sound_design')" aria-label="Sound Design section">Sound Design</a></li>
+                <li><a href="#" onclick="loadSection('music')" aria-label="Music section">Music</a></li>
+                <li><a href="#" onclick="loadSection('plugins')" aria-label="Plugins section">Plugins</a></li>
+                <li><a href="#" onclick="loadSection('apps')" aria-label="Apps section">Apps</a></li>
+                <li><a href="#" onclick="loadSection('contact')" aria-label="Contact section">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content" class="container mx-auto my-20 p-8" role="main">
+        <!-- Dynamic content will be loaded here -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white p-4 text-center shadow-lg" role="contentinfo">
+        <div class="footer-links mt-4 flex justify-center space-x-8">
+            <a href="#" onclick="loadSection('privacy')" aria-label="Privacy Policy">Privacy Policy</a>
+            <a href="#" onclick="loadSection('terms')" aria-label="Terms of Service">Terms of Service</a>
+            <a href="#" onclick="loadSection('faq')" aria-label="Frequently Asked Questions">FAQ</a>
+            <a href="#" onclick="loadSection('contact')" aria-label="Contact">Contact</a>
+        </div>
+        <div class="social-media mt-4 flex justify-center space-x-4">
+            <a href="https://instagram.com/qlaudio_audio" target="_blank" aria-label="Follow us on Instagram">
+                <img src="https://res.cloudinary.com/dqgy0tdnx/image/upload/c_thumb,w_200,g_face/v1721083464/wdazydabyksriuj1hbcx.webp" alt="Instagram" class="h-10 w-10">
+            </a>
+        </div>
+        <div class="contact-info mt-4">
+            <p class="text-gray-600">Email: contact@qlaudio.com</p>
+        </div>
+        <p>&copy; 2024 QLAUDIO. All Rights Reserved.</p>
+    </footer>
+
+
+    <!-- 제품 상세 팝업 -->
+    <div id="product-detail-popup" class="product-detail-popup">
+        <div class="product-detail-content">
+            <span class="close-btn" onclick="closeProductDetail()">&times;</span>
+            <div id="product-detail-container"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
