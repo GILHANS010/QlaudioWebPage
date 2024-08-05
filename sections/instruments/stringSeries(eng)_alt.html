@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOSUN Series</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #2e2e2e, #121212);
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        a {
+            color: #e0e0e0;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        .header .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #ff9500;
+        }
+        .header .nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            margin: 0 15px;
+            position: relative;
+            transition: color 0.3s;
+        }
+        .header .nav a:hover {
+            color: #ff9500;
+        }
+        .header .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ff9500;
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+        .header .nav a:hover::after {
+            transform: scaleX(1);
+        }
+        .header .cart {
+            font-size: 1em;
+            color: #ff9500;
+        }
+        .hero {
+            width: 100%;
+            height: 70vh;
+            background: url('./image/red.jpeg') no-repeat center center;
+            background-size: cover;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        .hero-text {
+            position: relative;
+            z-index: 1;
+        }
+        .hero-text h1 {
+            font-size: 4em;
+            margin: 0;
+            animation: fadeInDown 1s ease-out;
+        }
+        .hero-text p {
+            font-size: 1.5em;
+            animation: fadeInUp 1s ease-out;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            margin-top: -50px;
+            z-index: 1;
+            position: relative;
+            animation: fadeInUp 1s ease-out;
+        }
+        .main {
+            flex: 2;
+            padding-right: 20px;
+        }
+        .sidebar {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+            flex: 1 1 calc(33% - 40px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+        }
+        .card h3 {
+            margin-top: 0;
+            color: #ff9500;
+        }
+        .card p {
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+        .sidebar h3 {
+            margin-top: 0;
+            color: #e0e0e0;
+        }
+        .sidebar .price {
+            font-size: 2em;
+            color: #ff9500;
+        }
+        .sidebar a {
+            display: block;
+            color: #fff;
+            background-color: #ff9500;
+            text-decoration: none;
+            padding: 15px 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 10px 0;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #e68900;
+            transform: translateY(-5px);
+        }
+        .details {
+            margin: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .details h2 {
+            color: #e0e0e0;
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        .details h2::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background-color: #ff9500;
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%);
+        }
+        .detail-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .detail-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+        }
+        .detail-card h3 {
+            color: #e0e0e0;
+            margin-top: 0;
+        }
+        .detail-card p {
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+        .audio-samples {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .audio-sample {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+            flex: 1 1 calc(33% - 40px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .audio-sample:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+        }
+        .audio-sample audio {
+            width: 100%;
+            margin-top: 10px;
+        }
+        .audio-sample p {
+            margin: 10px 0 0;
+        }
+        .photo-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .photo {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 20px;
+            flex: 1 1 calc(33% - 40px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .photo:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+        }
+        .photo img {
+            max-width: 100%;
+            border-radius: 12px;
+        }
+        .footer {
+            text-align: center;
+            color: #999;
+            font-size: 0.9em;
+            padding: 20px 0;
+            max-width: 1200px;
+            margin: 40px auto 0;
+            border-top: 1px solid #333;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">QLAUDIO</div>
+        <div class="nav">
+            <a href="#">Overview</a>
+            <a href="#">Listen</a>
+            <a href="#">Walkthrough</a>
+            <a href="#">What's included</a>
+            <a href="#">Tech specs</a>
+        </div>
+        <div class="cart">$269.00 <a href="#" class="add-to-cart">Add to cart</a></div>
+    </div>
+    <div class="hero">
+        <div class="hero-text">
+            <h1>JOSUN Series</h1>
+            <p>The Ultimate Korean Instrument Library</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="main">
+            <div class="cards">
+                <div class="card">
+                    <h3>World's Largest Library</h3>
+                    <p>Over 5,000 RAW AUDIO files featuring traditional Korean instruments.</p>
+                </div>
+                <div class="card">
+                    <h3>Micro Tuning</h3>
+                    <p>Adjusted to match Western equal temperament for modern music compatibility.</p>
+                </div>
+                <div class="card">
+                    <h3>Multi Velocity Layers</h3>
+                    <p>Subtle sound changes based on the intensity of the performance.</p>
+                </div>
+                <div class="card">
+                    <h3>Advanced Expression</h3>
+                    <p>Fine control of instrument expressions using modulation wheel.</p>
+                </div>
+                <div class="card">
+                    <h3>High-Quality Audio</h3>
+                    <p>Noise-free audio using neural audio editing processes for the best quality.</p>
+                </div>
+                <div class="card">
+                    <h3>Zero Latency Performance</h3>
+                    <p>Sample accurate responsiveness with no silence at the start of sounds.</p>
+                </div>
+                <div class="card">
+                    <h3>Instrument Types</h3>
+                    <p>Strings, Woodwind, Percussion, and Total Bundle options available.</p>
+                </div>
+                <div class="card">
+                    <h3>Platform Compatibility</h3>
+                    <p>Available on Decent Sampler and soon on Kontakt for broader compatibility.</p>
+                </div>
+                <div class="card">
+                    <h3>Future Updates</h3>
+                    <p>Regular updates for bug fixes and quality improvements.</p>
+                </div>
+            </div>
+            <div class="photo-gallery">
+                <div class="photo">
+                    <img src="./image/background_1.jpeg" alt="Photo 1">
+                </div>
+                <div class="photo">
+                    <img src="./image/background_2.jpeg" alt="Photo 2">
+                </div>
+                <div class="photo">
+                    <img src="./image/background_3.jpeg" alt="Photo 3">
+                </div>
+            </div>
+        </div>
+        <div class="sidebar">
+            <h3>Price</h3>
+            <div class="price">$269.00</div>
+            <a href="#" class="add-to-cart">Add to cart</a>
+            <a href="#">Download user manual</a>
+            <a href="https://www.decentsamples.com/product/decent-sampler-plugin/">Download Decent Sampler</a>
+        </div>
+    </div>
+    <div class="details">
+        <h2>Audio Samples</h2>
+        <div class="audio-samples">
+            <div class="audio-sample">
+                <h3>Sample 1: JOSUN Strings</h3>
+                <audio controls>
+                    <source src="sample1.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <p>Listen to the richness of JOSUN Strings.</p>
+            </div>
+            <div class="audio-sample">
+                <h3>Sample 2: JOSUN Woodwind</h3>
+                <audio controls>
+                    <source src="sample2.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <p>Experience the expressive woodwinds.</p>
+            </div>
+            <div class="audio-sample">
+                <h3>Sample 3: JOSUN Percussion</h3>
+                <audio controls>
+                    <source src="sample3.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <p>Feel the power of JOSUN Percussion.</p>
+            </div>
+        </div>
+    </div>
+    <div class="details">
+        <h2>Key Features</h2>
+        <div class="detail-card">
+            <h3>Unmatched Authenticity</h3>
+            <p>Each instrument has been sampled with painstaking attention to detail, capturing every nuance of the original performances by master musicians. From the delicate plucks of the Gayageum to the haunting resonance of the Haegeum, every note rings true.</p>
+        </div>
+        <div class="detail-card">
+            <h3>Exceptional Sound Quality</h3>
+            <p>Recorded at 24-bit/48kHz using state-of-the-art equipment, these samples offer studio-grade clarity and depth. Experience the instruments as if you were sitting in the same room with the performer.</p>
+        </div>
+        <div class="detail-card">
+            <h3>Extensive Articulation Library</h3>
+            <p>Explore a wide range of playing techniques for each instrument, including various plucking styles, vibrato intensities, slides, and more. Create truly authentic performances with ease.</p>
+        </div>
+        <div class="detail-card">
+            <h3>Intuitive Interface</h3>
+            <p>Our user-friendly GUI allows for quick and easy sound shaping, with controls for tone, resonance, and expression mapped to easily accessible parameters.</p>
+        </div>
+        <div class="detail-card">
+            <h3>Cutting-Edge Scripting</h3>
+            <p>Advanced scripting ensures realistic note transitions, natural decay, and authentic performance nuances, bringing these digital instruments to life.</p>
+        </div>
+        <div class="detail-card">
+            <h3>Expandive Sound Design Capabilities</h3>
+            <p>Push beyond tradition with built-in effects and sound-shaping tools. Transform these classic sounds into modern textures perfect for film scoring, electronic music production, and more.</p>
+        </div>
+        <div class="detail-card">
+            <h3>Extensive Sample Content</h3>
+            <p>With multiple velocity layers for each note, ensuring organic, dynamic performances.</p>
+        </div>
+        <div class="detail-card">
+            <h3>Optimized Performance</h3>
+            <p>Efficiently coded to be light on CPU usage without compromising on sound quality.</p>
+        </div>
+    </div>
+    <div class="details">
+        <h2>Instruments Included in the String Series</h2>
+        <div class="detail-card">
+            <h3>Ajaeng (Jungak)</h3>
+            <p>A Korean traditional string instrument with a deep and profound tone, similar to the cello in Western music in terms of range and rich tone. The Jungak Ajaeng is larger and used primarily in court music. It's played with a bow made of forsythia wood and produces a uniquely deep, resonant sound that forms the foundation of many traditional Korean ensembles.</p>
+        </div>
+        <div class="detail-card">
+            <h3>Ajaeng (Sanjo)</h3>
+            <p>A smaller and more agile version of the Ajaeng than the Jungak Ajaeng, with an expressive tone similar to the higher range of the cello. The Sanjo Ajaeng is used in folk music and solo performances. Its smaller size allows for more intricate and faster playing techniques, making it suitable for the improvisational Sanjo style of music.</p>
+        </div>
+        <div class="detail-card">
+            <h3>Gayageum (25 strings)</h3>
+            <p>A modernly modified version of the traditional Gayageum, with a rich and elegant tone similar to the harp in Western music and a wider range. This contemporary adaptation features 25 strings instead of the traditional 12, allowing for a greater tonal range and the ability to play more complex harmonies. It's widely used in both traditional and fusion music styles.</p>
+        </div>
+        <div class="detail-card">
+            <h3>Gayageum (Jungak)</h3>
+            <p>A traditional Gayageum mainly used in court music, with a clear and elegant tone similar to the harp and characterized by refined performance. The Jungak Gayageum has 12 strings and is known for its gentle, sophisticated sound. It's typically played with a more restrained technique, emphasizing grace and subtlety in court and ceremonial music.</p>
+        </div>
+        <div class="detail-card">
+            <h3>Gayageum (Sanjo)</h3>
+            <p>A Gayageum mainly used in folk music, with a more intense and expressive tone than the harp, allowing for various playing techniques. The Sanjo Gayageum, also with 12 strings, is designed for more dynamic and emotionally expressive playing. It's capable of producing a wide range of tones and is often used in solo performances and improvisational music.</p>
+        </div>
+        <div class="detail-card">
+            <h3>Geomungo</h3>
+            <p>A representative Korean string instrument with a heavy and deep resonance, with a low and rich tone similar to the double bass in Western music. The Geomungo has six strings and is played with a short bamboo stick called a suldae. It's known for its powerful, resonant sound and is often used to provide a strong rhythmic and harmonic foundation in ensemble music.</p>
+        </div>
+        <div class="detail-card">
+            <h3>Haegeum</h3>
+            <p>A traditional Korean string instrument using a bow, with a range similar to the violin in Western music and capable of delicate and flexible expressions. The Haegeum has two strings and is held vertically when played. Its unique timbre can mimic human vocal qualities, making it exceptionally expressive. It's used in various genres of Korean music, from court music to contemporary compositions.</p>
+        </div>
+        <div class="detail-card">
+            <h3>Yanggeum</h3>
+            <p>A string instrument played by striking with bamboo sticks, with a clear and crystalline tone similar to the celesta in Western music and producing a unique resonance. The Yanggeum is a hammered dulcimer that was introduced to Korea from China. Its bright, sparkling tone adds a distinctive color to Korean ensembles and is often used to provide intricate melodic lines and ornamentation.</p>
+        </div>
+    </div>
+    <div class="details">
+        <h2>Josun Series Lineups</h2>
+        <div class="photo">
+            <img src="./image/lineup.webp" alt="Lineup Image 1">
+        </div>
+        <div class="detail-card">
+            <h3>String Instrument Series</h3>
+            <p>Korean traditional string instruments that bring the rich, warm tones and unparalleled expressiveness of ancient instruments to your compositions. The series includes various string instruments such as Gayageum and Haegeum, each meticulously sampled to capture the subtle nuances of authentic performances by master musicians. This series is perfect for creating music that demands the depth and warmth of traditional Korean string sounds.</p>
+        </div>
+        <div class="detail-card">
+            <h3>Woodwind Series</h3>
+            <p>Korean traditional woodwind instruments that capture the sounds of nature with clear and pure tones. It includes various woodwind instruments such as Daegeum and Piri, each reproducing the feel of real performance through precise sampling. This series is ideal for various music requiring clear and pure tones.</p>
+        </div>
+        <div class="detail-card">
+            <h3>Percussion Instrument Series</h3>
+            <p>Korean traditional percussion instruments capable of powerful and rhythmic performances. It includes various percussion instruments such as epic percussion, Janggu, and Buk, each providing powerful rhythm and energy to breathe life into music. This series is suitable for various music genres requiring rhythmic composition.</p>
+        </div>
+        <div class="detail-card">
+            <h3>Platinum Bundle</h3>
+            <p>A perfect package bundling all instruments together. All traditional Korean instruments have been fine-tuned to match equal temperament as much as possible to minimize pitch differences with Western music. It provides all the sounds users need, including string, wind, and percussion instruments, and is economical with bundle pricing. This bundle provides all the tools for Korean traditional music at once.</p>
+        </div>
+    </div>
+    <div class="details">
+        <h2>Unlimited Creativity</h2>
+        <div class="detail-card">
+            <h3>Creative Expression</h3>
+            <p>Enables creative expression through various articulations and playing techniques, and advanced MIDI control functions. Provides various articulations and playing techniques, enabling subtle expressions through advanced MIDI control functions. Supports various genres from traditional music to modern music and film music, allowing users to freely implement creative ideas.</p>
+        </div>
+    </div>
+    <div class="details">
+        <h2>Why Decent Sampler?</h2>
+        <div class="photo">
+            <img src="https://www.decentsamples.com/wp-content/uploads/2020/06/Screen-Shot-2022-08-06-at-7.11.22-AM.png" alt="Decent Sampler Image 1">
+        </div>
+        <div class="detail-card">
+            <h3>High Accessibility</h3>
+            <p>Decent Sampler is provided for <strong>FREE</strong>, making it highly accessible to both users and developers.</p>
+        </div>
+        <div class="detail-card">
+            <h3>Optimized Software</h3>
+            <p>Decent Sampler uses less RAM, efficiently using system resources.</p>
+        </div>
+        <div class="detail-card">
+            <h3>Expandability</h3>
+            <p>It allows for adding various functions and tones, enabling customized instrument settings. For these reasons, we chose Decent Sampler to provide users with the best experience. We hope that through the advantages of Decent Sampler, more people can easily access the beauty of Korean traditional instruments.</p>
+        </div>
+    </div>
+    <div class="details">
+        <h2>Innovative Software</h2>
+        <div class="detail-card">
+            <h3>Key Features</h3>
+            <p>This virtual instrument library provides various advanced features to help users easily manipulate the desired sounds and create creative music.</p>
+        </div>
+        <div class="photo">
+            <img src="./image/features.png" alt="Software Feature Image 1">
+        </div>
+        <div class="detail-card">
+            <h3>Detailed Explanation of Features</h3>
+            <p>Tone: Adjust the brightness of the instrument to create sounds from sharp to soft.<br>
+               Density: Adjust the density of the sound to create a rich ensemble sound.<br>
+               Bottom: Adjust the weight of the low frequency range to create a majestic sound.<br>
+               Reverb: Create a sense of space through built-in convolution reverb.<br>
+               Delay: Generate rhythm through delay.<br>
+               Dimension: Add a sense of space by adjusting the width of the stereo image.</p>
+        </div>
+    </div>
+    <div class="details">
+        <h2>Technical Specifications</h2>
+        <div class="detail-card">
+            <h3>Format</h3>
+            <p><a href="https://www.decentsamples.com/product/decent-sampler-plugin/">Decent Sampler (Download Link)</a></p>
+        </div>
+        <div class="detail-card">
+            <h3>Compatibility</h3>
+            <p>Windows (32-bit/64-bit): VST, VST3, AAX, Standalone<br>
+               Mac (Intel & M1): VST, VST3, AU, AAX, Standalone<br>
+               Linux (Intel 64-bit): VST, VST3, Standalone<br>
+               iOS: AUv3, Standalone</p>
+        </div>
+        <div class="detail-card">
+            <h3>System Requirements</h3>
+            <p>Minimum 8GB RAM<br>
+               At least 10GB of hard disk space<br>
+               SSD storage recommended<br>
+               Supported OS: Windows 10 or higher, macOS 10.13 or higher</p>
+        </div>
+    </div>
+    <div class="details">
+        <h2>Support and Update Policy</h2>
+        <div class="detail-card">
+            <p>We are committed to providing ongoing support and updates for our products. Future updates will include bug fixes, functional improvements, and potential expansion of features. Our team is dedicated to ensuring that your experience with our software continues to improve over time.</p>
+        </div>
+    </div>
+    <div class="details">
+        <h2>About QLAUDIO</h2>
+        <div class="photo">
+            <img src="./image/logo.webp" alt="About QLAUDIO Image 1">
+        </div>
+        <div class="detail-card">
+            <h3>QLAUDIO: Pioneers Leading the Sound Revolution</h3>
+            <p>QLAUDIO breaks down the boundaries between music and technology to open new horizons of sound. We don't just create tools, we design the future of music.</p>
+            <p>State-of-the-art virtual instruments, intuitive plugins, rich sample packs. All of these were born to amplify your creativity. With QLAUDIO's technology, you can create professional sounds anywhere, beyond the limitations of the studio.</p>
+            <p>The Josun series represents our innovation. By reinterpreting Korean instruments with thousands of years of tradition in a modern way, we are breathing new inspiration into the global music market. This is not just a product, but a bridge of culture.</p>
+            <p>QLAUDIO's influence extends beyond music to movies, games, and virtual reality. We create sounds that are not just heard, but felt. QLAUDIO realizes all the sounds you imagine.</p>
+            <p>Our passion leads to constant innovation. Every member of QLAUDIO is armed with a love for music and expertise in technology, challenging new possibilities every day. Our goal is clear. To make the world sound more beautiful.</p>
+            <p>With QLAUDIO, there are no limits to your creativity. Make your musical vision a reality with our technology. Experience the sound of a new era now.</p>
+        </div>
+    </div>
+    <div class="footer">
+        © 2024 QLAUDIO. All rights reserved. Josun Series is a registered trademark of QLAUDIO. This product was produced with investment from the Chungnam Information & Culture Industry Promotion Agency. Some samples utilized public domain works from the National Gugak Center. (Korea Open Government License Type 1)
+    </div>
+</body>
+</html>
