@@ -26,11 +26,10 @@ function loadProductDetail(product) {
             document.body.style.overflow = 'hidden';
 
             // Scroll to top when popup opens
-            productDetailContainer.scrollTop = 0;
+            popup.scrollTop = 0;
         })
         .catch(error => console.error('Error loading product detail:', error));
 }
-
 
 function closeProductDetail() {
     const popup = document.getElementById('product-detail-popup');
@@ -65,7 +64,7 @@ function loadPostDetail(post) {
             document.body.style.overflow = 'hidden';
 
             // Scroll to top when popup opens
-            postDetailContainer.scrollTop = 0;
+            popup.scrollTop = 0;
         })
         .catch(error => console.error('Error loading post detail:', error));
 }
@@ -93,7 +92,6 @@ document.addEventListener('keydown', function(e) {
         closePostDetail();
     }
 });
-
 
 // Handle right-click events
 document.addEventListener('contextmenu', function(e) {
@@ -124,6 +122,9 @@ function loadSection(event, section) {
             mainContent.innerHTML = data;
             mainContent.className = ''; // Reset to default class
             console.log(`Loaded section: ${section}`);
+            
+            // Scroll to top when a new section is loaded
+            window.scrollTo(0, 0);
             
             // Initialize specific elements or functions if they exist in the loaded section
             setupContactForm();

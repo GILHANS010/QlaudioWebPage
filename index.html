@@ -29,7 +29,6 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 
-
 <body class="bg-white text-gray-800">
     <!-- Navigation Bar -->
     <nav id="navbar" class="fixed w-full z-10 p-4 bg-white shadow-sm top-0" role="navigation" aria-label="Main navigation">
@@ -46,14 +45,14 @@
                 <li class="relative group">
                     <a href="#" onclick="loadSection(event, 'plugins')" aria-label="Plugins section">Plugins</a>
                     <ul class="absolute hidden group-hover:block bg-white shadow-lg py-2">
-                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-200" onclick="loadSection(event, 'plugins')">Software Instruments</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-200" onclick="loadSection(event, 'instruments')">Software Instruments</a></li>
                         <li><a href="#" class="block px-4 py-2 hover:bg-gray-200" onclick="loadSection(event, 'plugins')">Audio Plugins</a></li>
                     </ul>
                 </li>
                 <li class="relative group">
                     <a href="#" onclick="loadSection(event, 'packs')" aria-label="Packs section">Packs</a>
                     <ul class="absolute hidden group-hover:block bg-white shadow-lg py-2">
-                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-200" onclick="loadSection(event, 'sound_packs')">Sound Packs</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-200" onclick="loadSection(event, 'soundpacks')">Sound Packs</a></li>
                         <li><a href="#" class="block px-4 py-2 hover:bg-gray-200" onclick="loadSection(event, 'presets')">Presets</a></li>
                         <li><a href="#" class="block px-4 py-2 hover:bg-gray-200" onclick="loadSection(event, 'templates')">Templates</a></li>
                     </ul>
@@ -64,8 +63,6 @@
             </ul>
         </div>
     </nav>
-
-
 
     <!-- Main Content -->
     <main id="main-content" class="container mx-auto my-20 p-8" role="main">
