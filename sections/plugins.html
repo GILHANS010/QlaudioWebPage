@@ -1,516 +1,356 @@
 <!-- plugins.html -->
 <style>
-    .product-detail {
-        font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-        margin: 0;
-        padding: 0;
-        line-height: 1.5;
-        color: var(--text-color);
-        background-color: var(--background-color);
-
-    .container {
-        max-width: 860px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
-
-    .hero {
-        text-align: center;
-        padding: 150px 0;
-        background-image: var(--gradient-secondary);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .hero::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: url('hero-bg.jpg') no-repeat center center;
-        background-size: cover;
-        opacity: 0.1;
-        z-index: 1;
-    }
-
-    .hero .container {
-        position: relative;
-        z-index: 2;
-    }
-
-    .hero h1 {
-        font-size: 64px;
-        font-weight: 700;
-        margin-bottom: 20px;
-        background: var(--gradient-primary);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .hero p {
-        font-size: 24px;
-        font-weight: 400;
-        color: var(--secondary-color);
-        margin-bottom: 40px;
-    }
-
-    .cta-button {
-        display: inline-block;
-        background-image: var(--gradient-primary);
-        color: white;
-        padding: 15px 30px;
-        border-radius: 30px;
-        text-decoration: none;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .cta-button:hover {
-        background-image: linear-gradient(135deg, #005bbf, #00a3ff);
-        transform: translateY(-2px);
-        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-    }
-
-    .section {
-        margin: 120px 0;
-    }
-
-    .section h2 {
-        font-size: 48px;
-        font-weight: 700;
-        margin-bottom: 60px;
-        text-align: center;
-        position: relative;
-        background: var(--gradient-primary);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .section h2::after {
-        content: '';
-        display: block;
-        width: 60px;
-        height: 4px;
-        background-image: var(--gradient-primary);
-        margin: 20px auto 0;
-    }
-
-    .text-block p {
-        font-size: 18px;
-        color: var(--text-color);
-        margin-bottom: 20px;
-        line-height: 1.8;
-    }
-
-    .text-block img {
-        display: block;
-        margin: 0 auto;
-        border-radius: 12px;
-        max-width: 100%;
-    }
-
-    .feature-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 40px;
-        margin-top: 60px;
-    }
-
-    .series-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 40px;
-    }
-
-    .series-item {
-        background-image: var(--gradient-secondary);
-        border-radius: 24px;
-        padding: 40px;
-        text-align: center;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .series-item:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    }
-
-    .series-item img {
+    /* Global Reset for this section to ensure isolation and premium dark theme */
+    #josun-series-wrapper {
+        font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background-color: #050505;
+        /* Deep Black/Dark background */
+        color: #ffffff;
+        padding: 80px 0;
         width: 100%;
-        border-radius: 12px;
-        margin-bottom: 30px;
+        box-sizing: border-box;
     }
 
-    .series-item h3 {
-        font-size: 28px;
-        font-weight: 600;
-        margin-bottom: 20px;
-        color: var(--primary-color);
+    .josun-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 40px;
     }
 
-    .highlight-box {
-        background-image: var(--gradient-secondary);
-        border-radius: 24px;
+    /* 1. Heritage Cards Section */
+    .heritage-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-bottom: 150px;
+    }
+
+    .h-card {
+        background-color: #1a1a1a;
+        /* Dark background for better visibility vs white text */
+        color: #ffffff;
         padding: 40px;
-        margin: 40px 0;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        border-radius: 20px;
+        text-align: left;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid #333;
     }
 
-    .highlight-box h3 {
-        font-size: 28px;
-        font-weight: 600;
+    .h-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        border-color: #555;
+    }
+
+    .h-label {
+        font-size: 11px;
+        font-weight: 800;
+        color: #aaa;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
         margin-bottom: 20px;
-        color: var(--primary-color);
+        display: block;
     }
 
-    ul {
-        padding-left: 20px;
-        list-style-type: none;
+    .h-title {
+        font-size: 28px;
+        font-weight: 800;
+        margin-bottom: 16px;
+        line-height: 1.3;
+        letter-spacing: -0.5px;
+        color: #fff;
     }
 
-    ul li {
-        margin-bottom: 15px;
-        position: relative;
-        padding-left: 30px;
-    }
-
-    ul li::before {
-        content: '•';
-        color: var(--primary-color);
-        font-size: 24px;
-        position: absolute;
-        left: 0;
-        top: -2px;
-    }
-
-    .footer {
-        background-image: linear-gradient(to bottom, #f2f2f7, #e5e5ea);
-        color: var(--secondary-color);
-        padding: 60px 0;
-        font-size: 14px;
-        text-align: center;
-    }
-
-    .footer p {
-        margin: 10px 0;
-    }
-
-    .feature-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 40px;
-    }
-
-    .feature-left, .feature-right {
-        width: 45%;
-    }
-
-    .feature-image {
-        width: 45%;
-    }
-
-    .feature-image img {
-        max-width: 100%;
-        height: auto;
-    }
-
-    .feature-item {
-        margin-bottom: 30px;
-    }
-
-    .feature-item h4 {
-        font-size: 20px;
-        color: var(--primary-color);
-        margin-bottom: 10px;
-    }
-
-    .feature-item p {
-        font-size: 16px;
+    .h-desc {
+        font-size: 15px;
+        font-weight: 500;
+        color: #ccc;
         line-height: 1.6;
     }
 
-    .highlight-box i {
-        font-size: 48px;
-        color: var(--primary-color);
-        margin-bottom: 20px;
+    .h-stat {
+        font-size: 42px;
+        font-weight: 800;
+        margin-bottom: 8px;
+        letter-spacing: -1px;
+        color: #fff;
     }
 
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
+    /* 2. Bundle Feature Section */
+    .bundle-section {
+        display: flex;
+        align-items: center;
+        gap: 80px;
+        margin-bottom: 180px;
     }
 
-    .fade-in {
-        animation: fadeIn 1s ease-in;
-    }
-
-    @media (max-width: 768px) {
-        .hero h1 {
-            font-size: 36px;
-        }
-
-        .hero p {
-            font-size: 18px;
-        }
-
-        .section h2 {
-            font-size: 28px;
-        }
-
-        .highlight-box {
-            padding: 20px;
-        }
-
-        .highlight-box h3 {
-            font-size: 24px;
-        }
-
-        .feature-grid,
-        .series-grid {
+    @media (max-width: 960px) {
+        .heritage-grid {
             grid-template-columns: 1fr;
         }
 
-        .feature-container {
-            flex-direction: column;
-        }
-
-        .feature-left, .feature-right, .feature-image {
-            width: 100%;
-            margin-bottom: 30px;
+        .bundle-section {
+            flex-direction: column-reverse;
+            /* Image on bottom on mobile for better flow? or top? Image usually top or bottom. Left/Right split usually stacks. Reference shows text left. */
+            align-items: flex-start;
         }
     }
-}
 
-.product-detail-popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    overflow-y: auto;
-}
+    .bundle-info {
+        flex: 1;
+        text-align: left;
+    }
 
-.product-detail-content {
-    background-color: #fff;
-    margin: 5% auto;
-    padding: 20px;
-    width: 80%;
-    max-width: 1200px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    position: relative;
-}
+    .tag-badge {
+        background-color: #222;
+        color: #fff;
+        font-size: 11px;
+        font-weight: 700;
+        padding: 8px 12px;
+        border-radius: 4px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        display: inline-block;
+        margin-bottom: 30px;
+    }
 
-.product-detail .hero {
-    text-align: center;
-    padding: 150px 0;
-    background-image: var(--gradient-secondary);
-    position: relative;
-    overflow: hidden;
-}
+    .bundle-title {
+        font-size: 64px;
+        font-weight: 900;
+        line-height: 1.05;
+        margin-bottom: 24px;
+        letter-spacing: -2px;
+        background: linear-gradient(to right, #fff, #888);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
 
-.product-detail .hero h1 {
-    font-size: 64px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-}
+    .bundle-desc {
+        font-size: 18px;
+        color: #888;
+        line-height: 1.7;
+        margin-bottom: 40px;
+        max-width: 500px;
+    }
 
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 30px;
-    font-weight: bold;
-    color: #333;
-    cursor: pointer;
-    z-index: 1001;
-    background-color: transparent;
-    border: none;
-    padding: 5px;
-    line-height: 1;
-}
+    .price-block {
+        display: flex;
+        align-items: baseline;
+        gap: 16px;
+        margin-bottom: 40px;
+    }
 
-.close-btn:hover {
-    color: #000;
-}
+    .price-current {
+        font-size: 32px;
+        font-weight: 800;
+        color: #fff;
+    }
 
+    .price-old {
+        font-size: 20px;
+        color: #555;
+        text-decoration: line-through;
+        font-weight: 600;
+    }
+
+    .price-save {
+        font-size: 18px;
+        color: #FF6B6B;
+        font-weight: 700;
+    }
+
+    .premium-btn {
+        background-color: #1a1a1a;
+        color: #fff;
+        border: 1px solid #333;
+        padding: 18px 40px;
+        border-radius: 100px;
+        font-size: 16px;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.2s ease;
+    }
+
+    .premium-btn:hover {
+        background-color: #fff;
+        color: #000;
+        border-color: #fff;
+    }
+
+    .bundle-visual {
+        flex: 1.2;
+        position: relative;
+    }
+
+    .bundle-visual img {
+        width: 100%;
+        display: block;
+        /* Slight reflection/glow effect */
+        filter: drop-shadow(0 0 50px rgba(255, 255, 255, 0.05));
+    }
+
+    /* 3. Authentic Sounds Section */
+    .sounds-section {
+        text-align: left;
+    }
+
+    .sounds-header {
+        margin-bottom: 60px;
+    }
+
+    .sounds-title {
+        font-size: 40px;
+        font-weight: 800;
+        margin-bottom: 20px;
+        color: #333;
+        /* Faded dark look as per "Faded" request, or make it standout? Reference image shows clear title. Let's start with dark grey or just white. User said "text not visible". I should make it contrasty. */
+        color: #ffffff;
+        /* Override to white for visibility on dark bg */
+        letter-spacing: -1px;
+    }
+
+    .sounds-sub {
+        font-size: 18px;
+        color: #666;
+        line-height: 1.6;
+        max-width: 600px;
+    }
+
+    .sounds-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    @media (max-width: 800px) {
+        .sounds-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .instrument-card {
+        background: transparent;
+    }
+
+    .inst-img-wrapper {
+        border-radius: 16px;
+        overflow: hidden;
+        margin-bottom: 24px;
+        background: #111;
+        border: 1px solid #222;
+        aspect-ratio: 16/9;
+        transition: all 0.3s ease;
+    }
+
+    .inst-img-wrapper:hover {
+        border-color: #444;
+        transform: scale(1.02);
+    }
+
+    .inst-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        opacity: 0.9;
+    }
+
+    .inst-name {
+        font-size: 22px;
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 10px;
+    }
+
+    .inst-desc {
+        font-size: 15px;
+        color: #888;
+        line-height: 1.6;
+    }
 </style>
 
-<!-- Introduction Section -->
-<section id="introduction" class="container mx-auto my-20 p-8 text-center reveal">
-    <h2 class="text-4xl font-semibold mb-8 uppercase tracking-wider">음악 제작의 새로운 패러다임, QLAUDIO 플러그인</h2>
-    <p class="max-w-3xl mx-auto leading-relaxed slide-up">QLAUDIO에서 제공하는 오디오 플러그인은 최신 기술을 바탕으로, 무한한 가능성을 제공합니다. 여러분의 음악과 사운드를 한층 더 완벽하게 만들어 줄 강력한 도구를 만나보세요.</p>
-</section>
+<div id="josun-series-wrapper">
+    <div class="josun-container reveal">
 
-<!-- Audio Plugins Section -->
-<section id="audio-plugins" class="container mx-auto my-20 p-8 text-center reveal">
-    <h2 class="text-4xl font-semibold mb-8 uppercase tracking-wider">Audio Plugins</h2>
-    <div class="product-grid">
-        <div class="product-card">
-            <h3 class="text-2xl font-bold mb-4">Dimension Delay</h3>
-            <div class="relative">
-                <div class="absolute inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center rounded-lg">
-                    <span class="text-white text-lg font-semibold">Coming Soon</span>
+        <!-- Platinum Bundle Feature -->
+        <div class="bundle-section">
+            <div class="bundle-info">
+                <span class="tag-badge">Best Value</span>
+                <h1 class="bundle-title">Josun Series<br>Platinum Bundle</h1>
+                <p class="bundle-desc">
+                    현악, 관악, 타악의 모든 컬렉션.<br>
+                    한국의 진정한 사운드를 하나의 패키지로 만나보세요.
+                </p>
+                <div class="price-block">
+                    <span class="price-current">$299.00</span>
+                    <span class="price-old">$499.00</span>
+                    <span class="price-save">Save $200.00</span>
                 </div>
-                <img src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083478/plugins/qemrbrj3gio7qthbavqj.webp" alt="Dimension Delay" class="product-image">
+                <a href="https://qlaudio.co.kr" target="_blank" class="premium-btn">View Bundle</a>
             </div>
-            <p class="mt-4">Multi dimensional delay</p>
-            <a href="learn-more.html" class="learn-more">Learn More</a>
+            <div class="bundle-visual">
+                <img src="https://ecimg.cafe24img.com/pg1160b39285111053/qlaudio/web/product/extra/big/20250503/b5f8776142069849619888da0bffd026.png"
+                    alt="Josun Series Platinum Bundle Box">
+            </div>
         </div>
-        <div class="product-card">
-            <h3 class="text-2xl font-bold mb-4">Spatial Reverb</h3>
-            <div class="relative">
-                <div class="absolute inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center rounded-lg">
-                    <span class="text-white text-lg font-semibold">Coming Soon</span>
-                </div>
-                <img src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083479/plugins/pnr2uhy5rrcnlxu2eo5r.webp" alt="Spatial Reverb" class="product-image">
+
+        <!-- Heritage Cards -->
+        <div class="heritage-grid">
+            <div class="h-card">
+                <span class="h-label">Source</span>
+                <h3 class="h-title">국립국악원<br>공식 음원</h3>
+                <p class="h-desc">국립국악원에서 공식적으로 제작한<br>음원을 제공받아 제작되었습니다.</p>
             </div>
-            <p class="mt-4">Multi spatial convolution reverb</p>
-            <a href="learn-more.html" class="learn-more">Learn More</a>
+            <div class="h-card">
+                <span class="h-stat">1,000</span>
+                <span class="h-label" style="margin-bottom: 8px;">년의 역사</span>
+                <p class="h-desc" style="margin-top: 20px;">천년의 숨결과 혼을<br>그대로 담았습니다.</p>
+            </div>
+            <div class="h-card">
+                <span class="h-label">Intangible Cultural Property</span>
+                <h3 class="h-title">무형문화재<br>연주자</h3>
+                <p class="h-desc">국가무형문화재 이수자들의<br>연주를 직접 기록했습니다.</p>
+            </div>
         </div>
-        <div class="product-card">
-            <h3 class="text-2xl font-bold mb-4">Binary Comp</h3>
-            <div class="relative">
-                <div class="absolute inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center rounded-lg">
-                    <span class="text-white text-lg font-semibold">Coming Soon</span>
-                </div>
-                <img src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083488/plugins/qwlow1gdxhtxsvahlthg.webp" alt="Binary Comp" class="product-image">
+
+
+        <!-- Authentic Sounds Showcase -->
+        <div class="sounds-section">
+            <div class="sounds-header">
+                <h2 class="sounds-title">The Authentic Sounds</h2>
+                <p class="sounds-sub">
+                    최첨단 기술로 기록한 한국의 상징적인 악기들.<br>
+                    각 악기의 고유한 음색을 경험하세요.
+                </p>
             </div>
-            <p class="mt-4">Sample accurate digital compressor</p>
-            <a href="learn-more.html" class="learn-more">Learn More</a>
-        </div>
-        <div class="product-card">
-            <h3 class="text-2xl font-bold mb-4">Pallete Comp</h3>
-            <div class="relative">
-                <div class="absolute inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center rounded-lg">
-                    <span class="text-white text-lg font-semibold">Coming Soon</span>
+
+            <div class="sounds-grid">
+                <!-- Strings -->
+                <div class="instrument-card">
+                    <div class="inst-img-wrapper">
+                        <img src="images/StringsGUI.png" alt="Strings Interface">
+                    </div>
+                    <h3 class="inst-name">Strings (Hyeon-ak)</h3>
+                    <p class="inst-desc">가야금, 거문고, 해금, 아쟁.<br>명주실의 깊은 울림. 농현의 떨림부터 날카로운 타격음까지.</p>
                 </div>
-                <img src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083488/plugins/enqhzkmpibez1tvfmszj.webp" alt="Pallete Comp" class="product-image">
-            </div>
-            <p class="mt-4">A warm coloring analog type compressor</p>
-            <a href="learn-more.html" class="learn-more">Learn More</a>
-        </div>
-        <div class="product-card">
-            <h3 class="text-2xl font-bold mb-4">Spectral Comp</h3>
-            <div class="relative">
-                <div class="absolute inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center rounded-lg">
-                    <span class="text-white text-lg font-semibold">Coming Soon</span>
+                <!-- Woodwinds -->
+                <div class="instrument-card">
+                    <div class="inst-img-wrapper">
+                        <img src="images/WoodwindsGUI.png" alt="Woodwinds Interface">
+                    </div>
+                    <h3 class="inst-name">Woodwinds (Gwan-ak)</h3>
+                    <p class="inst-desc">대금, 소금, 피리, 태평소.<br>자연의 숨결. 섬세한 비브라토와 역동적인 공기의 흐름.</p>
                 </div>
-                <img src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083488/plugins/wdsgavxv91hwvthaunex.webp" alt="Spectral Comp" class="product-image">
-            </div>
-            <p class="mt-4">A full spectrum multiband compressor</p>
-            <a href="learn-more.html" class="learn-more">Learn More</a>
-        </div>
-        <div class="product-card">
-            <h3 class="text-2xl font-bold mb-4">Limiter</h3>
-            <div class="relative">
-                <div class="absolute inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center rounded-lg">
-                    <span class="text-white text-lg font-semibold">Coming Soon</span>
+                <!-- Percussion -->
+                <div class="instrument-card">
+                    <div class="inst-img-wrapper">
+                        <img src="images/PercussionGUI.png" alt="Percussion Interface">
+                    </div>
+                    <h3 class="inst-name">Percussion (Ta-ak)</h3>
+                    <p class="inst-desc">장구, 북, 징, 꽹과리.<br>전통의 심장박동. 극강의 리얼리즘을 위한 광범위한 벨로시티 레이어.</p>
                 </div>
-                <img src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083478/plugins/xo43mh50k0ig8fxqlstf.webp" alt="Limiter" class="product-image">
             </div>
-            <p class="mt-4">A limiter with LUFS, RMS monitoring feature</p>
-            <a href="learn-more.html" class="learn-more">Learn More</a>
-        </div>
-        <div class="product-card">
-            <h3 class="text-2xl font-bold mb-4">Equalizer</h3>
-            <div class="relative">
-                <div class="absolute inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center rounded-lg">
-                    <span class="text-white text-lg font-semibold">Coming Soon</span>
-                </div>
-                <img src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083488/plugins/uoyyazjho65bdpqsxbn4.webp" alt="Equalizer" class="product-image">
-            </div>
-            <p class="mt-4">A QLAUDIO special equalizer</p>
-            <a href="learn-more.html" class="learn-more">Learn More</a>
-        </div>
-        <div class="product-card">
-            <h3 class="text-2xl font-bold mb-4">Havanero</h3>
-            <div class="relative">
-                <div class="absolute inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center rounded-lg">
-                    <span class="text-white text-lg font-semibold">Coming Soon</span>
-                </div>
-                <img src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083478/plugins/zvjuhsgtfigvnfvcpssr.webp" alt="Havanero" class="product-image">
-            </div>
-            <p class="mt-4">Drive audio plugin (distortion, overdrive, fuzz, etc.)</p>
-            <a href="learn-more.html" class="learn-more">Learn More</a>
-        </div>
-        <div class="product-card">
-            <h3 class="text-2xl font-bold mb-4">Vision</h3>
-            <div class="relative">
-                <div class="absolute inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center rounded-lg">
-                    <span class="text-white text-lg font-semibold">Coming Soon</span>
-                </div>
-                <img src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083488/plugins/ahbn16iowjtzr2gjibfp.webp" alt="Vision" class="product-image">
-            </div>
-            <p class="mt-4">Audio Analyzer (Loudness, BPM, Spectrogram, etc.)</p>
-            <a href="learn-more.html" class="learn-more">Learn More</a>
-        </div>
-        <div class="product-card">
-            <h3 class="text-2xl font-bold mb-4">Imager</h3>
-            <div class="relative">
-                <div class="absolute inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center rounded-lg">
-                    <span class="text-white text-lg font-semibold">Coming Soon</span>
-                </div>
-                <img src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083483/plugins/zpmwrvoqentejrygetl0.webp" alt="Imager" class="product-image">
-            </div>
-            <p class="mt-4">A Mid-Side type audio plugin for stereo spread effects</p>
-            <a href="learn-more.html" class="learn-more">Learn More</a>
-        </div>
-        <div class="product-card">
-            <h3 class="text-2xl font-bold mb-4">Wonderland</h3>
-            <div class="relative">
-                <div class="absolute inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center rounded-lg">
-                    <span class="text-white text-lg font-semibold">Coming Soon</span>
-                </div>
-                <img src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083479/plugins/oalxm22uwkuj24twfina.webp" alt="Modulater" class="product-image">
-            </div>
-            <p class="mt-4">a multi modulation effects in one package (Chorus, Flanger, Phaser)</p>
-            <a href="learn-more.html" class="learn-more">Learn More</a>
-        </div>
-        <div class="product-card">
-            <h3 class="text-2xl font-bold mb-4">Pitch Shifter</h3>
-            <div class="relative">
-                <div class="absolute inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center rounded-lg">
-                    <span class="text-white text-lg font-semibold">Coming Soon</span>
-                </div>
-                <img src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083478/plugins/ylslok4cknz0jk3shbql.webp" alt="Pitch Shifter" class="product-image">
-            </div>
-            <p class="mt-4">Pitch & formant adjusting plugin</p>
-            <a href="learn-more.html" class="learn-more">Learn More</a>
-        </div>
-        <div class="product-card">
-            <h3 class="text-2xl font-bold mb-4">Docker</h3>
-            <div class="relative">
-                <div class="absolute inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center rounded-lg">
-                    <span class="text-white text-lg font-semibold">Coming Soon</span>
-                </div>
-                <img src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083478/plugins/yrxipxsud9hjgw7sqfrw.webp" alt="Docker" class="product-image">
-            </div>
-            <p class="mt-4">Audio ducking effect (compressor sidechain effect)</p>
-            <a href="learn-more.html" class="learn-more">Learn More</a>
-        </div>
-        <div class="product-card">
-            <h3 class="text-2xl font-bold mb-4">Voice Module</h3>
-            <div class="relative">
-                <div class="absolute inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center rounded-lg">
-                    <span class="text-white text-lg font-semibold">Coming Soon</span>
-                </div>
-                <img src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083489/plugins/wfb1oqw7tifsggas2yrz.webp" alt="Voice Module" class="product-image">
-            </div>
-            <p class="mt-4">A voice sound design plugin, making monster voices and such</p>
-            <a href="learn-more.html" class="learn-more">Learn More</a>
         </div>
     </div>
-</section>
+</div>

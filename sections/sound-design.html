@@ -1,0 +1,514 @@
+<section id="sound-design-detail" class="detail-section">
+    <div class="container">
+        <!-- Header -->
+        <div class="detail-header">
+            <button onclick="location.reload()" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Back to Lists
+            </button>
+            <div class="detail-badge">Interactive & Cinematic</div>
+            <h1>Sound Design & Music Production</h1>
+            <p class="detail-subtitle">사용자의 경험을 완성하는 몰입형 오디오 솔루션</p>
+        </div>
+
+        <!-- Intro -->
+        <div class="detail-intro">
+            <div class="intro-grid">
+                <div class="intro-text">
+                    <h3>"Sound that Breathes Life into Content"</h3>
+                    <p>
+                        QLAUDIO는 게임, 메타버스, 영상 미디어 등 다양한 플랫폼에 최적화된 사운드를 디자인합니다.
+                        단순히 소리를 채우는 것을 넘어, 콘텐츠의 <strong>타격감(Impact)</strong>, <strong>공간감(Ambience)</strong>, 그리고
+                        <strong>감정선(Emotion)</strong>을 정교하게 설계합니다.
+                        <br><br>
+                        NCSOFT, NAVER Z 출신의 전문 사운드 디자이너들이 게임 엔진 및 미들웨어(Wwise, FMOD) 기술을 바탕으로
+                        개발 환경에 완벽하게 작동하는 인터랙티브 오디오를 제공합니다.
+                    </p>
+                </div>
+                <div class="intro-stat">
+                    <div class="stat-item">
+                        <span class="count">20+</span>
+                        <span class="label">AAA & Mobile Projects</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="count">100%</span>
+                        <span class="label">Implementation Rate</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="count">Dolby</span>
+                        <span class="label">Atmos Ready</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Detailed Services -->
+        <div class="detail-services-wrapper">
+            <h2 class="sub-title">Core Services</h2>
+
+            <!-- Service 1 -->
+            <div class="service-highlight">
+                <div class="service-text">
+                    <span class="svc-cat">01. Game Audio</span>
+                    <h2>Interactive Sound Design</h2>
+                    <p>게임 플레이 상황에 실시간으로 반응하는 인터랙티브 사운드를 설계합니다. 타격감, UI 피드백, 앰비언스 등 게임의 재미를 배가시키는 핵심 요소를 제작합니다.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> <strong>SFX Production</strong>: 스킬, 타격, 몬스터, UI 등 고퀄리티
+                            효과음 제작</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Middleware Integration</strong>: Wwise / FMOD
+                            프로젝트 세팅 및 최적화</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Engine Implementation</strong>: Unity / Unreal
+                            Engine 오디오 구현 지원</li>
+                    </ul>
+                </div>
+                <div class="service-visual interactive-game-container" id="sound-design-game-area"
+                    style="position: relative; background: #000; overflow: hidden; cursor: crosshair;">
+                    <canvas id="gameCanvas" style="width: 100%; height: 100%; display: block;"></canvas>
+
+                </div>
+            </div>
+
+            <!-- Gameplay Video Gallery (Inserted) -->
+            <div class="video-gallery-section" style="margin-bottom: 100px;">
+                <h3 class="sub-title center" style="margin-bottom: 40px; font-size: 24px;">Gameplay Sound Demo</h3>
+                <div class="video-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+                    <div class="video-item"
+                        style="background: #000; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-dim);">
+                        <video src="images/portfolio/Animal Farming.mp4" controls preload="metadata"
+                            style="width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover;"></video>
+                        <p
+                            style="padding: 12px; margin: 0; color: var(--text-secondary); text-align: center; font-size: 14px;">
+                            <strong style="display:block; margin-bottom:4px; color:#fff;">Casual Simulation</strong>
+                            동물의 숲, 스타듀밸리 등
+                        </p>
+                    </div>
+                    <div class="video-item"
+                        style="background: #000; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-dim);">
+                        <video src="images/portfolio/Arcane Decks.mp4" controls preload="metadata"
+                            style="width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover;"></video>
+                        <p
+                            style="padding: 12px; margin: 0; color: var(--text-secondary); text-align: center; font-size: 14px;">
+                            <strong style="display:block; margin-bottom:4px; color:#fff;">Card Strategy</strong>
+                            하스스톤, 슬레이 더 스파이어 등
+                        </p>
+                    </div>
+                    <div class="video-item"
+                        style="background: #000; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-dim);">
+                        <video src="images/portfolio/Battle Royale.mp4" controls preload="metadata"
+                            style="width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover;"></video>
+                        <p
+                            style="padding: 12px; margin: 0; color: var(--text-secondary); text-align: center; font-size: 14px;">
+                            <strong style="display:block; margin-bottom:4px; color:#fff;">FPS / Battle Royale</strong>
+                            배틀그라운드, 콜 오브 듀티 등
+                        </p>
+                    </div>
+                    <div class="video-item"
+                        style="background: #000; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-dim);">
+                        <video src="images/portfolio/Dungeon Survivor.mp4" controls preload="metadata"
+                            style="width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover;"></video>
+                        <p
+                            style="padding: 12px; margin: 0; color: var(--text-secondary); text-align: center; font-size: 14px;">
+                            <strong style="display:block; margin-bottom:4px; color:#fff;">Dark Fantasy RPG</strong>
+                            디아블로, 다크소울, POE 등
+                        </p>
+                    </div>
+                    <div class="video-item"
+                        style="background: #000; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-dim);">
+                        <video src="images/portfolio/Puzzle World.mp4" controls preload="metadata"
+                            style="width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover;"></video>
+                        <p
+                            style="padding: 12px; margin: 0; color: var(--text-secondary); text-align: center; font-size: 14px;">
+                            <strong style="display:block; margin-bottom:4px; color:#fff;">Casual Puzzle</strong>
+                            캔디크러쉬, 로얄매치 등
+                        </p>
+                    </div>
+                    <div class="video-item"
+                        style="background: #000; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-dim);">
+                        <video src="images/portfolio/Virtual Fighter.mp4" controls preload="metadata"
+                            style="width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover;"></video>
+                        <p
+                            style="padding: 12px; margin: 0; color: var(--text-secondary); text-align: center; font-size: 14px;">
+                            <strong style="display:block; margin-bottom:4px; color:#fff;">Action Fighting</strong>
+                            철권, 스트리트 파이터 등
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-highlight reverse">
+                <div class="service-text">
+                    <span class="svc-cat">02. Media Scoring</span>
+                    <h2>Cinematic Music & BGM</h2>
+                    <p>작품의 서사에 깊이를 더하는 오리지널 스코어를 작곡합니다. 풀 오케스트라부터 트렌디한 일렉트로닉까지, 장르를 넘나드는 프로덕션 퀄리티를 보장합니다.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> <strong>Original Soundtrack</strong>: 테마곡, 배경음악, 인게임 BGM
+                            작곡</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Adaptive Music</strong>: 상황별 레이어링 및
+                            전이(Transition) 설계</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Brand Identity</strong>: 사운드 로고 및 브랜드 경험 음악</li>
+                    </ul>
+                </div>
+                <div class="service-visual" id="media-scoring-visual"
+                    style="position: relative; background: #0b0b15; overflow: hidden;">
+                    <canvas id="pianoCanvas" style="width: 100%; height: 100%; display: block;"></canvas>
+                    <div
+                        style="position: absolute; bottom: 20px; left: 0; width: 100%; text-align: center; pointer-events: none;">
+                        <span
+                            style="color: rgba(255,255,255,0.3); font-size: 12px; letter-spacing: 2px; text-transform: uppercase;"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Music Samples Section (Moved) -->
+            <div class="samples-section" style="margin-top: 60px; margin-bottom: 0;">
+                <h3 class="sub-title center" style="margin-bottom: 30px;">Music(BGM) Demos</h3>
+                <div class="samples-list-interactive">
+
+                    <!-- RPG -->
+                    <div class="track-item"
+                        data-url="https://res.cloudinary.com/dqgy0tdnx/video/upload/v1721085094/audios/i5nissa87ounbzvhjub6.mp3">
+                        <div class="track-header">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                            <span class="track-title">RPG Theme</span>
+                            <span class="track-time">Loading...</span>
+                        </div>
+                        <div class="waveform-container"></div>
+                    </div>
+
+                    <!-- Thriller -->
+                    <div class="track-item"
+                        data-url="https://res.cloudinary.com/dqgy0tdnx/video/upload/v1721085095/audios/fkijvk4ceatlap1ks6sp.mp3">
+                        <div class="track-header">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                            <span class="track-title">Thriller Theme</span>
+                            <span class="track-time">Loading...</span>
+                        </div>
+                        <div class="waveform-container"></div>
+                    </div>
+
+                    <!-- Romance -->
+                    <div class="track-item"
+                        data-url="https://res.cloudinary.com/dqgy0tdnx/video/upload/v1721085095/audios/ujda2lxyqembojwxudz4.mp3">
+                        <div class="track-header">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                            <span class="track-title">Romance Theme</span>
+                            <span class="track-time">Loading...</span>
+                        </div>
+                        <div class="waveform-container"></div>
+                    </div>
+
+                    <!-- Hero -->
+                    <div class="track-item"
+                        data-url="https://res.cloudinary.com/dqgy0tdnx/video/upload/v1721085094/audios/ti5pzmzbvp55sus5lht6.mp3">
+                        <div class="track-header">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                            <span class="track-title">Hero Theme</span>
+                            <span class="track-time">Loading...</span>
+                        </div>
+                        <div class="waveform-container"></div>
+                    </div>
+
+                    <!-- Adventure -->
+                    <div class="track-item"
+                        data-url="https://res.cloudinary.com/dqgy0tdnx/video/upload/v1721085095/audios/lrmioirbe6xrwss3on89.mp3">
+                        <div class="track-header">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                            <span class="track-title">Adventure Theme</span>
+                            <span class="track-time">Loading...</span>
+                        </div>
+                        <div class="waveform-container"></div>
+                    </div>
+
+                    <!-- Mystery -->
+                    <div class="track-item"
+                        data-url="https://res.cloudinary.com/dqgy0tdnx/video/upload/v1721085094/audios/dl6coyjum4p7i8dlkmrs.mp3">
+                        <div class="track-header">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                            <span class="track-title">Mystery Theme</span>
+                            <span class="track-time">Loading...</span>
+                        </div>
+                        <div class="waveform-container"></div>
+                    </div>
+
+                    <!-- Fantasy -->
+                    <div class="track-item"
+                        data-url="https://res.cloudinary.com/dqgy0tdnx/video/upload/v1721085093/audios/g0yyta3hfkzawgp9zkgn.mp3">
+                        <div class="track-header">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                            <span class="track-title">Fantasy Theme</span>
+                            <span class="track-time">Loading...</span>
+                        </div>
+                        <div class="waveform-container"></div>
+                    </div>
+
+                    <!-- Winter -->
+                    <div class="track-item"
+                        data-url="https://res.cloudinary.com/dqgy0tdnx/video/upload/v1721085095/audios/yn7hkezrjxaed9zf0ekt.mp3">
+                        <div class="track-header">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                            <span class="track-title">Winter Theme</span>
+                            <span class="track-time">Loading...</span>
+                        </div>
+                        <div class="waveform-container"></div>
+                    </div>
+
+                    <!-- Desert -->
+                    <div class="track-item"
+                        data-url="https://res.cloudinary.com/dqgy0tdnx/video/upload/v1721085095/audios/j2eswsgspr83y2b4gof0.mp3">
+                        <div class="track-header">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                            <span class="track-title">Desert Theme</span>
+                            <span class="track-time">Loading...</span>
+                        </div>
+                        <div class="waveform-container"></div>
+                    </div>
+
+                    <!-- Casual -->
+                    <div class="track-item"
+                        data-url="https://res.cloudinary.com/dqgy0tdnx/video/upload/v1721085094/audios/mqwk2wzeagsok8yuotov.mp3">
+                        <div class="track-header">
+                            <button class="play-btn"><i class="fas fa-play"></i></button>
+                            <span class="track-title">Casual Theme</span>
+                            <span class="track-time">Loading...</span>
+                        </div>
+                        <div class="waveform-container"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Option 1: Philosophy -->
+        <div class="philosophy-section">
+            <h2 class="sub-title">Sound Design Philosophy</h2>
+            <div class="philosophy-content">
+                <h3>Auditory Architecture</h3>
+                <p>
+                    QLAUDIO의 사운드 디자인은 단순히 빈 공간을 소리로 채우는 작업이 아닙니다. 우리는 사용자의 경험을 디자인하는 <strong>'청각적 건축가(Auditory
+                        Architects)'</strong>입니다.<br><br>
+                    텍스트와 비주얼 너머에 존재하는 감정을 소리로 구체화하기 위해, 우리는 심리음향학(Psychoacoustics)에 기반한 정밀한 사운드 텍스처를 설계합니다. 찰나의 타격감부터
+                    공간을 감싸는 앰비언스까지, 모든 소리는 철저한 의도와 계산 하에 배치되며, 사용자의 몰입을 방해하지 않으면서도 무의식 중에 강력한 감정적 동요를 일으키도록
+                    튜닝됩니다.<br><br>
+                    기술과 예술의 경계에서, QLAUDIO는 들리는 것 이상의 경험을 창조합니다.
+                </p>
+            </div>
+        </div>
+
+        <!-- Option 2: Technical Expertise -->
+        <div class="expertise-section">
+            <h2 class="sub-title center">Technical Expertise: Precision & Implementation</h2>
+            <div class="expertise-grid">
+                <div class="exp-card">
+                    <i class="fas fa-network-wired"></i>
+                    <h4>Adaptive & Interactive Audio</h4>
+                    <p>선형적인 미디어를 넘어, 사용자의 행동과 게임 내 변수에 실시간으로 반응하는 가변형 오디오 시스템을 설계합니다. Wwise 및 FMOD 미들웨어 운용 능력을 바탕으로,
+                        언리얼(Unreal) 및 유니티(Unity) 엔진 내에서 복잡한 로직을 수행하는 지능적인 사운드를 구현합니다.</p>
+                </div>
+                <div class="exp-card">
+                    <i class="fas fa-microchip"></i>
+                    <h4>Procedural Sound Design with MaxMSP</h4>
+                    <p>정해진 샘플을 반복 재생하는 것을 넘어, MaxMSP와 같은 오디오 프로그래밍 툴을 활용하여 상황에 따라 실시간으로 합성(Synthesis)되는 '절차적
+                        오디오(Procedural Audio)'를 제작합니다. 이는 한정된 메모리 자원 내에서 무한한 사운드 바리에이션을 제공하는 핵심 기술입니다.</p>
+                </div>
+                <div class="exp-card">
+                    <i class="fas fa-microphone-alt"></i>
+                    <h4>Hyper-Realistic Foley</h4>
+                    <p>자체 폴리 레코딩 스튜디오에서의 고해상도 녹음과 레이어링(Layering) 기법을 통해, 존재하지 않는 가상의 캐릭터와 공간에도 헐리우드 블록버스터급의 생동감 넘치는 질감을
+                        부여합니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Option 3: Quality Assurance -->
+    </div>
+
+
+
+    <!-- Process -->
+    <div class="process-section">
+        <h2 class="sub-title center">Production Workflow</h2>
+        <div class="process-steps">
+            <div class="step-card">
+                <div class="step-num">01</div>
+                <h4>Analysis</h4>
+                <p>게임/콘텐츠의 기획 의도와 아트 스타일을 분석하여 사운드 컨셉을 도출합니다.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">02</div>
+                <h4>Asset Creation</h4>
+                <p>고해상도 레코딩 및 신디사이징을 통해 독창적인 오디오 에셋을 제작합니다.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">03</div>
+                <h4>Implementation</h4>
+                <p>Wwise, FMOD 또는 엔진에 직접 사운드를 적용하고 로직을 설계합니다.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">04</div>
+                <h4>QA & Polish</h4>
+                <p>인게임 플레이 테스트를 통해 볼륨 밸런스를 조정하고 버그를 수정합니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Gallery (Infinite Scroll) -->
+    <div class="gallery-section">
+        <h2 class="sub-title center">Featured Works</h2>
+        <div class="marquee-wrapper">
+
+            <!-- Row 1: Scroll Left -->
+            <div class="marquee-track row-1">
+                <!-- Original Set 1-10 -->
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083490/portfolio/t0v1sxxbmdraeoy3rppo.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083490/portfolio/w3vuflt1c3iaqa52lkt7.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083489/portfolio/b3aqxcnag5j6covw8wju.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083489/portfolio/ptdwppuvbzahxwkwwprz.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083489/portfolio/l1ylu7wype8c4ncswaw6.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083490/portfolio/ki5ykvb91odvgq6cmjhx.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083490/portfolio/zdgvmctx5fj8frzaxhyc.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083490/portfolio/luyqcnb7byigxwvlxcyg.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083489/portfolio/mxxtcmbrscpyh42yo9d2.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083490/portfolio/uoikphtmv25h2bqlqvle.webp"
+                        loading="lazy"></div>
+
+                <!-- Duplicate Set 1-10 -->
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083490/portfolio/t0v1sxxbmdraeoy3rppo.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083490/portfolio/w3vuflt1c3iaqa52lkt7.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083489/portfolio/b3aqxcnag5j6covw8wju.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083489/portfolio/ptdwppuvbzahxwkwwprz.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083489/portfolio/l1ylu7wype8c4ncswaw6.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083490/portfolio/ki5ykvb91odvgq6cmjhx.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083490/portfolio/zdgvmctx5fj8frzaxhyc.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083490/portfolio/luyqcnb7byigxwvlxcyg.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083489/portfolio/mxxtcmbrscpyh42yo9d2.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083490/portfolio/uoikphtmv25h2bqlqvle.webp"
+                        loading="lazy"></div>
+            </div>
+
+            <!-- Row 2: Scroll Right -->
+            <div class="marquee-track row-2">
+                <!-- Original Set 11-20 -->
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083489/portfolio/aibxm4s8krtversrzgcl.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083491/portfolio/jdn6ua1kforkjfustfle.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083491/portfolio/avg2dq6ue574xzco6t0y.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083492/portfolio/aw2uofmkklumketlavep.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083491/portfolio/msylp8rgsjwhnf1xlc8z.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083492/portfolio/twjtpbjkgdevcun6bxcr.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083491/portfolio/pjjcozdfrmp7bkwviuuv.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083492/portfolio/zwbm0pzcs7c82blho0tj.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://yt3.googleusercontent.com/LNtnlrvok3MsC0eSYyH8q-LwRcUlFu6zhO_H_6z-k-5lNt_OEDqvkrTTiW7mwAyrY_6r29YW0w=s900-c-k-c0x00ffffff-no-rj"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://image.fnnews.com/resource/media/image/2020/07/17/202007171438131884_e.jpg"
+                        loading="lazy"></div>
+
+                <!-- Duplicate Set 11-20 -->
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083489/portfolio/aibxm4s8krtversrzgcl.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083491/portfolio/jdn6ua1kforkjfustfle.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083491/portfolio/avg2dq6ue574xzco6t0y.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083492/portfolio/aw2uofmkklumketlavep.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083491/portfolio/msylp8rgsjwhnf1xlc8z.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083492/portfolio/twjtpbjkgdevcun6bxcr.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083491/portfolio/pjjcozdfrmp7bkwviuuv.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://res.cloudinary.com/dqgy0tdnx/image/upload/v1721083492/portfolio/zwbm0pzcs7c82blho0tj.webp"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://yt3.googleusercontent.com/LNtnlrvok3MsC0eSYyH8q-LwRcUlFu6zhO_H_6z-k-5lNt_OEDqvkrTTiW7mwAyrY_6r29YW0w=s900-c-k-c0x00ffffff-no-rj"
+                        loading="lazy"></div>
+                <div class="marquee-item"><img
+                        src="https://image.fnnews.com/resource/media/image/2020/07/17/202007171438131884_e.jpg"
+                        loading="lazy"></div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+    <!-- Tech Stack -->
+    <div class="tech-section">
+        <h2 class="sub-title center">Tools & Specifications</h2>
+        <div class="tech-grid">
+            <div class="tech-item"><i class="fas fa-tools"></i> <span>Pro Tools</span></div>
+            <div class="tech-item"><i class="fas fa-wave-square"></i> <span>Nuendo</span></div>
+            <div class="tech-item"><i class="fas fa-project-diagram"></i> <span>Wwise</span></div>
+            <div class="tech-item"><i class="fas fa-cogs"></i> <span>FMOD</span></div>
+            <div class="tech-item"><i class="fab fa-unity"></i> <span>Unity</span></div>
+            <div class="tech-item"><i class="fab fa-kickstarter"></i> <span>Unreal</span></div>
+        </div>
+    </div>
+
+    </div>
+    </div>
+</section>
