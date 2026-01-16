@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estimate - QLAUDIO</title>
+    <meta name="description"
+        content="QLAUDIO Virtual Estimate System. Calculate a rough estimate for your audio project.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-main': '#18181b', // Main background
+                        'bg-surface': '#27272a', // Surface color
+                        'accent-color': '#3b82f6', // Accent blue
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Inherit global styles from style.css where possible, adding specific overrides here */
+        body {
+            background-color: var(--bg-main, #18181b);
+            color: #f5f5f5;
+            font-family: 'Pretendard', sans-serif;
+        }
+
+        .est-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 20px 100px;
+        }
+
+        .est-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .est-header h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
+            background: linear-gradient(to right, #fff, #999);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .est-header p {
+            color: #9ca3af;
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Calculator Cards */
+        .est-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .est-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 30px;
+            transition: transform 0.3s;
+        }
+
+        .est-card:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .est-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .est-card-header i {
+            font-size: 24px;
+            color: #60a5fa;
+        }
+
+        .est-card-header h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        /* Input Groups */
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #d1d5db;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .input-desc {
+            font-size: 12px;
+            color: #6b7280;
+            margin-top: 4px;
+            line-height: 1.4;
+        }
+
+        .est-input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.2s;
+        }
+
+        .est-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .price-badge {
+            font-size: 12px;
+            background: rgba(59, 130, 246, 0.1);
+            color: #60a5fa;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        /* Total Section */
+        .total-section {
+            background: linear-gradient(135deg, #1e1b4b, #111827);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+            position: sticky;
+            bottom: 20px;
+            z-index: 10;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 20px;
+        }
+
+        .total-label {
+            font-size: 18px;
+            color: #9ca3af;
+        }
+
+        .total-amount {
+            font-size: 42px;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .total-vat {
+            font-size: 14px;
+            color: #6b7280;
+            text-align: right;
+            margin-top: 5px;
+        }
+
+        .action-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-copy {
+            flex: 1;
+            background: #fff;
+            color: #000;
+            font-weight: 700;
+            padding: 16px;
+            border-radius: 99px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+            border: none;
+            font-size: 16px;
+        }
+
+        .btn-copy:hover {
+            transform: translateY(-2px);
+            background: #f3f4f6;
+        }
+
+        .btn-contact {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            font-weight: 700;
+            padding: 16px;
+            border-radius: 99px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+        }
+
+        .btn-contact:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .total-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .total-amount {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Simple Nav (Back to Home) -->
+    <nav style="padding: 20px; position: absolute; top:0; left:0; width: 100%; z-index: 50;">
+        <a href="index.html"
+            style="color: #fff; text-decoration: none; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+            <i class="fas fa-arrow-left"></i> Back to Main
+        </a>
+    </nav>
+
+    <div class="est-container">
+        <div class="est-header">
+            <h1>Virtual Estimate System</h1>
+            <p>
+                업계 최저가 보장, 최고의 퀄리티를 약속합니다.<br>
+                아래 계산기는 대략적인 '간이 견적'이며, 프로젝트 규모와 예산에 따라<br>
+                <strong>번들 할인 및 추가 네고</strong>가 가능하니 편하게 상담해 주세요.
+            </p>
+        </div>
+
+        <div class="est-grid">
+            <!-- 1. SFX ESTIMATE -->
+            <div class="est-card">
+                <div class="est-card-header">
+                    <i class="fas fa-volume-up"></i>
+                    <h3>SFX Estimator</h3>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">
+                        Simple SFX
+                        <span class="price-badge">30,000원 / 개</span>
+                    </label>
+                    <input type="number" id="sfx-simple" class="est-input" placeholder="0" min="0"
+                        oninput="calculateTotal()">
+                    <p class="input-desc">단순 효과음 (UI, 클릭음, 발자국 등)</p>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">
+                        Standard SFX
+                        <span class="price-badge">50,000원 / 개</span>
+                    </label>
+                    <input type="number" id="sfx-medium" class="est-input" placeholder="0" min="0"
+                        oninput="calculateTotal()">
+                    <p class="input-desc">중급 효과음 (기본 스킬, 타격, 피격, 몬스터, 문 개폐 등)</p>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">
+                        Complex SFX
+                        <span class="price-badge">100,000원 / 개</span>
+                    </label>
+                    <input type="number" id="sfx-complex" class="est-input" placeholder="0" min="0"
+                        oninput="calculateTotal()">
+                    <p class="input-desc">고급 효과음 (궁극기, 보스, 앰비언스 루프, 복잡한 기계음, MFX)</p>
+                </div>
+            </div>
+
+            <!-- 2. BGM ESTIMATE -->
+            <div class="est-card">
+                <div class="est-card-header">
+                    <i class="fas fa-music"></i>
+                    <h3>BGM Production</h3>
+                </div>
+                <p style="font-size: 13px; color: #888; margin-bottom: 20px;">
+                    * 저작권 완전 양도, DLC/디럭스 판매 등 2차 수익 창출 가능
+                </p>
+
+                <div class="input-group">
+                    <label class="input-label">
+                        Simple Track
+                        <span class="price-badge">500,000원 / 곡</span>
+                    </label>
+                    <input type="number" id="bgm-simple" class="est-input" placeholder="0" min="0"
+                        oninput="calculateTotal()">
+                    <p class="input-desc">악기 구성이 적은 심플한 장르, 짧은 아케이드 곡 등</p>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">
+                        Standard Track
+                        <span class="price-badge">1,000,000원 / 곡</span>
+                    </label>
+                    <input type="number" id="bgm-standard" class="est-input" placeholder="0" min="0"
+                        oninput="calculateTotal()">
+                    <p class="input-desc">일반적인 게임 BGM (밴드, 캐주얼 오케, 일렉트로닉, 로고송 등)</p>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">
+                        Hard / Epic
+                        <span class="price-badge">1,500,000원 / 곡</span>
+                    </label>
+                    <input type="number" id="bgm-hard" class="est-input" placeholder="0" min="0"
+                        oninput="calculateTotal()">
+                    <p class="input-desc">대편성 오케스트레이션, 복잡한 테마곡, 메인 타이틀</p>
+                </div>
+            </div>
+
+            <!-- 3. POST-PRODUCTION -->
+            <div class="est-card">
+                <div class="est-card-header">
+                    <i class="fas fa-sliders-h"></i>
+                    <h3>Post-Production</h3>
+                </div>
+                <p style="font-size: 13px; color: #888; margin-bottom: 20px;">
+                    * 엔지니어링 기반(시간당 100,000원 기준 예측)<br>
+                    * 난이도별 평균 소요시간으로 자동 계산
+                </p>
+
+                <div class="input-group">
+                    <label class="input-label">
+                        Simple Tasks (Qty)
+                        <span class="price-badge">약 7분 소요/개</span>
+                    </label>
+                    <input type="number" id="post-simple" class="est-input" placeholder="0" min="0"
+                        oninput="calculateTotal()">
+                    <p class="input-desc">단순 노이즈 제거, 레벨 정규화, 페이드</p>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">
+                        Medium Tasks (Qty)
+                        <span class="price-badge">약 20분 소요/개</span>
+                    </label>
+                    <input type="number" id="post-medium" class="est-input" placeholder="0" min="0"
+                        oninput="calculateTotal()">
+                    <p class="input-desc">톤 보정(EQ/Comp), 클릭 제거, 사운드 변형</p>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">
+                        Hard Tasks (Qty)
+                        <span class="price-badge">약 40분 소요/개</span>
+                    </label>
+                    <input type="number" id="post-hard" class="est-input" placeholder="0" min="0"
+                        oninput="calculateTotal()">
+                    <p class="input-desc">음질 복원, 믹싱, 소스 조합 등</p>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; margin-top: 10px;">
+                    <div style="display: flex; justify-content: space-between; font-size: 13px; color: #aaa;">
+                        <span>예상 소요 시간:</span>
+                        <span id="post-hours" style="color: #fff; font-weight: 700;">0 hr</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TOTAL & ACTION -->
+        <div class="total-section">
+            <div class="total-row">
+                <div>
+                    <div class="total-label">Estimated Total</div>
+                    <div class="total-vat">* VAT 별도 금액입니다.</div>
+                </div>
+                <div class="total-amount" id="grand-total">0 KRW</div>
+            </div>
+
+            <div class="action-row">
+                <button class="btn-copy" onclick="copyEstimate()">
+                    <i class="fas fa-copy" style="margin-right: 8px;"></i> 견적 내용 복사하기
+                </button>
+                <a href="mailto:contact@qlaudio.com?subject=[견적 문의] 가상 견적서를 첨부합니다." class="btn-contact"
+                    id="btn-contact-mail">
+                    <i class="fas fa-envelope" style="margin-right: 8px;"></i> 메일로 문의하기 (할인 상담)
+                </a>
+            </div>
+            <p style="text-align: center; color: #666; font-size: 13px; margin-top: 20px;">
+                위 견적은 '간이 견적'으로 실제 계약 시 프로젝트 내용에 따라 변동될 수 있습니다.<br>
+                대량 의뢰 시 별도의 할인 견적이 적용되오니 반드시 상담을 통해 최종 금액을 확인해 주세요.
+            </p>
+        </div>
+
+    </div>
+
+    <script>
+        const PRICES = {
+            sfx: { simple: 30000, medium: 50000, complex: 100000 },
+            bgm: { simple: 500000, standard: 1000000, hard: 1500000 },
+            post: { rate: 100000, t_simple: 7, t_medium: 20, t_hard: 40 } // times in minutes
+        };
+
+        function getVal(id) {
+            return parseInt(document.getElementById(id).value) || 0;
+        }
+
+        function formatCurrency(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " KRW";
+        }
+
+        function calculateTotal() {
+            // SFX
+            const sfxCost = (getVal('sfx-simple') * PRICES.sfx.simple) +
+                (getVal('sfx-medium') * PRICES.sfx.medium) +
+                (getVal('sfx-complex') * PRICES.sfx.complex);
+
+            // BGM
+            const bgmCost = (getVal('bgm-simple') * PRICES.bgm.simple) +
+                (getVal('bgm-standard') * PRICES.bgm.standard) +
+                (getVal('bgm-hard') * PRICES.bgm.hard);
+
+            // POST
+            const postMins = (getVal('post-simple') * PRICES.post.t_simple) +
+                (getVal('post-medium') * PRICES.post.t_medium) +
+                (getVal('post-hard') * PRICES.post.t_hard);
+
+            const postHours = postMins / 60;
+            const postCost = postHours * PRICES.post.rate;
+
+            // Update Post UI
+            document.getElementById('post-hours').innerText = postHours.toFixed(1) + " hr";
+
+            // Total
+            const grandTotal = sfxCost + bgmCost + postCost;
+            document.getElementById('grand-total').innerText = formatCurrency(Math.floor(grandTotal));
+
+            const data = { sfxCost, bgmCost, postCost, postHours, grandTotal };
+            updateMailLink(data); // Live update mail link
+
+            return data;
+        }
+
+        function generateEstimateText(data) {
+            return `
+[QLAUDIO Virtual Estimate]
+
+1. SFX Assets
+- Simple: ${getVal('sfx-simple')} ea
+- Standard: ${getVal('sfx-medium')} ea
+- Complex: ${getVal('sfx-complex')} ea
+> Subtotal: ${formatCurrency(data.sfxCost)}
+
+2. BGM Production
+- Simple: ${getVal('bgm-simple')} ea
+- Standard: ${getVal('bgm-standard')} ea
+- Hard: ${getVal('bgm-hard')} ea
+> Subtotal: ${formatCurrency(data.bgmCost)}
+
+3. Post-Production
+- Files: Simple(${getVal('post-simple')}), Med(${getVal('post-medium')}), Hard(${getVal('post-hard')})
+- Est. Time: ${data.postHours.toFixed(1)} hours (@ 100,000 KRW/hr)
+> Subtotal: ${formatCurrency(Math.floor(data.postCost))}
+
+================================
+TOTAL ESTIMATE: ${formatCurrency(Math.floor(data.grandTotal))} (VAT 별도)
+================================
+* 위 견적은 가상 견적이며 실제 진행 시 할인 및 변동이 있을 수 있습니다.
+`.trim();
+        }
+
+        function updateMailLink(data) {
+            const text = generateEstimateText(data);
+            const subject = encodeURIComponent("[견적 문의] 가상 견적서를 첨부합니다.");
+            const body = encodeURIComponent(text);
+            const mailto = `mailto:contact@qlaudio.com?subject=${subject}&body=${body}`;
+
+            const btn = document.getElementById('btn-contact-mail');
+            if (btn) btn.href = mailto;
+        }
+
+        function copyEstimate() {
+            const data = calculateTotal(); // Recalc to be safe, or could pass state
+            const text = generateEstimateText(data);
+            navigator.clipboard.writeText(text).then(() => {
+                alert("견적 내용이 복사되었습니다! 이메일에 붙여넣기 해주세요.");
+            });
+        }
+    </script>
+</body>
+
+</html>
