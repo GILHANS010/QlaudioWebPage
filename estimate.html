@@ -243,6 +243,13 @@
                 font-size: 36px;
             }
         }
+
+        /* Active State for Template Buttons */
+        .tpl-btn.active {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: #3b82f6;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+        }
     </style>
 </head>
 
@@ -265,6 +272,195 @@
                 <strong>번들 할인 및 추가 네고</strong>가 가능하니 편하게 상담해 주세요.
             </p>
         </div>
+
+        <!-- TEMPLATES SECTION -->
+        <div class="template-section">
+            <div style="display: flex; justify-content: center; align-items: center; gap: 12px; margin-bottom: 24px;">
+                <h3 style="color: #fff; font-size: 18px; margin: 0;">🚀 Quick Start Templates (간편 프리셋)</h3>
+                <button onclick="resetEstimate()"
+                    style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #ccc; border-radius: 8px; padding: 6px 12px; font-size: 12px; cursor: pointer; transition: all 0.2s;">
+                    <i class="fas fa-undo"></i> 초기화
+                </button>
+            </div>
+
+            <div class="template-grid">
+                <!-- 1. Casual Puzzle -->
+                <button class="tpl-btn" onclick="applyTemplate('puzzle', this)">
+                    <span class="tpl-icon">🧩</span>
+                    <div class="tpl-info">
+                        <strong>캐주얼 퍼즐</strong>
+                        <span>기본 효과음 + 배경음</span>
+                    </div>
+                </button>
+                <!-- 2. RPG -->
+                <button class="tpl-btn" onclick="applyTemplate('rpg', this)">
+                    <span class="tpl-icon">⚔️</span>
+                    <div class="tpl-info">
+                        <strong>모바일 RPG</strong>
+                        <span>전투 및 UI 사운드</span>
+                    </div>
+                </button>
+                <!-- 3. Indie -->
+                <button class="tpl-btn" onclick="applyTemplate('indie', this)">
+                    <span class="tpl-icon">🎮</span>
+                    <div class="tpl-info">
+                        <strong>스팀 인디 게임</strong>
+                        <span>플랫포머 / 어드벤처</span>
+                    </div>
+                </button>
+                <!-- 4. FPS -->
+                <button class="tpl-btn" onclick="applyTemplate('fps', this)">
+                    <span class="tpl-icon">🔫</span>
+                    <div class="tpl-info">
+                        <strong>FPS / 슈팅</strong>
+                        <span>타격감 위주 SFX</span>
+                    </div>
+                </button>
+                <!-- 5. Visual Novel -->
+                <button class="tpl-btn" onclick="applyTemplate('vn', this)">
+                    <span class="tpl-icon">📖</span>
+                    <div class="tpl-info">
+                        <strong>비주얼 노벨</strong>
+                        <span>스토리 / BGM 중심</span>
+                    </div>
+                </button>
+                <!-- 6. Post -->
+                <button class="tpl-btn" onclick="applyTemplate('post', this)">
+                    <span class="tpl-icon">🎙️</span>
+                    <div class="tpl-info">
+                        <strong>성우 녹음 편집</strong>
+                        <span>대사 50마디 기준</span>
+                    </div>
+                </button>
+                <!-- 7. Rhythm Game -->
+                <button class="tpl-btn" onclick="applyTemplate('rhythm', this)">
+                    <span class="tpl-icon">🎵</span>
+                    <div class="tpl-info">
+                        <strong>리듬 게임</strong>
+                        <span>고품질 음원 다수</span>
+                    </div>
+                </button>
+                <!-- 8. Horror -->
+                <button class="tpl-btn" onclick="applyTemplate('horror', this)">
+                    <span class="tpl-icon">👻</span>
+                    <div class="tpl-info">
+                        <strong>공포 / 호러</strong>
+                        <span>앰비언스 & 공포 분위기</span>
+                    </div>
+                </button>
+                <!-- 9. Hyper Casual -->
+                <button class="tpl-btn" onclick="applyTemplate('hyper', this)">
+                    <span class="tpl-icon">⚡</span>
+                    <div class="tpl-info">
+                        <strong>하이퍼 캐주얼</strong>
+                        <span>최소한의 사운드</span>
+                    </div>
+                </button>
+                <!-- 10. MMORPG -->
+                <button class="tpl-btn" onclick="applyTemplate('mmo', this)">
+                    <span class="tpl-icon">🏰</span>
+                    <div class="tpl-info">
+                        <strong>대형 MMORPG</strong>
+                        <span>방대한 리소스 필요</span>
+                    </div>
+                </button>
+                <!-- 11. Metaverse -->
+                <button class="tpl-btn" onclick="applyTemplate('meta', this)">
+                    <span class="tpl-icon">🌐</span>
+                    <div class="tpl-info">
+                        <strong>메타버스 / 앱</strong>
+                        <span>UI 및 인터랙션</span>
+                    </div>
+                </button>
+                <!-- 12. Kids -->
+                <button class="tpl-btn" onclick="applyTemplate('kids', this)">
+                    <span class="tpl-icon">🧸</span>
+                    <div class="tpl-info">
+                        <strong>키즈 / 교육</strong>
+                        <span>귀엽고 밝은 사운드</span>
+                    </div>
+                </button>
+                <!-- 13. YouTube -->
+                <button class="tpl-btn" onclick="applyTemplate('youtube', this)">
+                    <span class="tpl-icon">▶️</span>
+                    <div class="tpl-info">
+                        <strong>유튜브 컨텐츠</strong>
+                        <span>인트로 / 효과음</span>
+                    </div>
+                </button>
+                <!-- 14. Podcast -->
+                <button class="tpl-btn" onclick="applyTemplate('podcast', this)">
+                    <span class="tpl-icon">🎧</span>
+                    <div class="tpl-info">
+                        <strong>팟캐스트 편집</strong>
+                        <span>노이즈 제거 / 믹싱</span>
+                    </div>
+                </button>
+                <!-- 15. ASMR -->
+                <button class="tpl-btn" onclick="applyTemplate('asmr', this)">
+                    <span class="tpl-icon">👂</span>
+                    <div class="tpl-info">
+                        <strong>ASMR / 힐링</strong>
+                        <span>고해상도 클리닝</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <style>
+            .template-section {
+                margin-bottom: 40px;
+                padding: 0 10px;
+            }
+
+            .template-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 12px;
+                max-width: 1000px;
+                margin: 0 auto;
+            }
+
+            .tpl-btn {
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 16px;
+                padding: 16px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                cursor: pointer;
+                transition: all 0.2s;
+                text-align: left;
+            }
+
+            .tpl-btn:hover {
+                background: rgba(59, 130, 246, 0.1);
+                border-color: #3b82f6;
+                transform: translateY(-2px);
+            }
+
+            .tpl-icon {
+                font-size: 24px;
+            }
+
+            .tpl-info {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .tpl-info strong {
+                color: #fff;
+                font-size: 15px;
+                display: block;
+                margin-bottom: 2px;
+            }
+
+            .tpl-info span {
+                color: #888;
+                font-size: 11px;
+            }
+        </style>
 
         <div class="est-grid">
             <!-- 1. SFX ESTIMATE -->
@@ -430,12 +626,109 @@
             post: { rate: 100000, t_simple: 7, t_medium: 20, t_hard: 40 } // times in minutes
         };
 
+        const TEMPLATES = {
+            puzzle: { // Simple Puzzle
+                'sfx-simple': 10, 'sfx-medium': 5,
+                'bgm-simple': 3
+            },
+            rpg: { // Casual RPG
+                'sfx-simple': 30, 'sfx-medium': 50, 'sfx-complex': 5,
+                'bgm-standard': 5
+            },
+            indie: { // Steam Indie
+                'sfx-simple': 20, 'sfx-medium': 40,
+                'bgm-standard': 5
+            },
+            fps: { // FPS Shooter (Heavy SFX)
+                'sfx-medium': 60, 'sfx-complex': 10,
+                'bgm-standard': 3
+            },
+            vn: { // Visual Novel
+                'sfx-simple': 10,
+                'bgm-simple': 5, 'bgm-standard': 2,
+                'bgm-hard': 1
+            },
+            post: { // Dubbing Post
+                'post-simple': 50, 'post-medium': 10
+            },
+
+            // NEW TEMPLATES
+            rhythm: { // Rhythm Game
+                'bgm-standard': 10
+            },
+            horror: { // Horror
+                'sfx-medium': 10, 'sfx-complex': 20, // Ambience
+                'bgm-hard': 2 // Dark theme
+            },
+            hyper: { // Hyper Casual
+                'sfx-simple': 5,
+                'bgm-simple': 1
+            },
+            mmo: { // MMORPG
+                'sfx-medium': 100, 'sfx-complex': 20,
+                'bgm-standard': 10, 'bgm-hard': 5
+            },
+            meta: { // Metaverse
+                'sfx-simple': 30
+            },
+            kids: { // Kids / Edu
+                'sfx-simple': 20,
+                'bgm-simple': 5
+            },
+            youtube: { // YouTube
+                'sfx-simple': 5,
+                'bgm-simple': 1 // Intro
+            },
+            podcast: { // Podcast
+                'post-medium': 4 // Approx 4 episodes cleanup? Or 4 parts.
+            },
+            asmr: { // ASMR
+                'post-hard': 5 // High quality cleanup
+            }
+        };
+
         function getVal(id) {
             return parseInt(document.getElementById(id).value) || 0;
         }
 
         function formatCurrency(num) {
             return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " KRW";
+        }
+
+        function applyTemplate(type, btnElement) {
+            // Reset all inputs
+            document.querySelectorAll('.est-input').forEach(el => el.value = '');
+
+            // Remove active class from all buttons
+            document.querySelectorAll('.tpl-btn').forEach(btn => btn.classList.remove('active'));
+
+            // Add active class to clicked button
+            if (btnElement) {
+                btnElement.classList.add('active');
+            }
+
+            // Apply Template Data
+            const data = TEMPLATES[type];
+            if (data) {
+                for (let id in data) {
+                    const el = document.getElementById(id);
+                    if (el) el.value = data[id];
+                }
+                calculateTotal(); // Recalculate
+            }
+        }
+
+        function resetEstimate() {
+            // Reset all inputs
+            document.querySelectorAll('.est-input').forEach(el => el.value = '');
+
+            // Remove active class from all buttons
+            document.querySelectorAll('.tpl-btn').forEach(btn => btn.classList.remove('active'));
+
+            // Recalculate (will zero out)
+            calculateTotal();
+
+            alert("견적이 초기화되었습니다.");
         }
 
         function calculateTotal() {
