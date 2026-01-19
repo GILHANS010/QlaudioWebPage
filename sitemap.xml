@@ -2,8 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
    <url>
       <loc>https://www.qlaudio.kr/</loc>
-      <lastmod>2026-01-06</lastmod>
-      <changefreq>monthly</changefreq>
+      <lastmod>2026-01-19</lastmod>
+      <changefreq>weekly</changefreq>
       <priority>1.0</priority>
+   </url>
+   <url>
+      <loc>https://www.qlaudio.kr/estimate.html</loc>
+      <lastmod>2026-01-19</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://www.qlaudio.kr/sections/sound-design.html</loc>
+      <lastmod>2026-01-19</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://www.qlaudio.kr/sections/post-production.html</loc>
+      <lastmod>2026-01-19</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://www.qlaudio.kr/sections/tech-rnd.html</loc>
+      <lastmod>2026-01-19</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://www.qlaudio.kr/sections/plugins.html</loc>
+      <lastmod>2026-01-19</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+   </url>
+   <url>
+      <loc>https://www.qlaudio.kr/sections/software-dev.html</loc>
+      <lastmod>2026-01-19</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
    </url>
 </urlset>
