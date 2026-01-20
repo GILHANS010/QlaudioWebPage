@@ -499,6 +499,16 @@
                         oninput="calculateTotal()">
                     <p class="input-desc">고급 효과음 (궁극기, 보스, 앰비언스 루프, 복잡한 기계음, MFX)</p>
                 </div>
+
+                <div class="input-group">
+                    <label class="input-label">
+                        Full Video Sound
+                        <span class="price-badge">150,000원 / min</span>
+                    </label>
+                    <input type="number" id="sfx-video" class="est-input" placeholder="0" min="0"
+                        oninput="calculateTotal()">
+                    <p class="input-desc">영상 전체 사운드 작업 (SFX + 믹싱 포함, 1분 단위)</p>
+                </div>
             </div>
 
             <!-- 2. BGM ESTIMATE -->
@@ -621,7 +631,7 @@
 
     <script>
         const PRICES = {
-            sfx: { simple: 30000, medium: 50000, complex: 100000 },
+            sfx: { simple: 30000, medium: 50000, complex: 100000, video: 150000 },
             bgm: { simple: 500000, standard: 1000000, hard: 1500000 },
             post: { rate: 100000, t_simple: 7, t_medium: 20, t_hard: 40 } // times in minutes
         };
@@ -735,7 +745,8 @@
             // SFX
             const sfxCost = (getVal('sfx-simple') * PRICES.sfx.simple) +
                 (getVal('sfx-medium') * PRICES.sfx.medium) +
-                (getVal('sfx-complex') * PRICES.sfx.complex);
+                (getVal('sfx-complex') * PRICES.sfx.complex) +
+                (getVal('sfx-video') * PRICES.sfx.video);
 
             // BGM
             const bgmCost = (getVal('bgm-simple') * PRICES.bgm.simple) +
@@ -771,6 +782,7 @@
 - Simple: ${getVal('sfx-simple')} ea
 - Standard: ${getVal('sfx-medium')} ea
 - Complex: ${getVal('sfx-complex')} ea
+- Video Sound: ${getVal('sfx-video')} min(s)
 > Subtotal: ${formatCurrency(data.sfxCost)}
 
 2. BGM Production
