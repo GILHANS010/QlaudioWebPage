@@ -5,6 +5,159 @@
     }
 })();
 
+document.addEventListener('DOMContentLoaded', () => {
+    initLandingCanvas();
+});
+
+const initLandingCanvas = () => {
+    const landingCanvas = document.getElementById('landingCanvas');
+    if (!landingCanvas) return;
+
+    const ctx = landingCanvas.getContext('2d');
+    let width = 0, height = 0;
+    let mouse = { x: -1000, y: -1000 };
+    let smoothMouse = { x: -1000, y: -1000 };
+    let dpr = window.devicePixelRatio || 1;
+    let frameCount = 0;
+
+    // Config
+    const config = {
+        noiseScaleX: 0.005,
+        noiseScaleY: 0.005,
+        ySpacing: 12,
+        amplitude: 30,
+        centerSafeWidth: 50,
+        speed: 0.001,
+        lineWidth: 1.5
+    };
+
+    const palette = ["#222", "#333", "#111", "#444"];
+
+    // Perlin Noise Implementation
+    const noise = (function () {
+        const p = new Uint8Array(512);
+        const permutation = [151, 160, 137, 91, 90, 15, 131, 13, 201, 95, 96, 53, 194, 233, 7, 225, 140, 36, 103, 30, 69, 142, 8, 99, 37, 240, 21, 10, 23, 190, 6, 148, 247, 120, 234, 75, 0, 26, 197, 62, 94, 252, 219, 203, 117, 35, 11, 32, 57, 177, 33, 88, 237, 149, 56, 87, 174, 20, 125, 136, 171, 168, 68, 175, 74, 165, 71, 134, 139, 48, 27, 166, 77, 146, 158, 231, 83, 111, 229, 122, 60, 211, 133, 230, 220, 105, 92, 41, 55, 46, 245, 40, 244, 102, 143, 54, 65, 25, 63, 161, 1, 216, 80, 73, 209, 76, 132, 187, 208, 89, 18, 169, 200, 196, 135, 130, 116, 188, 159, 86, 164, 100, 109, 198, 173, 186, 3, 64, 52, 217, 226, 250, 124, 123, 5, 202, 38, 147, 118, 126, 255, 82, 85, 212, 207, 206, 59, 227, 47, 16, 58, 17, 182, 189, 28, 42, 223, 183, 170, 213, 119, 248, 152, 2, 44, 154, 163, 70, 221, 153, 101, 155, 167, 43, 172, 9, 129, 22, 39, 253, 19, 98, 108, 110, 79, 113, 224, 232, 178, 185, 112, 104, 218, 246, 97, 228, 251, 34, 242, 193, 238, 210, 144, 12, 191, 179, 162, 241, 81, 51, 145, 235, 249, 14, 239, 107, 49, 192, 214, 31, 181, 199, 106, 157, 184, 84, 204, 176, 115, 121, 50, 45, 127, 4, 150, 254, 138, 236, 205, 93, 222, 114, 67, 29, 24, 72, 243, 141, 128, 195, 78, 66, 215, 61, 156, 180];
+        for (let i = 0; i < 256; i++) p[256 + i] = p[i] = permutation[i];
+        const fade = t => t * t * t * (t * (t * 6 - 15) + 10);
+        const lerp = (t, a, b) => a + t * (b - a);
+        const grad = (hash, x, y, z) => {
+            const h = hash & 15;
+            const u = h < 8 ? x : y, v = h < 4 ? y : h == 12 || h == 14 ? x : z;
+            return ((h & 1) == 0 ? u : -u) + ((h & 2) == 0 ? v : -v);
+        }
+        return function (x, y, z) {
+            const X = Math.floor(x) & 255, Y = Math.floor(y) & 255, Z = Math.floor(z) & 255;
+            x -= Math.floor(x); y -= Math.floor(y); z -= Math.floor(z);
+            const u = fade(x), v = fade(y), w = fade(z);
+            const A = p[X] + Y, AA = p[A] + Z, AB = p[A + 1] + Z, B = p[X + 1] + Y, BA = p[B] + Z, BB = p[B + 1] + Z;
+            return lerp(w, lerp(v, lerp(u, grad(p[AA], x, y, z), grad(p[BA], x - 1, y, z)), lerp(u, grad(p[AB], x, y - 1, z), grad(p[BB], x - 1, y - 1, z))), lerp(v, lerp(u, grad(p[AA + 1], x, y, z - 1), grad(p[BA + 1], x - 1, y, z - 1)), lerp(u, grad(p[AB + 1], x, y - 1, z - 1), grad(p[BB + 1], x - 1, y - 1, z - 1))));
+        };
+    })();
+
+    const map = (value, start1, stop1, start2, stop2) => {
+        return start2 + (stop2 - start2) * ((value - start1) / (stop1 - start1));
+    };
+
+    const resize = () => {
+        const rect = landingCanvas.parentNode.getBoundingClientRect();
+        width = rect.width;
+        height = rect.height;
+        landingCanvas.width = width * dpr;
+        landingCanvas.height = height * dpr;
+        ctx.scale(dpr, dpr);
+    };
+
+    window.addEventListener('resize', resize);
+    window.addEventListener('mousemove', (e) => {
+        const rect = landingCanvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+    });
+
+    // Logo Image
+    const logoImg = new Image();
+    let logoCanvas = null;
+    logoImg.onload = () => {
+        const c = document.createElement('canvas');
+        c.width = logoImg.width;
+        c.height = logoImg.height;
+        const cx = c.getContext('2d');
+        cx.drawImage(logoImg, 0, 0);
+        cx.globalCompositeOperation = 'source-in';
+        cx.fillStyle = '#FFFFFF'; // Force white logo
+        cx.fillRect(0, 0, c.width, c.height);
+        logoCanvas = c;
+    };
+    logoImg.src = 'images/White_Logo.webp'; // Updated path
+
+    const animate = () => {
+        ctx.fillStyle = "#FFFFFF";
+        ctx.fillRect(0, 0, width, height);
+        frameCount++;
+        smoothMouse.x += (mouse.x - smoothMouse.x) * 0.15;
+        smoothMouse.y += (mouse.y - smoothMouse.y) * 0.15;
+        ctx.lineWidth = config.lineWidth;
+        ctx.lineJoin = 'round';
+
+        let layerIndex = 0;
+        let mx = smoothMouse.x;
+        let my = smoothMouse.y;
+
+        for (let y = 0; y <= height; y += config.ySpacing) {
+            layerIndex++;
+            let col = palette[layerIndex % palette.length];
+            ctx.strokeStyle = col;
+            ctx.beginPath();
+            for (let x = 0; x <= width; x += 5) {
+                let n = noise(x * config.noiseScaleX, y * 0.01 - frameCount * config.speed, frameCount * 0.005);
+                let centerDist = Math.abs(x - width / 2);
+                let spreadFactor = Math.max(0, (centerDist - config.centerSafeWidth) / (width * 0.4));
+                let wave = map(n, 0, 1, -config.amplitude, config.amplitude);
+                wave *= spreadFactor;
+                let interact = 0;
+                if (mx > 0 && my > 0) {
+                    let dx = x - mx;
+                    let dy = y - my;
+                    let dist = Math.sqrt(dx * dx + dy * dy);
+                    let radius = 250;
+                    if (dist < radius) {
+                        let force = Math.pow((radius - dist) / radius, 2);
+                        let mouseNoise = noise(x * 0.05, y * 0.05, frameCount * 0.05);
+                        interact = mouseNoise * force * 60;
+                    }
+                }
+                wave += interact;
+                ctx.lineTo(x, y + wave);
+            }
+            ctx.stroke();
+        }
+
+        // Draw Logo
+        if (logoCanvas) {
+            const maxLogoW = Math.min(600, width * 0.5);
+            const ratio = logoCanvas.width / logoCanvas.height;
+            const lw = maxLogoW;
+            const lh = lw / ratio;
+            const lx = (width - lw) / 2;
+            const ly = (height - lh) / 2;
+
+            ctx.save();
+            ctx.shadowColor = "rgba(255,255,255,1)";
+            ctx.shadowBlur = 40;
+            ctx.drawImage(logoCanvas, lx, ly, lw, lh);
+            ctx.restore();
+        }
+        requestAnimationFrame(animate);
+    };
+
+    setTimeout(() => {
+        resize();
+        animate();
+    }, 100);
+};
+
+
+
 // Scroll Reveal Animation (Simple & Clean - Editorial Feel)
 document.addEventListener('DOMContentLoaded', () => {
     const observerOptions = {

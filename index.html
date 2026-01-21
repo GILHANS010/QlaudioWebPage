@@ -53,6 +53,7 @@
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="new_styles.css">
 </head>
 
 <body>
@@ -73,25 +74,58 @@
     </header>
 
     <main id="main-content">
+        <!-- HERO SECTION (Updated) -->
         <section class="hero">
-            <canvas id="hero-canvas"
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: auto;"></canvas>
-            <div class="hero-text-container">
-                <div class="badge-container">
-                    <span class="badge"><i class="fas fa-trophy"></i> 대통령상 수상</span>
-                    <span class="badge"><i class="fas fa-certificate"></i> 문화체육관광부 장관상 수상</span>
-                    <span class="badge"><i class="fas fa-trophy"></i> 정보문화진흥원장상 수상</span>
+            <canvas id="landingCanvas" class="heroBg reveal"></canvas>
+            <div class="heroText reveal">
+                <div class="heroKicker">
+                    <span>🏆 대통령상 수상</span>
+                    <span>🏅 문화체육관광부 장관상 수상</span>
+                    <span>🎖 정보문화진흥원장상 수상</span>
                 </div>
-                <h1>State Of The ART<br><span>Sound & Music</span></h1>
-                <p>기술과 예술의 경계에서, 한계 없는 사운드를 설계합니다.<br>QLAUDIO</p>
-                <div class="cta-group">
-                    <a href="#contact" class="btn-cta">프로젝트 제작 의뢰</a>
-                    <a href="estimate.html" class="btn-cta btn-outline"><i class="fas fa-calculator"
-                            style="margin-right:8px; font-size: 0.9em;"></i>가상 견적 내보기</a>
+                <h1 class="heroTitle">QLAUDIO</h1>
+                <h2 class="heroTitle">Sound & Music</h2>
+                <p class="heroSub">
+                    기술과 예술의 경계에서<br> 한계 없는 사운드를 설계합니다.<br>
+                </p>
+                <div class="hero-btns">
+                    <a href="#contact" class="btnBlack">프로젝트 제작 의뢰</a>
+                    <a href="estimate.html" class="btnBlack">가상 견적 내보기</a>
                 </div>
             </div>
-            <div class="hero-logo-container">
-                <img src="images/LOGO.webp" alt="QLAUDIO Logo" class="hero-logo-img">
+        </section>
+
+        <!-- CATEGORY BAR SECTION -->
+        <section class="catBar">
+            <div class="wrap catInner reveal">
+                <div class="catTitle">Categories</div>
+                <div class="catIcons">
+                    <!-- 1. Sound Design -->
+                    <a href="#" class="catIcon" onclick="loadSection(event, 'sound-design')">
+                        <i class="fas fa-layer-group"></i>
+                        <div>Sound Design<br>& Music</div>
+                    </a>
+                    <!-- 2. AI Solution -->
+                    <a href="#" class="catIcon" onclick="loadSection(event, 'ai-solution')">
+                        <i class="fas fa-brain"></i>
+                        <div>AI Solution</div>
+                    </a>
+                    <!-- 3. Post Production -->
+                    <a href="#" class="catIcon" onclick="loadSection(event, 'post-production')">
+                        <i class="fas fa-sliders-h"></i>
+                        <div>Post Production</div>
+                    </a>
+                    <!-- 4. Audio R&D -->
+                    <a href="#" class="catIcon" onclick="loadSection(event, 'software-dev')">
+                        <i class="fas fa-microchip"></i>
+                        <div>Audio R&D</div>
+                    </a>
+                    <!-- 5. Plugins -->
+                    <a href="#" class="catIcon" onclick="loadSection(event, 'plugins')">
+                        <i class="fas fa-plug"></i>
+                        <div>Plugins</div>
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -359,76 +393,7 @@
             </div>
         </section>
 
-        <section id="categories">
-            <div class="section-title">Our Categories</div>
-            <div class="categories-grid">
-                <!-- Sound Design -->
-                <div class="cat-card" onclick="loadSection(event, 'sound-design')" style="cursor: pointer;">
-                    <div class="cat-icon">
-                        <i class="fas fa-layer-group"></i>
-                    </div>
-                    <div class="cat-info">
-                        <h3>Sound Design & Music Production</h3>
-                        <span>SFX / UI / MFX / BGM</span>
-                        <p>게임, 영화, 드라마 등 미디어 매체의 몰입감을 극대화하는 사운드 이펙트와 배경 음악을 제작합니다. 사용자 경험(UX)을 고려한 정교한 사운드 디자인을 제공합니다.
-                        </p>
-                        <div class="cat-link">Learn More <i class="fas fa-arrow-right"></i></div>
-                    </div>
-                </div>
 
-                <!-- AI Solution (New) -->
-                <div class="cat-card" onclick="loadSection(event, 'ai-solution')" style="cursor: pointer;">
-                    <div class="cat-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <div class="cat-info">
-                        <h3>AI Solution</h3>
-                        <span>TTS / Voice Conversion / Localization</span>
-                        <p>Custom Voice TTS, AI 더빙, 자동 자막 및 번역 등 최첨단 AI 오디오 파이프라인을 통해 제작 효율과 퀄리티를 동시에 혁신합니다.</p>
-                        <div class="cat-link">Learn More <i class="fas fa-arrow-right"></i></div>
-                    </div>
-                </div>
-
-                <!-- Post Production -->
-                <div class="cat-card" onclick="loadSection(event, 'post-production')" style="cursor: pointer;">
-                    <div class="cat-icon">
-                        <i class="fas fa-sliders-h"></i>
-                    </div>
-                    <div class="cat-info">
-                        <h3>Post Production</h3>
-                        <span>Mixing / Mastering / Repair</span>
-                        <p>믹싱과 마스터링을 통해 오디오의 품질을 상업적 표준으로 끌어올립니다. 노이즈 제거 및 오디오 복원, 포맷 변환 등 전문적인 후반 작업을 수행합니다.</p>
-                        <div class="cat-link">Learn More <i class="fas fa-arrow-right"></i></div>
-                    </div>
-                </div>
-
-                <!-- Tech R&D -->
-                <div class="cat-card" onclick="loadSection(event, 'software-dev')" style="cursor: pointer;">
-                    <div class="cat-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <div class="cat-info">
-                        <h3>Tech R&D Cooperation</h3>
-                        <span>Patent / Innovation / AI</span>
-                        <p>국립국악원, 전자 악기 제조사 등과의 협업을 통해 오디오 기술 특허 연구 및 신기술 개발을 주도합니다. AI 기반 오디오 솔루션 연구도 함께 진행합니다.</p>
-                        <div class="cat-link">Learn More <i class="fas fa-arrow-right"></i></div>
-                    </div>
-                </div>
-
-                <!-- Software Dev -->
-                <div class="cat-card" onclick="loadSection(event, 'plugins')" style="cursor: pointer;">
-                    <div class="cat-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <div class="cat-info">
-                        <h3>Audio Software Development</h3>
-                        <span>VST / Plugins / Virtual Instruments</span>
-                        <p>자체 개발한 국악 가상악기 '조선시리즈'의 성공 경험을 바탕으로, 뮤지션을 위한 창의적인 VST 플러그인과 오디오 소프트웨어를 직접 개발하고 공급합니다.</p>
-                        <div class="cat-link">Learn More <i class="fas fa-arrow-right"></i></div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <style>
             .portfolio-section {
@@ -618,6 +583,77 @@
                 z-index: 3;
             }
         </style>
+
+        <section id="categories">
+            <div class="section-title">Our Categories</div>
+            <div class="categories-grid">
+                <!-- Sound Design -->
+                <div class="cat-card" onclick="loadSection(event, 'sound-design')" style="cursor: pointer;">
+                    <div class="cat-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <div class="cat-info">
+                        <h3>Sound Design & Music Production</h3>
+                        <span>SFX / UI / MFX / BGM</span>
+                        <p>게임, 영화, 드라마 등 미디어 매체의 몰입감을 극대화하는 사운드 이펙트와 배경 음악을 제작합니다. 사용자 경험(UX)을 고려한 정교한 사운드 디자인을 제공합니다.
+                        </p>
+                        <div class="cat-link">Learn More <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </div>
+
+                <!-- AI Solution (New) -->
+                <div class="cat-card" onclick="loadSection(event, 'ai-solution')" style="cursor: pointer;">
+                    <div class="cat-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="cat-info">
+                        <h3>AI Solution</h3>
+                        <span>TTS / Voice Conversion / Localization</span>
+                        <p>Custom Voice TTS, AI 더빙, 자동 자막 및 번역 등 최첨단 AI 오디오 파이프라인을 통해 제작 효율과 퀄리티를 동시에 혁신합니다.</p>
+                        <div class="cat-link">Learn More <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </div>
+
+                <!-- Post Production -->
+                <div class="cat-card" onclick="loadSection(event, 'post-production')" style="cursor: pointer;">
+                    <div class="cat-icon">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <div class="cat-info">
+                        <h3>Post Production</h3>
+                        <span>Mixing / Mastering / Repair</span>
+                        <p>믹싱과 마스터링을 통해 오디오의 품질을 상업적 표준으로 끌어올립니다. 노이즈 제거 및 오디오 복원, 포맷 변환 등 전문적인 후반 작업을 수행합니다.</p>
+                        <div class="cat-link">Learn More <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </div>
+
+                <!-- Tech R&D -->
+                <div class="cat-card" onclick="loadSection(event, 'software-dev')" style="cursor: pointer;">
+                    <div class="cat-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="cat-info">
+                        <h3>Tech R&D Cooperation</h3>
+                        <span>Patent / Innovation / AI</span>
+                        <p>국립국악원, 전자 악기 제조사 등과의 협업을 통해 오디오 기술 특허 연구 및 신기술 개발을 주도합니다. AI 기반 오디오 솔루션 연구도 함께 진행합니다.</p>
+                        <div class="cat-link">Learn More <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </div>
+
+                <!-- Software Dev -->
+                <div class="cat-card" onclick="loadSection(event, 'plugins')" style="cursor: pointer;">
+                    <div class="cat-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="cat-info">
+                        <h3>Audio Software Development</h3>
+                        <span>VST / Plugins / Virtual Instruments</span>
+                        <p>자체 개발한 국악 가상악기 '조선시리즈'의 성공 경험을 바탕으로, 뮤지션을 위한 창의적인 VST 플러그인과 오디오 소프트웨어를 직접 개발하고 공급합니다.</p>
+                        <div class="cat-link">Learn More <i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <section id="portfolio" class="bento-section" style="padding-bottom: 20px;">
             <div class="section-title">OUR WORKS</div>

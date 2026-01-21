@@ -1,0 +1,277 @@
+/* =========================================
+   NEW HERO & CATEGORY BAR STYLES (User Request)
+   ========================================= */
+
+:root {
+    --ink: #111111;
+    --wrap: 1600px;
+}
+
+/* Button Update */
+.btnBlack {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 26px;
+    border-radius: 999px;
+    background: #111;
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+}
+
+.btnBlack:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    background: #333;
+    color: #fff;
+}
+
+.btnBlack.outline {
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    color: #111;
+}
+
+.btnBlack.outline:hover {
+    background: #111;
+    color: #fff;
+    border-color: #111;
+}
+
+/* Hero Update */
+.hero {
+    /* Overriding previous .hero settings */
+    height: 800px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    /* Was grid */
+    padding: 0;
+    min-height: auto;
+    background: #fff;
+    /* Ensure white bg */
+}
+
+/* If the user wants specific content on the canvas background */
+.heroBg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.heroText {
+    position: absolute;
+    left: 3%;
+    right: auto;
+    top: 50%;
+    /* Vertically centered */
+    bottom: auto;
+    transform: translateY(-50%);
+    width: min(500px, 90vw);
+    text-align: left;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.heroText.reveal {
+    opacity: 0;
+    transform: translateY(-40%);
+    /* Start slightly lower than -50% */
+    animation: fadeUp 1s ease forwards 0.5s;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(-50%);
+    }
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(-50%);
+    }
+}
+
+.heroKicker {
+    font-weight: 700;
+    font-size: 13px;
+    /* Slightly smaller */
+    margin-bottom: 20px;
+    color: #555;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+    /* Left align badges */
+}
+
+.heroKicker span {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #f0f0f0;
+    border-radius: 4px;
+    width: fit-content;
+    font-size: 12px;
+    color: #333;
+}
+
+.heroTitle {
+    margin: 0;
+    font-size: 60px;
+    /* Reduced from 80px */
+    letter-spacing: -0.04em;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: #000;
+    text-shadow: none;
+}
+
+.heroSub {
+    margin: 0 0 30px;
+    font-size: 18px;
+    /* Reduced from 24px */
+    font-weight: 800;
+    color: #000000;
+    opacity: 1;
+    letter-spacing: -0.01em;
+    line-height: 1.5;
+    word-break: keep-all;
+    max-width: 400px;
+    /* Limit width for cleaner look */
+}
+
+.hero-btns {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-start;
+}
+
+/* Category Bar */
+.catBar {
+    padding: 80px 0;
+    background: #fff;
+    border-bottom: 1px solid #f0f0f0;
+    width: 100%;
+}
+
+.catInner {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.catTitle {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    white-space: nowrap;
+    color: #111;
+}
+
+.catIcons {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.catIcon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    color: #ccc;
+    /* Default inactive color */
+    transition: transform 0.2s, color 0.2s;
+    flex: 1;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.catIcon i {
+    font-size: 40px;
+    transition: color 0.2s, transform 0.2s;
+    color: inherit;
+}
+
+/* Hover State */
+.catIcon:hover {
+    color: #111;
+    /* Active color */
+    transform: translateY(-5px);
+}
+
+.catIcon div {
+    font-size: 15px;
+    font-weight: 700;
+    color: #111;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.catIcon:hover div {
+    opacity: 1;
+}
+
+@media (max-width: 1024px) {
+    .catInner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 40px;
+    }
+
+    .catTitle {
+        text-align: center;
+    }
+
+    .heroText {
+        right: 5%;
+        width: 90%;
+        text-align: center;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .hero-btns {
+        justify-content: center;
+    }
+
+    .heroKicker {
+        align-items: center;
+    }
+
+    .heroTitle {
+        font-size: 56px;
+    }
+}
+
+@media (max-width: 768px) {
+    .catIcons {
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .catIcon {
+        flex-basis: 40%;
+    }
+}
