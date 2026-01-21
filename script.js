@@ -91,6 +91,7 @@ const initLandingCanvas = () => {
     logoImg.src = 'images/White_Logo.webp'; // Updated path
 
     const animate = () => {
+        if (!landingCanvas.isConnected) return; // Stop animation if canvas is removed
         ctx.fillStyle = "#FFFFFF";
         ctx.fillRect(0, 0, width, height);
         frameCount++;
@@ -159,7 +160,7 @@ const initLandingCanvas = () => {
 
 
 // Scroll Reveal Animation (Simple & Clean - Editorial Feel)
-document.addEventListener('DOMContentLoaded', () => {
+function setupScrollReveal() {
     const observerOptions = {
         root: null,
         rootMargin: '0px',
@@ -181,20 +182,33 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // Inject CSS for animations
-    const style = document.createElement('style');
-    style.innerHTML = `
-        .reveal-init {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .visible {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-        }
-    `;
-    document.head.appendChild(style);
+    // Inject CSS for animations (Check if exists first to avoid dupes)
+    if (!document.getElementById('reveal-styles')) {
+        const style = document.createElement('style');
+        style.id = 'reveal-styles';
+        style.innerHTML = `
+            .reveal-init {
+                opacity: 0;
+                transform: translateY(40px);
+                transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+            .visible {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Capture initial content for History Back support
+    const mainContent = document.getElementById('main-content');
+    if (mainContent) {
+        window.initialMainContent = mainContent.innerHTML;
+    }
+
+    setupScrollReveal();
 });
 
 
@@ -298,14 +312,20 @@ document.addEventListener('contextmenu', function (e) {
 });
 
 // Handle ESC key events
+// Handle ESC key events
 document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
         closeProductDetail();
     }
 });
 
-function loadSection(event, section) {
-    event.preventDefault();
+function loadSection(event, section, pushState = true) {
+    if (event) event.preventDefault();
+
+    if (pushState) {
+        history.pushState({ section: section }, null, `?section=${section}`);
+    }
+
     console.log(`Attempting to load section: ${section}`);
 
     // Cleanup active game loop if exists (when navigating away)
@@ -1343,6 +1363,39 @@ function initHeroCanvas() {
 }
 
 // Ensure initHeroCanvas is called
+// Ensure initHeroCanvas is called
 document.addEventListener('DOMContentLoaded', () => {
     initHeroCanvas();
+});
+
+// --- History Back Button Support ---
+window.addEventListener('popstate', (event) => {
+    const mainContent = document.getElementById('main-content');
+
+    if (event.state && event.state.section) {
+        // We are going forward/back to a specific section
+        loadSection(null, event.state.section, false);
+    } else {
+        // We are going back to the Initial State (Home)
+        if (mainContent && window.initialMainContent) {
+            console.log("Restoring Home Page");
+
+            // Clean up any running loops from sections
+            if (typeof gameLoopId !== 'undefined' && gameLoopId) {
+                cancelAnimationFrame(gameLoopId);
+                gameLoopId = null;
+            }
+            if (typeof pianoLoopId !== 'undefined' && pianoLoopId) {
+                cancelAnimationFrame(pianoLoopId);
+                pianoLoopId = null;
+            }
+
+            mainContent.innerHTML = window.initialMainContent;
+
+            // Re-initialize Home components
+            initLandingCanvas();
+            setupScrollReveal();
+            // Re-bind CatBar events? No need, onclicks are inline in HTML string.
+        }
+    }
 });
