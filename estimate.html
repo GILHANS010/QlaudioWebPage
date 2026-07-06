@@ -489,7 +489,7 @@
                 <div class="input-group">
                     <label class="input-label">
                         Simple SFX
-                        <span class="price-badge">30,000원 / 개</span>
+                        <span class="price-badge">50,000원 / 개</span>
                     </label>
                     <input type="number" id="sfx-simple" class="est-input" placeholder="0" min="0"
                         oninput="calculateTotal()">
@@ -499,7 +499,7 @@
                 <div class="input-group">
                     <label class="input-label">
                         Standard SFX
-                        <span class="price-badge">50,000원 / 개</span>
+                        <span class="price-badge">100,000원 / 개</span>
                     </label>
                     <input type="number" id="sfx-medium" class="est-input" placeholder="0" min="0"
                         oninput="calculateTotal()">
@@ -509,7 +509,7 @@
                 <div class="input-group">
                     <label class="input-label">
                         Complex SFX
-                        <span class="price-badge">100,000원 / 개</span>
+                        <span class="price-badge">150,000원 / 개</span>
                     </label>
                     <input type="number" id="sfx-complex" class="est-input" placeholder="0" min="0"
                         oninput="calculateTotal()">
@@ -519,7 +519,7 @@
                 <div class="input-group">
                     <label class="input-label">
                         Full Video Sound
-                        <span class="price-badge">150,000원 / min</span>
+                        <span class="price-badge">300,000원 / min</span>
                     </label>
                     <input type="number" id="sfx-video" class="est-input" placeholder="0" min="0"
                         oninput="calculateTotal()">
@@ -540,7 +540,7 @@
                 <div class="input-group">
                     <label class="input-label">
                         Simple Track
-                        <span class="price-badge">500,000원 / 곡</span>
+                        <span class="price-badge">1,000,000원 / 곡</span>
                     </label>
                     <input type="number" id="bgm-simple" class="est-input" placeholder="0" min="0"
                         oninput="calculateTotal()">
@@ -550,7 +550,7 @@
                 <div class="input-group">
                     <label class="input-label">
                         Standard Track
-                        <span class="price-badge">1,000,000원 / 곡</span>
+                        <span class="price-badge">1,500,000원 / 곡</span>
                     </label>
                     <input type="number" id="bgm-standard" class="est-input" placeholder="0" min="0"
                         oninput="calculateTotal()">
@@ -560,7 +560,7 @@
                 <div class="input-group">
                     <label class="input-label">
                         Hard / Epic
-                        <span class="price-badge">1,500,000원 / 곡</span>
+                        <span class="price-badge">2,500,000원 / 곡</span>
                     </label>
                     <input type="number" id="bgm-hard" class="est-input" placeholder="0" min="0"
                         oninput="calculateTotal()">
@@ -575,38 +575,38 @@
                     <h3>Post-Production</h3>
                 </div>
                 <p style="font-size: 13px; color: #888; margin-bottom: 20px;">
-                    * 엔지니어링 기반(시간당 100,000원 기준 예측)<br>
-                    * 난이도별 평균 소요시간으로 자동 계산
+                    * 난이도별 고정 단가로 자동 계산<br>
+                    * 예상 소요시간은 평균 작업시간 기준
                 </p>
 
                 <div class="input-group">
                     <label class="input-label">
                         Simple Tasks (Qty)
-                        <span class="price-badge">약 7분 소요/개</span>
+                        <span class="price-badge">30,000원 / 개</span>
                     </label>
                     <input type="number" id="post-simple" class="est-input" placeholder="0" min="0"
                         oninput="calculateTotal()">
-                    <p class="input-desc">단순 노이즈 제거, 레벨 정규화, 페이드</p>
+                    <p class="input-desc">단순 노이즈 제거, 레벨 정규화, 페이드 (약 7분 기준)</p>
                 </div>
 
                 <div class="input-group">
                     <label class="input-label">
                         Medium Tasks (Qty)
-                        <span class="price-badge">약 20분 소요/개</span>
+                        <span class="price-badge">60,000원 / 개</span>
                     </label>
                     <input type="number" id="post-medium" class="est-input" placeholder="0" min="0"
                         oninput="calculateTotal()">
-                    <p class="input-desc">톤 보정(EQ/Comp), 클릭 제거, 사운드 변형</p>
+                    <p class="input-desc">톤 보정(EQ/Comp), 클릭 제거, 사운드 변형 (약 20분 기준)</p>
                 </div>
 
                 <div class="input-group">
                     <label class="input-label">
                         Hard Tasks (Qty)
-                        <span class="price-badge">약 40분 소요/개</span>
+                        <span class="price-badge">120,000원 / 개</span>
                     </label>
                     <input type="number" id="post-hard" class="est-input" placeholder="0" min="0"
                         oninput="calculateTotal()">
-                    <p class="input-desc">음질 복원, 믹싱, 소스 조합 등</p>
+                    <p class="input-desc">음질 복원, 믹싱, 소스 조합 등 (약 40분 기준)</p>
                 </div>
 
                 <div style="background: rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; margin-top: 10px;">
@@ -647,9 +647,9 @@
 
     <script>
         const PRICES = {
-            sfx: { simple: 30000, medium: 50000, complex: 100000, video: 150000 },
-            bgm: { simple: 500000, standard: 1000000, hard: 1500000 },
-            post: { rate: 100000, t_simple: 7, t_medium: 20, t_hard: 40 } // times in minutes
+            sfx: { simple: 50000, medium: 100000, complex: 150000, video: 300000 },
+            bgm: { simple: 1000000, standard: 1500000, hard: 2500000 },
+            post: { simple: 30000, medium: 60000, hard: 120000, t_simple: 7, t_medium: 20, t_hard: 40 }
         };
 
         const TEMPLATES = {
@@ -775,7 +775,9 @@
                 (getVal('post-hard') * PRICES.post.t_hard);
 
             const postHours = postMins / 60;
-            const postCost = postHours * PRICES.post.rate;
+            const postCost = (getVal('post-simple') * PRICES.post.simple) +
+                (getVal('post-medium') * PRICES.post.medium) +
+                (getVal('post-hard') * PRICES.post.hard);
 
             // Update Post UI
             document.getElementById('post-hours').innerText = postHours.toFixed(1) + " hr";
@@ -809,7 +811,8 @@
 
 3. Post-Production
 - Files: Simple(${getVal('post-simple')}), Med(${getVal('post-medium')}), Hard(${getVal('post-hard')})
-- Est. Time: ${data.postHours.toFixed(1)} hours (@ 100,000 KRW/hr)
+- Unit Price: Simple ${formatCurrency(PRICES.post.simple)}, Med ${formatCurrency(PRICES.post.medium)}, Hard ${formatCurrency(PRICES.post.hard)}
+- Est. Time: ${data.postHours.toFixed(1)} hours
 > Subtotal: ${formatCurrency(Math.floor(data.postCost))}
 
 ================================
